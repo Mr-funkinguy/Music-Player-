@@ -6,7 +6,7 @@
 
 const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(
-  "Music-Player-/Songs/hanji.mp3"
+  "https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/hanji.mp3?raw=true"
 );
 //credit for song: Adrian kreativaweb@gmail.com
 
