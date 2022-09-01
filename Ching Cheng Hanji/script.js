@@ -6,7 +6,7 @@
 
 const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(
-  "/Songs/hanji.mp3
+  "Music-Player-/Songs/hanji.mp3
 );
 //credit for song: Adrian kreativaweb@gmail.com
 
