@@ -6,7 +6,7 @@
 
 const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(
-  "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/backsound.mp3"
+  "https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/hanji.mp3
 );
 //credit for song: Adrian kreativaweb@gmail.com
 
