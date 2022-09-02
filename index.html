@@ -19,7 +19,7 @@ body {
 /* Left column (menu) */
 .left {
   flex: 35%;
-  padding: 15px 0;
+  padding: 18 0;
 }
 
 .left h2 {
@@ -27,16 +27,17 @@ body {
 }
 
 .tabcontent {
-  float: left;
-  padding: 0px 12px;
-  width: 70%;
+  float: center;
+  flex: 35%;
   border-left: none;
   height: 300px;
 }
 
 /* Right column (page content) */
 .right {
-  
+  flex: 55%;
+  float: center;
+  padding: 18 0;
  
 }
 
@@ -83,6 +84,8 @@ body {
   border-radius: 70px;
 }
 
+
+
 </style>
 </head>
 <body>
@@ -90,7 +93,7 @@ body {
 
 
 <div class="row">
-  <div class="left" style="background-color:#bbb;">
+  <div class="left" style="background-color:#bbb;" id="wrapper">
   <div class="txt">
     Welcome, User!
    </div>
