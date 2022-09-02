@@ -3,7 +3,7 @@ let fft
 
 function preload() {
   soundFormats('mp3', 'ogg');
-  song = loadSound('https://vocaroo.com/embed/123SATXmChvw?autoplay=0')
+  song = loadSound('Songs/ye.mp3')
 }
 
 function setup() {
