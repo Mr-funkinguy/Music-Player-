@@ -2,8 +2,7 @@ let song, analyzer
 let fft
 
 function preload() {
-  soundFormats('mp3', 'ogg');
-  song = loadSound('Songs/ye.mp3')
+ song = loadSound('ye.mp3')
 }
 
 function setup() {
