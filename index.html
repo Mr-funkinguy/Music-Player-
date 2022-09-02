@@ -84,7 +84,24 @@ body {
   border-radius: 70px;
 }
 
+.button {
+  background-color: #333; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+   animation-duration: 5s;
+  border-radius: 8px;
+  margin: 4px 2px;
+   position: relative;
+  cursor: pointer;
+}
 
+.msg {
+    margin-bottom: auto;
+}
 
 </style>
 </head>
@@ -130,8 +147,9 @@ body {
 
 
 <div id="Home" class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/SONG1/index.html" style="overflow: auto;">
-</iframe>
+  <h2 id="demo" class="msg"></h2>
+  <button onclick="fr()" class="button button1">Request A Song/Playlist</button>
+
 </div>
 
 <div id="Hanji" class="tabcontent">
@@ -140,17 +158,37 @@ body {
 </div>
 
 <div id="Red"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Red%20Sun%20In%20Sky/index.html"	 style="overflow: auto;">
+  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Red%20Sun%20In%20Sky/index.html"	  onload="resizeIframe(this)"	style="overflow: auto;">
   </iframe>
 
 </div>
+
+<script>
+  function fr() {
+    window.open("https://mr-funkinguy.github.io/Music-Player-/external/forms/form.html", "_blank", "resizable=0,width=340,height=424");
+  } 
+
+var i = 0;
+var txt = 'Welcome, User!';
+var speed = 70;
+
+typeWriter()
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
 
 <script>
   function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
     
     obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
-  }
+ }
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
@@ -168,6 +206,10 @@ function openCity(evt, cityName) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+function form() {
+	      window.open("https://google.com", "", "width=340,height=424");
+}
 </script>
 
 <script>
