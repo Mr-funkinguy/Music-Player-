@@ -125,11 +125,11 @@ body {
       
       <li><a class="tablinks" onclick="openCity(event, 'Hanji')">Ching Cheng Hanji</a></li>
       
-      <li><a class="tablinks" onclick="openCity(event, 's')">xue hua piao piao</a></li>
-      
 	<li><a class="tablinks" onclick="openCity(event, 'Red')">Red Sun In Sky</a></li>
+    
+    <li><a class="tablinks" onclick="openCity(event, 's')">xue hua piao piao</a></li>
       
-      <li><a onclick="openCity(event, 'vis')">xue hua piao piao Visual</a></li>
+      <li><a class="tablinks" onclick="openCity(event, 'd')">xue hua piao piao Visual</a></li>
       
       <li><a class="tablinks" onclick="openCity(event, 'Tokyo')">jQuery</a></li>
       
@@ -166,79 +166,9 @@ body {
 <div id="s"class="tabcontent">
   <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/piao/index.html"	  onload="resizeIframe(this)"	style="overflow: auto;">
   </iframe>
+ </div> 
 	  
-<div id="vis"class="tabcontent">
+<div id="d"class="tabcontent">
   <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/visual/index.html"	  onload="resizeIframe(this)"	style="overflow: auto;">
   </iframe>
-
 </div>
-
-<script>
-  function fr() {
-    window.open("https://mr-funkinguy.github.io/Music-Player-/external/forms/form.html", "_blank", "resizable=0,width=340,height=424");
-  } 
-
-var i = 0;
-var txt = 'Welcome, User!';
-var speed = 70;
-
-typeWriter()
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
-</script>
-
-<script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-    
-    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
- }
-
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-
-function form() {
-	      window.open("https://google.com", "", "width=340,height=424");
-}
-</script>
-
-<script>
-function myFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("mySearch");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myMenu");
-  li = ul.getElementsByTagName("li");
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-</script>
-
-</body>
-</html>
