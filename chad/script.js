@@ -8,7 +8,6 @@ const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(
   "https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/chad.mp3?raw=true"
 );
-//credit for song: Adrian kreativaweb@gmail.com
 
 console.dir(audio);
 
