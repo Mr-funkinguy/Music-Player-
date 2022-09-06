@@ -6,7 +6,7 @@
 
 const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(
-  "https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/mao%20zedong%20propaganda%20music%20Red%20Sun%20in%20the%20Sky.mp3?raw=true"
+  "https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/chad.mp3?raw=true"
 );
 //credit for song: Adrian kreativaweb@gmail.com
 
