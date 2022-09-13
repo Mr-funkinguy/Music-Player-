@@ -10,5 +10,5 @@
   ],
   "name": "Music-Now",
   "short_name": "Music-Now",
-  "start_url": "/pwa-examples/a2hs/index.html"
+  "start_url": "index.html"
 }
