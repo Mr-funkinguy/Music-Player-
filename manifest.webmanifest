@@ -4,11 +4,11 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "fav.png",
+      "src": "icon/fav.png",
       "sizes": "192x192",
     }
   ],
   "name": "Music-Now",
   "short_name": "Music-Now",
-  "start_url": "index.html"
+  "start_url": "/pwa-examples/a2hs/index.html"
 }

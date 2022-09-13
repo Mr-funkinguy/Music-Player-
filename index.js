@@ -1,6 +1,13 @@
+function randomValueFromArray(array) {
+  const randomNo = Math.floor(Math.random() * array.length);
+  return array[randomNo];
+}
+
+// Register service worker to control making site work offline
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('sw.js')
+    .register('/pwa-examples/a2hs/sw.js')
     .then(() => { console.log('Service Worker Registered'); });
 }
 
