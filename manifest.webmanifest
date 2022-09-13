@@ -4,7 +4,7 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "icon/fav.png",
+      "src": "fav.png",
       "sizes": "192x192",
     }
   ],
