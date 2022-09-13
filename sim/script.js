@@ -48,11 +48,13 @@ playBtn.addEventListener(
       playBtn.classList.add("pause");
       audio.play();
     } else {
-        audio.addEventListener(
-      "loadeddata",
-       () => {
-           false
-          );
+         audio.addEventListener(
+        "loadeddata",
+        () => {
+          audio.volume = .75;
+        },
+        false
+      );
       playBtn.classList.remove("pause");
       playBtn.classList.add("play");
       audio.pause();
