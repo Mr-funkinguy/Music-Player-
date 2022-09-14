@@ -462,8 +462,7 @@ setTimeout(function() {
   var s = document.getElementById('loader').style;
   s.opacity = 1;
   (function fade(){(s.opacity-=.1)<0?s.display="none":setTimeout(fade,40)})();
- }, delayInMilliseconds);    </script>
-
+ }, delayInMilliseconds);   
 						     					     
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js');
