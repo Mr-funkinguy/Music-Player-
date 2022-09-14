@@ -256,8 +256,8 @@ body {
 <div id="Home" class="tabcontent">
   <h2 id="demo" class="msg"></h2>
   <button onclick="fr()" class="button button1">Request A Song/Playlist</button>
-	<button id="p" onclick="app()" class="button button1">Install App</button>	
-</div>
+	<button id="p" class="button button1">Install App</button>
+	<script src="app.js" defer></script></div>
 
 <div id="Hanji" class="tabcontent">
   <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Ching%20Cheng%20Hanji/index.html" style="overflow: auto;">
@@ -417,29 +417,7 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-function app() {
-	 console.log("Install Clicked");
-				      
-let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    deferredPrompt = e;
-});
-				      
-const installApp = document.getElementById('p');
-
-installApp.addEventListener('click', async () => {
-    if (deferredPrompt !== null) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            deferredPrompt = null;
-        }
-    }
-});
-				      
-				      
-}
 
 function myFunction() {
   var input, filter, ul, li, a, i;
