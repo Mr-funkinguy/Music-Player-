@@ -1,7 +1,7 @@
 {
     "name": "Music Now!",
     "short_name": "Music Now",
-    "start_url": "google.com",
+    "start_url": "index.html",
     "icons": [
         {
             "src": "icons/manifest-icon-192.maskable.png",
