@@ -256,7 +256,7 @@ body {
 <div id="Home" class="tabcontent">
   <h2 id="demo" class="msg"></h2>
   <button onclick="fr()" class="button button1">Request A Song/Playlist</button>
-
+	<button id="p" onclick="app()" class="button button1">Install App</button>	
 </div>
 
 <div id="Hanji" class="tabcontent">
@@ -417,8 +417,18 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-function form() {
-	      window.open("https://google.com", "", "width=340,height=424");
+function app() {
+	 const installApp = document.getElementById('p');
+
+installApp.addEventListener('click', async () => {
+    if (deferredPrompt !== null) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            deferredPrompt = null;
+        }
+    }
+});
 }
 
 function myFunction() {
