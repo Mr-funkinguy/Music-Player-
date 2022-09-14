@@ -7,16 +7,6 @@
   <link rel="icon" href="https://github.com/Mr-funkinguy/Music-Player-/blob/main/fav.png?raw=true">
   <link rel="manifest" href="manifest.json">
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0STENJN56K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0STENJN56K');
-</script>
-	
 
 <style>
 
@@ -408,9 +398,6 @@ function typeWriter() {
     setTimeout(typeWriter, speed);
   }
 }
-</script>
-
-<script>
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
@@ -432,9 +419,7 @@ document.getElementById("defaultOpen").click();
 function form() {
 	      window.open("https://google.com", "", "width=340,height=424");
 }
-</script>
 
-<script>
 function myFunction() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("mySearch");
@@ -450,9 +435,7 @@ function myFunction() {
     }
   }
 }
-</script>
-	  
-<script>
+
 
 var delayInMilliseconds = 2500; 
 
@@ -462,9 +445,9 @@ setTimeout(function() {
   (function fade(){(s.opacity-=.1)<0?s.display="none":setTimeout(fade,40)})();
  }, delayInMilliseconds);   
 						     					     
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js');
-            }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
  </script>
 						     
 </body>
