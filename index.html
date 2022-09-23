@@ -144,18 +144,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: top;
+}
+
+.loader-wrapperr {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 989;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: top;
 }
 
 .loader {
-  overflow: hidden;
+  overflow: auto;
   color: #ffffff;
   font-size: 45px;
   text-indent: -9999em;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  z-index: 989;
+  z-index: 995;
   position: relative;
+  
   transform: translateZ(0);
   animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
 }
@@ -199,19 +216,54 @@ body {
   100% { transform: rotate(360deg) }
 }
 
+.welcome {
+  justify-content: center;
+ 
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 10;
+  margin-right: -85px;
+  text-align: center;
+  
+  margin-top: 150px;
+}
+
+
 </style>
 </head>
 <body>
 
-<div id="loader" class="loader-wrapper">
-  <span class="loader"></span>
-</div>
 
+
+    <div id="loader" class="loader-wrapper">     
+      <h4 id="welcome" class="welcome">Welcome, </h4>
+       <span class="loader"></span>
+    </div> 
+
+    <script>
+      if (localStorage.getItem('lastname') !== null) {
+       console.log(`User Exists`);
+       document.getElementById("welcome").innerHTML = "Welcome, " + localStorage.getItem("lastname");
+      } else {
+      console.log(`User Not Found`);
+      document.getElementById("welcome").innerHTML = "Welcome, Guest!";
+      }
+    </script>
 
 <div class="row">
   <div class="left" style="background-color:#bbb;" id="wrapper">
   <div class="txt">
-    Welcome, User!
+   <p2 id="mytext"> Welcome, User! </p2>
+   <script>
+    if (localStorage.getItem('lastname') !== null) {
+     console.log(`User Exists`);
+     document.getElementById("mytext").innerHTML = "Welcome, " + localStorage.getItem("lastname");
+    } else {
+    console.log(`User Not Found`);
+    document.getElementById("mytext").innerHTML = "Welcome, Guest!";
+    }
+  </script>
    </div>
     <img class="img" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/guest.png?raw=true"  width="50"height="50">
     
@@ -320,6 +372,7 @@ body {
   <h2 id="demo" class="msg"></h2>
   <button onclick="fr()" class="button button1">Request A Song/Playlist</button>
 <button onclick="up()" class="button button1">How To Update Your App</button>
+<button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
     <h3 class="v" id="ver"></h3>
 
@@ -615,8 +668,12 @@ function up() {
     window.open("https://mr-funkinguy.github.io/Music-Player-/external/forms/up.html", "_blank", "resizable=0,width=340,height=424");
   } 	
 
+  function us() {
+    window.open("https://mr-funkinguy.github.io/Music-Player-/external/forms/user.html", "_blank", "resizable=0,width=340,height=424");
+  } 	
+
 var i = 0;
-var txt = 'Welcome, User!';
+var txt = '';
 var speed = 70;
 
 typeWriter()
@@ -669,9 +726,13 @@ var delayInMilliseconds = 2500;
 
 setTimeout(function() {
   var s = document.getElementById('loader').style;
+
   s.opacity = 1;
+
   (function fade(){(s.opacity-=.1)<0?s.display="none":setTimeout(fade,40)})();
  }, delayInMilliseconds);   
+
+ 
 						     					     
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js');

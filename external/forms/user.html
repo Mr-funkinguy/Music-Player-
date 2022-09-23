@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: 62,5%;
+}
+
+.form__label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 50px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}
+
+.sub {
+  width: 110%;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+  <h4 style="margin-top: -20.7rem; margin-right: -26%; color: white;">Your Username Will Save If You Close Out Of Your Browser</h4>
+  <h4 style="margin-top: -15.7rem; margin-right: -20%; color: white;">Maximum Of 7 Characters</h4>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<div class="form__group">
+  <input type="text" id="idd" class="form__input" id="name" placeholder="Username" maxlength="7" required="" />
+  <label for="name" class="form__label">Username</label>
+  <input class="sub" onclick="save()" type="submit" value="Submit">
+
+  <script>
+      function save() {
+       var sub = document.getElementById("idd").value;
+        localStorage.setItem("lastname", sub);
+        console.log(sub);
+        console.log(localStorage.getItem("lastname"));
+      }
+  </script>
+</div>
+</body>
+</html>
