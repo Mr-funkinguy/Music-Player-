@@ -111,6 +111,27 @@ body {
     margin-bottom: auto;
 }
 
+.v {
+    bottom:0;
+    right: 10px;
+    position:fixed;
+    z-index:150;
+    _position:absolute;
+    _top:expression(eval(document.documentElement.scrollTop+
+        (document.documentElement.clientHeight-this.offsetHeight)));
+
+}
+
+.frame {
+
+    position:fixed;
+
+    _position:absolute;
+    _top:expression(eval(document.documentElement.scrollTop+
+        (document.documentElement.clientHeight-this.offsetHeight)));
+
+}
+
 .loader-wrapper {
   width: 100%;
   height: 100%;
@@ -298,227 +319,283 @@ body {
   <button onclick="fr()" class="button button1">Request A Song/Playlist</button>
 <button onclick="up()" class="button button1">How To Update Your App</button>
 	<button id="p" class="button button1">Install App!</button>
-	<script src="app.js" defer></script></div>
+    <h3 class="v" id="ver"></h3>
+
+    <h4>Change Log:</h4>
+    <h4 > (2.0.2) </h4>
+    <h4 > Adding Loop Controls For More Songs </h4>
+    <h4 > Added Version Text </h4>
+
+    <h4 > UI Inprovements </h4>
+
+	<script src="app.js" defer></script>
+  <script>
+    var storedText;
+
+fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt')
+  .then(function(response) {
+    response.text().then(function(text) {
+ //-----------------------------------------------------------------------------------------
+      var parser, xmlDoc;
+var textt = 
+"<title>(2.0.2)</title>";
+
+parser = new DOMParser(); //covert version into text
+xmlDoc = parser.parseFromString(textt,"text/xml");
+
+var ft = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+console.log('test' + ft);
+
+//-----------------------------------------------------------------------------------------
+    theUrl = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt";
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    console.log(xmlHttp.responseText);
+    console.log(xmlHttp.responseType); //get version
+
+    var ver = xmlHttp.responseText; //unused code just to keep errors gone
+//---------------------------------------------------------------------
+      var ser = '(2.0.2)';
+      if (ft == ser) {
+        document.getElementById('ver').textContent =
+         'Up-To-Date ' + ft;
+      } else {
+        document.getElementById('ver').textContent =
+         'Outdated! ' + ft;
+         console.log(text);
+         console.log('Oudated Version ' + ft)
+      }
+     
+    });
+  });
+
+  </script>
+
+  
+
+</div>
 
 <div id="Hanji" class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Ching%20Cheng%20Hanji/index.html" style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Ching%20Cheng%20Hanji/index.html" style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="Red"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Red%20Sun%20In%20Sky/index.html"	  	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Red%20Sun%20In%20Sky/index.html"	  	style="overflow: auto;">
   </iframe>
 
 </div>
 	  
 <div id="s"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="500" height="500" src="https://mr-funkinguy.github.io/Music-Player-/piao/index.html"	 	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/piao/index.html"	 	style="overflow: auto;">
   </iframe>
  </div> 
 	  
 <div id="d"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/visual/ll.html" 	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/visual/ll.html" 	style="overflow: auto;">
   </iframe>
 </div>
 	  
 <div id="chad"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/chad/index.html" 	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/chad/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="face"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/face/index.html" 	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/face/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="juju"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/juju/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/juju/index.html"	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="gag"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/gag/index.html" style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/gag/index.html" style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="box"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/box/index.html" 	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/box/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="step"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/step/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/step/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="scott"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/scott/index.html" 	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/scott/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="astro"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/astro/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/astro/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="waddup"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/waddup/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/waddup/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="high"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/high/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/high/index.html" 	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="sun"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sun/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sun/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	  
 	  
 <div id="mon"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/mon/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/mon/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	 
 	  
 <div id="veg"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/veg/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/veg/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	 
 	  
 <div id="rap"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/rap/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/rap/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="we"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/we/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/we/index.html"	style="overflow: auto;">
   </iframe>
 </div>		  
 	  
 <div id="roc"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/roc/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/roc/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="club"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/club/index.html""	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/club/index.html""	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="no"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/no/index.html" 	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/no/index.html" 	style="overflow: auto;">
   </iframe>
 </div>	
 
 	  
 <div id="pray"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/pray/index.html"	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/pray/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="beat"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/beat/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/beat/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="love"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/love/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/love/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="sad"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sad/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sad/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="hood"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/hood/index.html"	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/hood/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="min"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/min/index.html"	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/min/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="st"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/st/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/st/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="idea"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/idea/index.html"	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/idea/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="rob"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/rob/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/rob/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	  
 <div id="what"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/what/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/what/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="sp"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sp/index.html"	style="overflow: auto;">
+  <iframe  class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sp/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="lying"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/lying/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/lying/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="who"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/who/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/who/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	
 <div id="want"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/want/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/want/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	
 <div id="su"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/su/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/su/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="wish"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/wish/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/wish/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="warn"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/warn/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/warn/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="heart"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/heart/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/heart/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	
 <div id="sadd"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sadd/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/sadd/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="proud"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/proud/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/proud/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 
 <div id="bring"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/bring/index.html"	style="overflow: auto;">
+  <iframe class="frame"  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/bring/index.html"	style="overflow: auto;">
   </iframe>
 </div>
 
 <div id="break"class="tabcontent">
-  <iframe id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/break/index.html"	style="overflow: auto;">
+  <iframe class="frame" id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/break/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
 	
