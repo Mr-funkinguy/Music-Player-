@@ -64,8 +64,13 @@ playBtn.addEventListener(
       audio.pause();
     }
   },
-  false
 );
+
+audio.addEventListener('ended', function() {
+  playBtn.classList.remove("pause");
+  playBtn.classList.add("play");
+}, false);
+false
 
 audioPlayer.querySelector(".volume-button").addEventListener("click", () => {
   const volumeEl = audioPlayer.querySelector(".volume-container .volume");
@@ -92,3 +97,24 @@ function getTimeCodeFromNum(num) {
     seconds % 60
   ).padStart(2, 0)}`;
 }
+audioPlayer.querySelector(".loop ").addEventListener("click", () => {
+    audio.loop = !audio.loop;
+    
+    const loop = audioPlayer.querySelector(" .loopp .vol ");
+    if (audio.loop == true)
+    {
+      loop.classList.add("icono-sync");
+      loop.classList.remove("icono-reset");
+      console.log('true loop');
+        audio.loop = true;
+    }
+    else
+    {
+      console.log('false')
+      audio.loop = false;
+      loop.classList.add("icono-reset");
+      loop.classList.remove("icono-sync");
+    }
+  },
+  false
+);
