@@ -69,20 +69,89 @@ body {
   cursor: pointer;
 }
 
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #424242;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0% auto;
+  box-shadow: inset 0px 0px 0px #454545;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+}
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #323232;
+  }
+
+}
 
 </style>
 </head>
 <body>
   <h4 style="margin-top: -20.7rem; margin-right: -26%; color: white;">Your Username Will Save If You Close Out Of Your Browser</h4>
-  <h4 style="margin-top: -15.7rem; margin-right: -20%; color: white;">Maximum Of 7 Characters</h4>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <div class="form__group">
-  <input type="text" id="idd" class="form__input" id="name" placeholder="Username" maxlength="7" required="" />
+  <input type="text" id="idd" class="form__input" id="name" placeholder="Username" required="" />
   <label for="name" class="form__label">Username</label>
-  <input class="sub" onclick="save()" type="submit" value="Submit">
+  <button class="sub" onclick="save()" >
+    Submit
+    <svg begin="click"
+    repeatCount="1"
+    fill="freeze" id="s" class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle id="a" class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+      <path id="b" class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+    </svg>
+  </button>
+  
 
   <script>
+     a = document.getElementById("s");
+     a.style.display = 'none';
       function save() {
+        a = document.getElementById("s");
+        if (a.style.display === "none") {
+           a.style.display = "block";
+        } else {
+          a.style.display = 'none';
+          setTimeout(function () {
+            a.style.display = "block";
+          }, 4);
+        }
        var sub = document.getElementById("idd").value;
         localStorage.setItem("lastname", sub);
         console.log(sub);
