@@ -7,6 +7,7 @@
 <title>Music Now</title>
   <link rel="icon" href="https://github.com/Mr-funkinguy/Music-Player-/blob/main/fav.png?raw=true">
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <style>
@@ -112,7 +113,7 @@ body {
 }
 
 .v {
-    bottom:0;
+    bottom: 70px;
     right: 10px;
     position:fixed;
     z-index:150;
@@ -321,6 +322,143 @@ body {
 
  
  
+#cs_audio {
+	    	display: none;
+	    }
+
+	    #cs_audioplayer {
+
+	        position: fixed;
+	        bottom: 0;
+	        left: 0;
+	        right: 0;
+	        text-align: center;
+
+            background-color: #232323;
+            padding: 12px;
+            padding-top: 4px;
+            padding-bottom: 6px;
+            color: #fff;
+	    }
+
+		.cs_audio_bar {
+			background-color: rgba(84, 84, 84, 0.531);
+			width: 100%;
+			height: 6px;
+			position: relative;
+			cursor: pointer;
+			transition: 0.1s;
+		}
+
+		.cs_audio_bar_loaded {
+			background-color: #47474700;
+			width: 0%;
+			height: 6px;
+            position: absolute;
+            transition: 0.1s;
+		}
+		.cs_audio_bar_now {
+			background-color: rgb(255, 255, 255);
+			width: 0%;
+			height: 6px;
+            position: absolute;
+            z-index: 999;
+            transition: 0.1s;
+		}
+		#cs_play_pause_btn {
+			margin-left: auto;
+       margin-right: auto;
+      
+		}
+
+		#cs_play_pause_btn i{
+			font-size: 1.45em;position: relative; cursor: pointer; vertical-align: middle;
+			margin-bottom: 5px;
+      margin-left: auto;
+       margin-right:  -55px ;
+      left: 10px;
+		}
+
+
+    #scroll-container {
+  border: 3px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#scroll-text {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(100%); }
+  to { -moz-transform: translateX(-100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(100%); }
+  to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.al {
+  z-index: 40;
+  transition: .5s ease;
+}
+
+.al:hover {
+    transform: scale(1.3 );
+    transition: .5s ease;
+    transform-origin: bottom left;
+  }
+
+  .square {
+
+    position: absolute;
+  height: 50px;
+  width:  max-content;
+  background-color: #232323;
+  top: -20px;
+ 
+  border-radius: 10px 10px;
+  
+}
+
+.mob {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  transition: 0.2s linear;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 988;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 </style>
 </head>
@@ -331,7 +469,16 @@ body {
        <span class="loader"></span>
     </div> 
 
-    <!-- Give The Elemt Value So We Can Chnage It When Called -->
+
+<div id="mobile" class="mob">
+  <h3 style="text-align: center; margin-top: 300px; color: white;">Please Use Landscape!</h3>
+</div>
+
+<div id="pc" class="mob">
+  <h3 style="text-align: center; margin-top: 300px; color: white;">Sorry This Website Only Supports 530 Pixels Or More, Please Resize This Window.</h3>
+</div>
+
+    <!-- Give The Elemtent Value So We Can Change It When Called -->
     <p class="note" id="wel">Welcome</p>
     <p class="" id="imp">UNLOADED MESSAGE</p>
     <p class="notice" id="topn">UNLOADED MESSAGE</p>
@@ -416,7 +563,582 @@ body {
     //false user
     document.getElementById("mytext").innerHTML = "Welcome, Guest!";
     }
+
+
   </script>
+
+
+<!-------------------------->
+
+
+<audio id="cs_audio" controls>
+  <source src="assets/" type="audio/mpeg">
+</audio>
+
+<!----------Ui-------->
+<div style="text-align: center;">
+ 
+<div id="cs_audioplayer">
+    
+
+
+  <div>
+    <img class="al" id="albumcover" style=" transition: 0.2s linear; border-radius: 10px; height: 75px; width: 75px; position: relative; left: -5px; float: left;" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/place.png?raw=true"  width="250" height="250">
+  </div>
+  <!---------------Ui With Functions-------------------->
+
+  <span hidden id="cs_play_pause_btn" style="position: relative;">
+         <i class="far fa-play-circle" id="y"></i>
+         <i class="far fa-pause-circle" id="e"></i>
+         <div class="square">
+          <span style="margin-left: auto; margin-right: auto;  font-size: 0.87em;"><span  id="song_namee">Hello</span></span>
+      
+        </div>
+     </span>
+
+     <span id="cs_audio_sound" style=" user-select: none; position: relative;right: 5px;float: right;margin-left: 15px;top: 2px;">
+
+         <i style="cursor: pointer;  vertical-align: middle;font-size: 20px;" class="material-icons">volume_up</i>
+      
+         <div class="cs_volBar" type="range" min="1" max="100" value="50" style=" height: 8px; border-radius: 35px; width: 75px;background-color: rgb(94, 94, 94);display: inline-block;cursor: pointer;">
+           <div class="cs_volume" style=" height: 8px; border-radius: 25px; width: 25px; background-color: rgb(255, 255, 255);position: absolute;"></div>
+         </div>
+
+     </span>
+     <div>
+    
+      <span id="cs_play_pause_btn" style="position: relative;">
+
+        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_play">play_circle</i>
+        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_pause">pause_circle</i>
+      
+    </span>
+
+     <div style="border-radius: 25px; width: 70%; top: 10px; margin-left: auto; margin-right: auto;" class="cs_audio_bar">
+      
+      <span style=" position: relative;margin-top: -20px; margin-left: 5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="cs_audio_current_time">00:00</span></span>
+      
+      <span id="cs_audio_duration" style=" position: relative;margin-top: -20px; margin-right: 5px;float: right;padding-left: 10px;font-size: 0.87em;">00:00</span>
+         <div style="border-radius: 25px;" class="cs_audio_bar_now"></div>
+         <div style="border-radius: 25px;" class="cs_audio_bar_loaded"></div>
+     </div>
+
+     <div >
+      <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: 5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
+      <span id="loopp" style="top: -45px; margin-left: 15px; position: absolute;" hidden>
+        <i class="material-icons" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 2px;" id="cs_loop">repeat</i>
+        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 2px;" id="cs_on_loop">repeat_on</i>
+      
+    </span>
+     </div>
+     
+     </div>
+     
+
+</div>
+</div>
+<!------------------player elements------------------->
+
+<script>
+
+//-------------------Change Based On Screen Size--------------
+document.getElementById('mobile').style.display = 'none';
+document.getElementById('mobile').style.opacity = 0;
+document.getElementById('pc').style.display = 'none';
+window.addEventListener('resize', function(event) {
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    console.log('mobile');
+  
+  } else {
+    console.log('Desktop Or Laptop');
+  
+}
+
+}, true);
+
+
+onload = function() {sizewin()};
+
+function sizewin() {
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    console.log('mobile');
+   
+    var intervalll = 400;
+			var timerrr = window.setInterval(function(){
+				
+   
+      if (window.orientation == "0" || window.orientation == "0") {
+        document.getElementById('mobile').style.display = 'block';
+        document.getElementById('mobile').style.opacity = 1;
+        document.getElementById('cs_audioplayer').style.display = 'none';
+        document.getElementById('mobbb').style.opacity = 0;
+      }
+      else
+      {
+        document.getElementById('cs_audioplayer').style.display = 'block';
+        document.getElementById('mobile').style.opacity = 0;
+      }
+   
+			
+		}, intervalll);
+  } else {
+    
+    console.log('Desktop Or Laptop');
+}
+
+}
+
+
+//-------------------------Size Adjustments-----------------------------------
+
+//-------------------------Music Player Stuff---------------------------------
+var audio_id = document.getElementById("cs_audio");
+	audio_vol = audio_id.volume;
+	audio_id.volume = 0.6;
+	// alert(audio_vol);
+
+
+
+                  try {
+                      
+             var measuredTime = new Date(null);
+             measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
+             var MHSTime = measuredTime.toISOString().substr(11, 8);
+             // document.getElementById("cs_audio_duration").innerHTML = MHSTime;
+
+             var a = MHSTime.split(':'); // split it at the colons
+
+             // Hours are worth 60 minutes.
+             var minutes = (+a[0]) * 60 + (+a[1]);
+             // console.log(minutes + ":" + ((+a[2]) % 60));
+             document.getElementById("cs_audio_duration").innerHTML =  minutes+":"+((+a[2]) % 60);
+
+
+                  }
+                  catch(err) {
+                      audio_id.addEventListener('loadedmetadata', function() {
+    
+                           var measuredTime = new Date(null);
+                           measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
+                           var MHSTime = measuredTime.toISOString().substr(11, 8);
+                           document.getElementById("cs_audio_duration").innerHTML = MHSTime;
+
+                           var a = MHSTime.split(':'); // split it at the colons
+
+                           // Hours are worth 60 minutes.
+                           var minutes = (+a[0]) * 60 + (+a[1]);
+                           // console.log(minutes + ":" + ((+a[2]) % 60));
+                           document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
+ 
+                      });
+                  }
+
+
+//----------------------------------------------------------
+    
+audio_id.ontimeupdate = function() {
+	    var audio_currentTime = audio_id.currentTime;
+
+      var playingPercentage = (audio_currentTime/audio_id.duration)*100;
+      //console.log(playingPercentage);
+      document.getElementsByClassName("cs_audio_bar_now")[0].style.width = playingPercentage+"%";
+
+        var measuredTime = new Date(null);
+        measuredTime.setSeconds(audio_currentTime); // specify value of SECONDS
+        
+        var MHSTime = measuredTime.toISOString().substr(11, 8);
+        // document.getElementById("cs_audio_current_time").innerHTML = MHSTime;
+
+             var spilited_time = MHSTime.split(':'); // split it at the colons
+             // Hours are worth 60 minutes.
+             var minutes = (+spilited_time[0]) * 60 + (+spilited_time[1]);
+             // console.log(minutes + ":" + ((+a[2]) % 60));
+             // document.getElementById("cs_audio_duration").innerHTML =  minutes+":"+((+spilited_time[2]) % 60);
+             document.getElementById("cs_audio_current_time").innerHTML = minutes+":"+((+spilited_time[2]) % 60);
+
+             
+
+
+
+         if (audio_id.paused) {
+                 document.getElementById("cs_audio_play").style.display = "inline-block";
+                 document.getElementById("cs_audio_pause").style.display = "none";
+             }
+         else  { 
+                 document.getElementById("cs_audio_pause").style.display = "inline-block";
+                 document.getElementById("cs_audio_play").style.display = "none";
+             }
+
+
+
+         if (audio_id.volume == 0) {
+          document.getElementById("cs_audio_sound").style.color = "#ff8935";
+         } else {
+          document.getElementById("cs_audio_sound").style.color = "#fff";
+         }
+
+
+
+};
+	//----------------------------------------------------------
+
+function playPause() { 
+    if (audio_id.paused) {
+            audio_id.play();
+            // document.getElementById("cs_audio_play").style.display = "none";
+            // document.getElementById("cs_audio_pause").style.display = "inline";
+        }
+    else  {
+            audio_id.pause(); 
+            // document.getElementById("cs_audio_pause").style.display = "none";
+            // document.getElementById("cs_audio_play").style.display = "inline";
+        }
+} 
+
+//------------------------Loop And Play Functions----------------------------------
+
+
+document.getElementById("cs_audio_play").addEventListener("click", function(){
+    audio_id.play();
+});
+
+
+document.getElementById("cs_audio_pause").addEventListener("click", function(){
+    audio_id.pause(); 
+    
+});
+
+document.getElementById("cs_loop").addEventListener("click", function(){
+  document.getElementById("cs_on_loop").style.display = "inline-block";
+  document.getElementById("cs_loop").style.display = "none";
+  audio_id.loop = true;
+
+
+     
+    
+});
+
+document.getElementById("cs_loop").style.display = "inline-block";
+document.getElementById("cs_on_loop").style.display = "none";
+
+document.getElementById("cs_on_loop").addEventListener("click", function(){
+  document.getElementById("cs_loop").style.display = "inline-block";
+    document.getElementById("cs_on_loop").style.display = "none";
+    
+    
+    
+    });
+
+
+
+//-------------------------------------
+
+
+
+    document.onkeydown = function(event) {
+        switch (event.keyCode) {
+           case 37:
+                event.preventDefault();
+                // alert('Left key pressed');
+                audio_currentTime = audio_id.currentTime;
+                audio_id.currentTime = audio_currentTime - 5;
+              break;
+           case 38:
+                event.preventDefault();
+                // alert('Up key pressed');
+                audio_vol = audio_id.volume;
+                // console.log(audio_vol);
+                if (audio_vol!=1) {
+
+                  try {
+                      audio_id.volume = audio_vol + 0.02;
+                  }
+                  catch(err) {
+                      audio_id.volume = 1;
+                  }
+                  // console.log(audio_vol);
+                  
+                }
+
+//----------------------------------------------------------
+
+               if (audio_id.volume == 0) {
+                document.getElementById("cs_audio_sound").style.color = "#ff8935";
+               } else {
+                document.getElementById("cs_audio_sound").style.color = "#fff";
+               }
+
+                
+              break;
+           case 39:
+                event.preventDefault();
+                // alert('Right key pressed');
+                audio_currentTime = audio_id.currentTime;
+                audio_id.currentTime = audio_currentTime + 5;
+              break;
+           case 40:
+                event.preventDefault();
+                //alert('Down key pressed');
+                audio_vol = audio_id.volume;
+                // console.log(audio_vol);
+                if (audio_vol!=0) {
+                  try {
+                      audio_id.volume = audio_vol - 0.02;
+                  }
+                  catch(err) {
+                      audio_id.volume = 0;
+                  }
+                  // console.log(audio_vol);
+                }
+
+
+                if (audio_id.volume == 0) {
+                 document.getElementById("cs_audio_sound").style.color = "#ff8935";
+                } else {
+                 document.getElementById("cs_audio_sound").style.color = "#fff";
+                }
+
+                
+              break;
+
+           case 32:
+                //alert('Down key pressed');
+                event.preventDefault();
+                playPause();
+              break;
+        }
+    };
+
+//----------------------------------------------------------
+
+// Progress bar or buffer or seek bar for Buffer bar
+audio_id.addEventListener('progress', function()
+{
+  var ranges = [];
+  var totaltime = audio_id.duration;
+  var currentduration = audio_id.currentTime;
+  for(var i = 0; i < audio_id.buffered.length; i ++)
+  {
+    ranges.push([
+      buffTimestart = audio_id.buffered.start(i),
+      buffTimeend = audio_id.buffered.end(i),
+      buffpercentage = (buffTimeend/totaltime)*100,
+      //document.getElementById("showbfr").innerHTML = buffpercentage,
+      document.getElementsByClassName("cs_audio_bar_loaded")[0].style.width = buffpercentage+"%"
+      ]);
+  }
+}, false);
+
+
+
+
+//----------------------------------------------------------
+// Change current play on click 
+document.getElementsByClassName("cs_audio_bar")[0].addEventListener("click", vCurrentBarFun);
+function vCurrentBarFun(event) {
+  vCurrentBarWidth = event.clientX - document.getElementsByClassName("cs_audio_bar")[0].offsetLeft;
+  document.getElementsByClassName("cs_audio_bar_now")[0].style.width = vCurrentBarWidth+"px";
+  audio_id.currentTime = (((vCurrentBarWidth / document.getElementsByClassName("cs_audio_bar")[0].offsetWidth)*100)/100) * audio_id.duration;
+
+}
+
+
+
+
+    if (audio_id.paused) {
+     
+        document.getElementById("cs_audio_pause").style.display = "none";
+      }
+    else  {
+    
+        document.getElementById("cs_audio_play").style.display = "none";
+      }
+
+
+
+      audio_id.onvolumechange = function(event) {
+          // alert("The volume has been changed!");
+          audio_vol = audio_id.volume;
+          vol_width = audio_vol*75;
+          // console.log(vol_width);
+
+
+          currentVolBar = event.clientX - document.getElementsByClassName("cs_volBar")[0].offsetLeft;
+          document.getElementsByClassName("cs_volume")[0].style.width = vol_width+"px";
+          // audio_id.volume = (((currentVolBar / document.getElementsByClassName("volumeBar")[0].offsetWidth)*100)/100) * audio_id.duration;
+
+
+      };
+
+
+//----------------------------------------------------------
+
+// Update volume And Change Volume
+
+document.getElementsByClassName("cs_volBar")[0].addEventListener("click", audio_vol_fun);
+function audio_vol_fun(event) {
+  //console.log(document.getElementsByClassName("cs_volBar")[0].offsetLeft);
+  current_vol_width = event.clientX - document.getElementsByClassName("cs_volBar")[0].getBoundingClientRect().left;
+  // console.log("current vol width: "+current_vol_width);
+  // console.log("volbar left position: "+document.getElementsByClassName("cs_volBar")[0].getBoundingClientRect().left);
+  document.getElementsByClassName("cs_volume")[0].style.width =  current_vol_width+"px";
+
+  var calculated_vol = current_vol_width/75;
+  audio_id.volume = calculated_vol;
+}
+
+//----------------------------------------------------------
+
+//Change The Info
+
+
+
+function cspd_change_img(img)
+{
+  var covv = document.getElementById('albumcover'); 
+  covv.src = img;
+}
+
+function cspd_change(music, imggg, name){
+  audio_id.pause();
+         
+  audio_id.load();
+  document.getElementById('song_name').innerHTML = name;
+      console.log('loaded & cached ' + music);
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    
+    var intervaal = 400;
+			var timeer = window.setInterval(function(){
+        if (audio_id.readyState == 4) {
+       
+    
+         window.clearInterval(timeer);
+         console.log('Loaded Song | cleared interval')
+         } else {
+       
+         }		
+		}, intervaal);
+  } else {
+  if (audio_id.paused) {
+    var interval = 400;
+			var timer = window.setInterval(function(){
+        if (audio_id.readyState == 4) {
+       
+    
+         audio_id.play();
+          
+         window.clearInterval(timer);
+         console.log('Loaded Song | cleared interval')
+         } else {
+       
+         }		
+		}, interval);
+   } else {
+  
+  }
+}
+
+
+
+  
+ 
+
+  if (music.includes(".mp3")) {
+    audio_id.setAttribute('src', 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true');
+    console.log('mp3 was not added');
+    var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true';
+  }
+  else
+  {
+    var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true';
+    console.log('mp3 was added');
+  audio_id.setAttribute('src', 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true');
+  }
+  //audio_id.load();
+
+
+  var cov = document.getElementById('albumcover');
+  cov.style.opacity = 0;
+  setTimeout(() => {
+    if (imggg.includes(".")) {
+    cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '?raw=true'
+  }
+  else
+  {
+  cov.onerror = () => {
+    cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true'
+    console.log('jpeg has been found');
+  }
+  cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true'
+  console.log('png has been found');
+
+  }
+  }, 200);
+
+ 
+
+
+  setTimeout(() => {
+    cov.style.opacity = 1;
+  }, 1500);
+  
+ 
+  //videocontainer.setAttribute('poster', newposter); //Changes video poster image
+
+  //Update audio_id.load(); Only Loads Part Of The Song So It Loads Faster Now
+
+      //audio_id.play();
+
+  
+
+  
+
+
+
+//--------------------------------------------------------------
+
+                  try {
+                      
+             var measuredTime = new Date(null);
+             measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
+             var MHSTime = measuredTime.toISOString().substr(11, 8);
+             // document.getElementById("cs_audio_duration").innerHTML = MHSTime;
+
+             var a = MHSTime.split(':'); // split it at the colons
+
+             // Hours are worth 60 minutes.
+             var minutes = (+a[0]) * 60 + (+a[1]);
+             // console.log(minutes + ":" + ((+a[2]) % 60));
+             document.getElementById("cs_audio_duration").innerHTML =  minutes+":"+((+a[2]) % 60);
+
+
+                  }
+                  catch(err) {
+                      audio_id.addEventListener('loadedmetadata', function() {
+    
+                           var measuredTime = new Date(null);
+                           measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
+                           var MHSTime = measuredTime.toISOString().substr(11, 8);
+                           document.getElementById("cs_audio_duration").innerHTML = MHSTime;
+
+                           var a = MHSTime.split(':'); // split it at the colons
+
+                           // Hours are worth 60 minutes.
+                           var minutes = (+a[0]) * 60 + (+a[1]);
+                           // console.log(minutes + ":" + ((+a[2]) % 60));
+                           document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
+ 
+                      });
+                  }
+
+}
+
+//----------------------------------------------------------
+</script>
+
+
+<!-------------------------------->
+
    </div>
     <img class="img" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/guest.png?raw=true"  width="50"height="50">
     
@@ -427,106 +1149,127 @@ body {
     
       <li><a class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</a></li>
       
-      <li><a class="tablinks" onclick="openCity(event, 'Hanji')">Ching Cheng Hanji</a></li>
+      <li><a class="tablinks" onclick="cspd_change('hanji.mp3',  'cheng',  'Ching Cheng Hanji')">Ching Cheng Hanji</a></li>
       
-	<li><a class="tablinks" onclick="openCity(event, 'Red')">Red Sun In Sky</a></li>
+	<li><a class="tablinks" onclick="cspd_change('mao zedong propaganda music Red Sun in the Sky.mp3',  'red.png',  'Red Sun In Sky')">Red Sun In Sky</a></li>
     
-    <li><a class="tablinks" onclick="openCity(event, 's')">xue hua piao piao</a></li>
+    <li><a class="tablinks" onclick="cspd_change('xiou.mp3',  'piaoo.png',  'Xue Hua Piao Piao')">xue hua piao piao</a></li>
 
-      <li><a class="tablinks" onclick="openCity(event, 'chad')">Can You Feel My Heart</a></li>
+      <li><a class="tablinks" onclick="cspd_change('chad.mp3',  'chad.png',  'Can You Feel My Heart')">Can You Feel My Heart</a></li>
       
-      <li><a onclick="openCity(event, 'face')">Face Off</a></li>
+      <li><a onclick="cspd_change('face',  'face',  'Face Off')">Face Off</a></li>
      
-     <li><a onclick="openCity(event, 'juju')">JuJu On That Beat</a></li>
+     <li><a onclick="cspd_change('juju',  'juju.jpg',  'JuJu On That Beat')">JuJu On That Beat</a></li>
      
-     <li><a onclick="openCity(event, 'gag')">Gangnam Style</a></li>
+     <li><a onclick="cspd_change('gag',  'gag',  'Gangnam Style')">Gangnam Style</a></li>
      
-      <li><a onclick="openCity(event, 'box')">The Box</a></li>
+      <li><a onclick="cspd_change('box',  'box.jpeg',  'The Box')">The Box</a></li>
       
-      <li><a onclick="openCity(event, 'step')">2step</a></li>
+      <li><a onclick="cspd_change('step',  'step',  '2step')">2step</a></li>
       
-      <li><a onclick="openCity(event, 'scott')">The Scotts</a></li>
+      <li><a onclick="cspd_change('scott',  'scott',  'The Scotts')">The Scotts</a></li>
       
-      <li><a onclick="openCity(event, 'astro')">The Astronaut In The Ocean</a></li>
+      <li><a onclick="cspd_change('astro',  'astro.webp',  'Astronaut In The Ocean')">Astronaut In The Ocean</a></li>
       
-      <li><a onclick="openCity(event, 'waddup')">Waddup</a>    
+      <li><a onclick="cspd_change('waddup',  'waddup',  'Waddup')">Waddup</a>    
       
-      <li><a onclick="openCity(event, 'high')">Highest in the Room</a>    
+      <li><a onclick="cspd_change('high',  'high',  'Highest in the Room')">Highest in the Room</a>    
 	      
-      <li><a onclick="openCity(event, 'sun')">Sunflower</a>    
+      <li><a onclick="cspd_change('sun',  'sun',  'Sunflower')">Sunflower</a>    
 	      
-	<li><a onclick="openCity(event, 'mon')">Monëy So Big</a>   
+	<li><a onclick="cspd_change('mon',  'mon',  'Monëy So Big')">Monëy So Big</a>   
 		
-	<li><a onclick="openCity(event, 'veg')">Vegito Rap</a>   
+	<li><a onclick="cspd_change('veg',  'veg',  'Vegito Rap')">Vegito Rap</a>   
 		
-	<li><a onclick="openCity(event, 'rap')">RAPSTAR</a>  	
+	<li><a onclick="cspd_change('rap',  'rap',  'RAPSTAR')">RAPSTAR</a>  	
 		
-	<li><a onclick="openCity(event, 'roc')">Rock N Roll</a>  
+	<li><a onclick="cspd_change('roc',  'roc',  'Rock N Roll')">Rock N Roll</a>  
 		
-	<li><a onclick="openCity(event, 'we')">After Dark x Sweater Weather</a>  
+	<li><a onclick="cspd_change('we',  'we',  'After Dark x Sweater Weather')">After Dark x Sweater Weather</a>  
 		
-	<li><a onclick="openCity(event, 'club')">In Da Club</a> 
+	<li><a onclick="cspd_change('In%20Da%20Club',  'club',  'In Da Club')">In Da Club</a> 
 		
-	<li><a onclick="openCity(event, 'no')">No Snitching</a> 	
+	<li><a onclick="cspd_change('no',  'no',  'No Snitching')">No Snitching</a> 	
 		
-	<li><a onclick="openCity(event, 'pray')">Pray For Me</a> 
+	<li><a onclick="cspd_change('pray',  'pray',  'Pray For Me')">Pray For Me</a> 
 		
-	<li><a onclick="openCity(event, 'beat')">Black Beatles</a> 
+	<li><a onclick="cspd_change('beat',  'beat',  'Black Beatles')">Black Beatles</a> 
 		
-	<li><a onclick="openCity(event, 'love')">Leave Before You Love Me</a> 
+	<li><a onclick="cspd_change('love',  'love',  'Leave Before You Love Me')">Leave Before You Love Me</a> 
 		
-	<li><a onclick="openCity(event, 'sad')">Sad</a> 	
+	<li><a onclick="cspd_change('sad',  'sad',  'Sad')">Sad</a> 	
 		
-	<li><a onclick="openCity(event, 'hood')">Hood Melody</a> 	
+	<li><a onclick="cspd_change('hood',  'hood',  'Hood Melody')">Hood Melody</a> 	
 		
-	<li><a onclick="openCity(event, 'min')">In A Minute</a> 	
+	<li><a onclick="cspd_change('min',  'min',  'In A Minute')">In A Minute</a> 	
 		
-	<li><a onclick="openCity(event, 'st')">Crazy Story</a> 	
+	<li><a onclick="cspd_change('st',  'crazy',  'Crazy Story')">Crazy Story</a> 	
 		
-	<li><a onclick="openCity(event, 'idea')">No Idea</a> 
+	<li><a onclick="cspd_change('idea',  'idea',  'No Idea')">No Idea</a> 
 		
-	<li><a onclick="openCity(event, 'rob')">Robbery</a> 
+	<li><a onclick="cspd_change('rob',  'rob',  'Robbery')">Robbery</a> 
 		
-	<li><a onclick="openCity(event, 'what')">What In</a> 	
+	<li><a onclick="cspd_change('what',  'what.jpg',  'What In')">What In</a> 	
 		
-	<li><a onclick="openCity(event, 'sp')">Prolly My Spookiest Beat</a> 	
+	<li><a onclick="cspd_change('sp',  'sp',  'Prolly My Spookiest Beat')">Prolly My Spookiest Beat</a> 	
 		
-	<li><a onclick="openCity(event, 'lying')">Lying 4 Fun</a> 	
+	<li><a onclick="cspd_change('lying',  'lying',  'Lying 4 Fun')">Lying 4 Fun</a> 	
 		
-	<li><a onclick="openCity(event, 'who')">Who Want Smoke</a> 	
+	<li><a onclick="cspd_change('who',  'who',  'Who Want Smoke')">Who Want Smoke</a> 	
 		
-	<li><a onclick="openCity(event, 'want')">Want Me</a> 	
+	<li><a onclick="cspd_change('Want',  'want',  'Want Me')">Want Me</a> 	
 		
-	<li><a onclick="openCity(event, 'su')">Suffer With Me</a> 
+	<li><a onclick="cspd_change('su',  'su',  'Suffer With Me')">Suffer With Me</a> 
 		
-	<li><a onclick="openCity(event, 'wish')">Wishing Well</a> 	
+	<li><a onclick="cspd_change('wish',  'wish',  'Wishing Well')">Wishing Well</a> 	
 		
-	<li><a onclick="openCity(event, 'warn')">Final Warning</a> 
+	<li><a onclick="cspd_change('warn',  'warn',  'Final Warning')">Final Warning</a> 
 		
-	<li><a onclick="openCity(event, 'heart')">This is what heartbreak feels like</a> 
+	<li><a onclick="cspd_change('heart',  'heart',  'This is what heartbreak feels like')">This is what heartbreak feels like</a> 
 		
-	<li><a onclick="openCity(event, 'sadd')">Sad N***a Hours</a> 
+	<li><a onclick="cspd_change('sadd',  'sadd',  'Sad N***a Hours')">Sad N***a Hours</a> 
 		
-	<li><a onclick="openCity(event, 'proud')">Proud Of U</a> 
+	<li><a onclick="cspd_change('proud',  'proud',  'Proud Of U')">Proud Of U</a> 
 		
-	<li><a onclick="openCity(event, 'bring')">Bring A Friend</a> 
+	<li><a onclick="cspd_change('bring',  'bring',  'Bring A Friend')">Bring A Friend</a> 
 		
-	<li><a onclick="openCity(event, 'break')">Break The Bank</a> 
+	<li><a onclick="cspd_change('break',  'break',  'Break The Bank')">Break The Bank</a> 
 		
-	    <li><a onclick="openCity(event, 'u')">Proud Of U - 1TakeJay</a>
+	    <li><a onclick="cspd_change('u',  'u',  'Proud Of U - 1TakeJay')">Proud Of U - 1TakeJay</a>
 
-        <li><a onclick="openCity(event, 'rocc')">Rockstar</a>
+        <li><a onclick="cspd_change('rocc',  'rocc.webp',  'Rockstar')">Rockstar</a>
 
-          <li><a onclick="openCity(event, '223')">223</a>
+          <li><a onclick="cspd_change('223',  '223',  '233')">223</a>
 
-            <li><a onclick="openCity(event, 'moon')">  Moonwalking in Calabasas Remix </a>
+            <li><a onclick="cspd_change('moon',  'moon',  'Moonwalking in Calabasas Remix')">  Moonwalking in Calabasas Remix </a>
 
-              <li><a onclick="openCity(event, 't')">  Diet Coke </a>
+              <li><a onclick="cspd_change('t',  't',  'Diet Coke')">  Diet Coke </a>
 
-                <li><a onclick="openCity(event, 'woo')">  Woo </a>
+                <li><a onclick="cspd_change('woo',  'woo',  'Woo')">  Woo </a>
 
-                  <li><a onclick="openCity(event, 'jack')">  Ms.jackson </a>
+                  <li><a onclick="cspd_change('jack',  'jack',  'Ms.jackson')">  Ms.jackson </a>
+
+    <li><a onclick="cspd_change('cabo',  'cabo',  'Cabo')">  Cabo </a>
+
+      <li><a onclick="cspd_change('laroi',  'laroi',  'WITHOUT YOU')">  WITHOUT  YOU  </a>
+
+        <li><a onclick="cspd_change('ride',  'ride',  'Ride Wit Me')">  Ride Wit Me  </a>
+
+          <li><a onclick="cspd_change('leftr',  'leftr',  'Left And Right')">  Left And Right  </a>
+
+            <li><a onclick="cspd_change('1st',  '1st',  '1st of Tha Month')">  1st of Tha Month </a>
+
+              <li><a onclick="cspd_change('ring',  'ring',  'Keep Their Heads Ringin')">  Keep Their Heads Ringin </a> 
+
     </ul>
+    <h2 id="mobbb">
+      place holder
+      Placeholder
+      placeholder
+      PlacehHolder
+      Placeholder
+      Placeholder
+    </h2>
   </div>
   
   <div class="right" style="background-color:#ddd;">
@@ -543,10 +1286,14 @@ body {
     <h3 class="v" id="ver"></h3>
 
     <h4>Change Log:</h4>
-    <h4 > (2.0.5) </h4>
+    <h4 > (2.0.6) Major Update </h4>
     <h4 > Songs Added </h4>
-    <h4 > Ui Inprovements </h4>
-    <h4 > Inproved Song Load </h4>
+    <h4 > New Ui </h4>
+    <h4 > Optimization When Loading The Page </h4>
+    <h4 > Chromebooks Have Better Load </h4>
+    <h4 > Mobile Ui Inproved </h4>
+    <h4 > Songs Added </h4>
+    <h4 > Website Reached 1000 Lines Of Code <span class="material-icons">sentiment_very_satisfied</span></h4>
 
 	<script src="app.js" defer></script>
   <script>
@@ -560,7 +1307,7 @@ fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt
  //-----------------------------------------------------------------------------------------
     var parser, xmlDoc;
 var textt = 
-"<title>(2.0.5)</title>";
+"<title>(2.0.6)</title>";
 
 parser = new DOMParser(); //covert version into text
 xmlDoc = parser.parseFromString(textt,"text/xml");
@@ -629,7 +1376,7 @@ var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
   
 
 </div>
-
+<!--
 <div id="Hanji" class="tabcontent">
   <iframe  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/Ching%20Cheng%20Hanji/index.html" style="overflow: auto;">
   </iframe>
@@ -886,7 +1633,7 @@ var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
   <iframe  id="innerFrame" name="innerFrame" width="750" height="500" src="https://mr-funkinguy.github.io/Music-Player-/woo/index.html"	style="overflow: auto;">
   </iframe>
 </div>	
-
+-->
 <script>
 
 function toggle() {
@@ -938,6 +1685,7 @@ function openCity(evt, cityName) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
 
 
 
