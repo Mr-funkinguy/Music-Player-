@@ -8,6 +8,7 @@
   <link rel="icon" href="https://github.com/Mr-funkinguy/Music-Player-/blob/main/fav.png?raw=true">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
 </head>
 
 <style>
@@ -1027,7 +1028,7 @@ function cspd_change(music, imggg, name){
        
     
          audio_id.play();
-          
+   
          window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
          } else {
@@ -1039,9 +1040,6 @@ function cspd_change(music, imggg, name){
   }
 }
 
-
-
-  
  
 
   if (music.includes(".mp3")) {
@@ -1053,6 +1051,7 @@ function cspd_change(music, imggg, name){
   {
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true';
     console.log('mp3 was added');
+  
   audio_id.setAttribute('src', 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true');
   }
   //audio_id.load();
@@ -1083,17 +1082,17 @@ function cspd_change(music, imggg, name){
     cov.style.opacity = 1;
   }, 1500);
   
- 
+
+
+
+  
+
   //videocontainer.setAttribute('poster', newposter); //Changes video poster image
 
   //Update audio_id.load(); Only Loads Part Of The Song So It Loads Faster Now
 
       //audio_id.play();
-
-  
-
-  
-
+      
 
 
 //--------------------------------------------------------------
@@ -1261,6 +1260,7 @@ function cspd_change(music, imggg, name){
             <li><a onclick="cspd_change('1st',  '1st',  '1st of Tha Month')">  1st of Tha Month </a>
 
               <li><a onclick="cspd_change('ring',  'ring',  'Keep Their Heads Ringin')">  Keep Their Heads Ringin </a> 
+
 
     </ul>
     <h2 id="mobbb" style="opacity: 0;">
