@@ -461,6 +461,18 @@ body {
   align-items: center;
 }
 
+.loop {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.loop:hover {
+  transition: 0.5s;
+  transform-origin: bottom;
+  transform: scale(1.2);
+  
+}
+
 </style>
 </head>
 <body>
@@ -608,7 +620,7 @@ body {
      </span>
      <div>
     
-      <span id="cs_play_pause_btn" style="position: relative;">
+      <span id="cs_play_pause_btn" style="align-items: center; position: relative;">
 
         <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_play">play_circle</i>
         <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_pause">pause_circle</i>
@@ -625,10 +637,12 @@ body {
      </div>
 
      <div >
-      <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: 5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
-      <span id="loopp" style="top: -45px; margin-left: 15px; position: absolute;" hidden>
-        <i class="material-icons" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 2px;" id="cs_loop">repeat</i>
-        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 2px;" id="cs_on_loop">repeat_on</i>
+      <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
+      
+      
+      <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -25px; position: absolute;" >
+        <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
+        <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
       
     </span>
      </div>
@@ -813,11 +827,9 @@ document.getElementById("cs_audio_pause").addEventListener("click", function(){
 document.getElementById("cs_loop").addEventListener("click", function(){
   document.getElementById("cs_on_loop").style.display = "inline-block";
   document.getElementById("cs_loop").style.display = "none";
-  audio_id.loop = true;
+  audio_id.addEventListener('ended', looppp);
 
 
-     
-    
 });
 
 document.getElementById("cs_loop").style.display = "inline-block";
@@ -827,11 +839,18 @@ document.getElementById("cs_on_loop").addEventListener("click", function(){
   document.getElementById("cs_loop").style.display = "inline-block";
     document.getElementById("cs_on_loop").style.display = "none";
     
+    audio_id.removeEventListener('ended', looppp);
     
-    
-    });
+});
 
 
+function looppp() {
+  
+        audio_id.currentTime = 0;
+        audio_id.play();
+  
+
+}
 
 //-------------------------------------
 
@@ -1273,8 +1292,19 @@ function cspd_change(music, imggg, name){
 
                           <li><a onclick="cspd_change('trag',  'tag',  'TRAGIC')"> TRAGIC  </a> 
 
+                            <li><a onclick="cspd_change('dll',  'dll',  'Dilemma')"> Dilemma </a> 
+
+                              <li><a onclick="cspd_change('ther',  'ther',  'The Race')"> The Race </a> 
+
+                                <li><a onclick="cspd_change('2055',  '2055',  '2055')"> 2055 </a> 
+
     </ul>
-    <h2 id="mobbb" style="opacity: 0;">
+    <h2 id="mobbb" style=" z-index: -10; -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; opacity: 0; ">
       place holder
       Placeholder
       placeholder
@@ -1294,18 +1324,14 @@ function cspd_change(music, imggg, name){
 <button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
 
-    <h3 class="v" id="ver"></h3>
-  <!--
+    <!--<h3 class="v" id="ver"></h3>-->
+  
     <h4>Change Log:</h4>
-    <h4 > (2.0.6) Major Update </h4>
+    <h4 > 2.0.7 </h4>
     <h4 > Songs Added </h4>
-    <h4 > New Ui </h4>
-    <h4 > Optimization When Loading The Page </h4>
-    <h4 > Chromebooks Have Better Load </h4>
-    <h4 > Mobile Ui Inproved </h4>
-    <h4 > Songs Added </h4>
-    <h4 > Website Reached 1000 Lines Of Code <span class="material-icons">sentiment_very_satisfied</span></h4>
-  -->
+    <h4 > Loop Button Added </h4>
+
+  
 	<script src="app.js" defer></script>
   <script>
     
@@ -1318,7 +1344,7 @@ fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt
  //-----------------------------------------------------------------------------------------
     var parser, xmlDoc;
 var textt = 
-"<title>(2.0.6)</title>";
+"<title>(2.0.7)</title>";
 
 parser = new DOMParser(); //covert version into text
 xmlDoc = parser.parseFromString(textt,"text/xml");
