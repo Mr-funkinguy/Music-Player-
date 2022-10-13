@@ -488,7 +488,7 @@ body {
 </div>
 
 <div id="pc" class="mob">
-  <h3 style="text-align: center; margin-top: 300px; color: white;">WARNING: THIS SITE HAS CRASHED | For Dev: key: 1937.9787 </h3>
+  <h3 style="text-align: center; margin-top: 300px; color: white;">Sorry This Website Only Supports 530 Pixels Or More, Please Resize This Window.</h3>
 </div>
 
     <!-- Give The Elemtent Value So We Can Change It When Called -->
@@ -610,7 +610,7 @@ body {
      </span>
 
      <span id="cs_audio_sound" style=" user-select: none; position: relative;right: 5px;float: right;margin-left: 15px;top: 2px;">
-      <i style="cursor: pointer; display: none;  vertical-align: middle;font-size: 20px; " class="material-icons" id="picture">picture_in_picture</i>
+
          <i style="cursor: pointer;  vertical-align: middle;font-size: 20px;" class="material-icons">volume_up</i>
       
          <div class="cs_volBar" type="range" min="1" max="100" value="50" style=" height: 8px; border-radius: 35px; width: 75px;background-color: rgb(94, 94, 94);display: inline-block;cursor: pointer;">
@@ -640,23 +640,11 @@ body {
       <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
       
       
-      <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -105px; position: absolute;" >
+      <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -25px; position: absolute;" >
         <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
         <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
       
     </span>
-
-    <span id="shuffle" style="margin-top: -42px; transform: scale(0.9); margin-left: -30px; position: absolute;" >
-      <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shu">shuffle</i>
-      <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shuff">shuffle_on</i>
-    
-  </span>
-
-  <span id="next" style="margin-top: -42px; transform: scale(0.9); margin-left: -5px; position: absolute;" >
-    <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
-  
-  
-</span>
      </div>
      
      </div>
@@ -667,14 +655,6 @@ body {
 <!------------------player elements------------------->
 
 <script>
-
-//dev'
-
-document.body.onkeyup = function(e) {
-  if( e.keyCode ==  190) {
-    document.getElementById('pc').style.display = 'block';
-  }
-}
 
 //-------------------Change Based On Screen Size--------------
 document.getElementById('mobile').style.display = 'none';
@@ -712,7 +692,7 @@ function sizewin() {
       {
         document.getElementById('mobbb').style.opacity = 0;
         document.getElementById('cs_audioplayer').style.display = 'block';
-        document.getElementById('mobile').style.display = "none";
+        document.getElementById('mobile').style.opacity = 0;
       }
    
 			
@@ -795,7 +775,7 @@ audio_id.ontimeupdate = function() {
              
 
 
-        /*
+
          if (audio_id.paused) {
                  document.getElementById("cs_audio_play").style.display = "inline-block";
                  document.getElementById("cs_audio_pause").style.display = "none";
@@ -804,7 +784,7 @@ audio_id.ontimeupdate = function() {
                  document.getElementById("cs_audio_pause").style.display = "inline-block";
                  document.getElementById("cs_audio_play").style.display = "none";
              }
-          */
+
 
 
          if (audio_id.volume == 0) {
@@ -836,15 +816,12 @@ function playPause() {
 
 document.getElementById("cs_audio_play").addEventListener("click", function(){
     audio_id.play();
-    document.getElementById("cs_audio_pause").style.display = "inline-block";
-    document.getElementById("cs_audio_play").style.display = "none";
 });
 
 
 document.getElementById("cs_audio_pause").addEventListener("click", function(){
     audio_id.pause(); 
-    document.getElementById("cs_audio_play").style.display = "inline-block";
-   document.getElementById("cs_audio_pause").style.display = "none";
+    
 });
 
 document.getElementById("cs_loop").addEventListener("click", function(){
@@ -858,41 +835,12 @@ document.getElementById("cs_loop").addEventListener("click", function(){
 document.getElementById("cs_loop").style.display = "inline-block";
 document.getElementById("cs_on_loop").style.display = "none";
 
-document.getElementById("cs_shu").style.display = "inline-block";
-document.getElementById("cs_shuff").style.display = "none";
-
 document.getElementById("cs_on_loop").addEventListener("click", function(){
   document.getElementById("cs_loop").style.display = "inline-block";
     document.getElementById("cs_on_loop").style.display = "none";
     
     audio_id.removeEventListener('ended', looppp);
     
-});
-
-
-document.getElementById("cs_shuff").addEventListener("click", function(){
-  document.getElementById("cs_shu").style.display = "inline-block";
-    document.getElementById("cs_shuff").style.display = "none";
-    
-    audio_id.removeEventListener('ended', shuffle);
-    
-});
-
-
-document.getElementById("cs_shu").addEventListener("click", function(){
-  document.getElementById("cs_shuff").style.display = "inline-block";
-  document.getElementById("cs_shu").style.display = "none";
-  audio_id.addEventListener('ended', shuffle);
-
-
-});
-
-
-
-document.getElementById("cs_skip").addEventListener("click", function(){
-
-  shuffle();
-
 });
 
 
@@ -904,277 +852,7 @@ function looppp() {
 
 }
 
-
-
-/*
-
-
-
-   _____  ____  _   _  _____              _____ _    _ _    _ ______ ______ _      ______ 
-  / ____|/ __ \| \ | |/ ____|            / ____| |  | | |  | |  ____|  ____| |    |  ____|
- | (___ | |  | |  \| | |  __            | (___ | |__| | |  | | |__  | |__  | |    | |__   
-  \___ \| |  | | . ` | | |_ |            \___ \|  __  | |  | |  __| |  __| | |    |  __|  
-  ____) | |__| | |\  | |__| |            ____) | |  | | |__| | |    | |    | |____| |____ 
- |_____/ \____/|_| \_|\_____|           |_____/|_|  |_|\____/|_|    |_|    |______|______|
-                                                                                          
-                                                                                          
-
-
-
-
-
-*/
-
-
-function shuffle() {
-function getRandomInt() {
-  return Math.floor(Math.random() *67);
-}
-var nuumm = getRandomInt();
-console.log(nuumm);
-
-if(nuumm==0) {
-  cspd_change('hanji.mp3',  'cheng',  'Ching Cheng Hanji')
-}
-if(nuumm==1) {
-  cspd_change('mao zedong propaganda music Red Sun in the Sky.mp3',  'red.png',  'Red Sun In Sky')
-}
-if(nuumm==2) {
-  cspd_change('xiou.mp3',  'piaoo.png',  'Xue Hua Piao Piao')
-}
-if(nuumm==3) {
-  cspd_change('chad.mp3',  'chad.png',  'Can You Feel My Heart')
-}
-if(nuumm==4) {
-  cspd_change('face',  'face',  'Face Off')
-}
-if(nuumm==5) {
-  cspd_change('juju',  'juju.jpg',  'JuJu On That Beat')
-}
-if(nuumm==6) {
-  cspd_change('gag',  'gag',  'Gangnam Style')
-}
-if(nuumm==7) {
-  cspd_change('box',  'box.jpeg',  'The Box')
-}
-if(nuumm==8) {
-  cspd_change('step',  'step',  '2step')
-}
-if(nuumm==9) {
-  cspd_change('scott',  'scott',  'The Scotts')
-}
-if(nuumm==10) {
-  cspd_change('astro',  'astro.webp',  'Astronaut In The Ocean')
-}
-if(nuumm==11) {
-  cspd_change('waddup',  'waddup',  'Waddup')
-}
-if(nuumm==12) {
-  cspd_change('high',  'high',  'Highest in the Room')
-}
-if(nuumm==13) {
-  cspd_change('sun',  'sun',  'Sunflower')
-}
-if(nuumm==14) {
-  cspd_change('mon',  'mon',  'Monëy So Big')
-}
-if(nuumm==15) {
-  cspd_change('veg',  'veg',  'Vegito Rap')
-}
-if(nuumm==16) {
-  cspd_change('waddup',  'waddup',  'Waddup')
-}
-if(nuumm==17) {
-  cspd_change('rap',  'rap',  'RAPSTAR')
-}
-if(nuumm==18) {
-  cspd_change('roc',  'roc',  'Rock N Roll')
-}
-if(nuumm==19) {
-  cspd_change('we',  'we',  'After Dark x Sweater Weather')
-}
-if(nuumm==20) {
-  cspd_change('In%20Da%20Club',  'club',  'In Da Club')
-}
-if(nuumm==21) {
-  cspd_change('no',  'no',  'No Snitching')
-}
-if(nuumm==22) {
-  cspd_change('pray',  'pray',  'Pray For Me')
-}
-if(nuumm==23) {
-  cspd_change('beat',  'beat',  'Black Beatles')
-}
-if(nuumm==24) {
-  cspd_change('love',  'love',  'Leave Before You Love Me')
-}
-if(nuumm==25) {
-  cspd_change('sad',  'sad',  'Sad')
-}
-if(nuumm==26) {
-  cspd_change('hood',  'hood',  'Hood Melody')
-}
-if(nuumm==27) {
-  cspd_change('min',  'min',  'In A Minute')
-}
-if(nuumm==28) {
-  cspd_change('st',  'crazy',  'Crazy Story')
-}
-if(nuumm==29) {
-  cspd_change('idea',  'idea',  'No Idea')
-}
-if(nuumm==30) {
-  cspd_change('rob',  'rob',  'Robbery')
-}
-if(nuumm==31) {
-  cspd_change('what',  'what.jpg',  'What In')
-}
-if(nuumm==32) {
-  cspd_change('sp',  'sp',  'Prolly My Spookiest Beat')
-}
-if(nuumm==33) {
-  cspd_change('lying',  'lying',  'Lying 4 Fun')
-}
-if(nuumm==34) {
-  cspd_change('who',  'who',  'Who Want Smoke')
-}
-if(nuumm==35) {
-  cspd_change('Want',  'want',  'Want Me')
-}
-if(nuumm==36) {
-  cspd_change('su',  'su',  'Suffer With Me')
-}
-
-if(nuumm==37) {
-  cspd_change('wish',  'wish',  'Wishing Well')
-}
-if(nuumm==38) {
-  cspd_change('warn',  'warn',  'Final Warning')
-}
-if(nuumm==39) {
-  cspd_change('heart',  'heart',  'This is what heartbreak feels like')
-}
-if(nuumm==40) {
-  cspd_change('sadd',  'sadd',  'Sad N***a Hours')
-}
-if(nuumm==41) {
-  cspd_change('proud',  'proud',  'Proud Of U')
-}
-if(nuumm==42) {
-  cspd_change('bring',  'bring',  'Bring A Friend')
-}
-if(nuumm==43) {
-  cspd_change('break',  'break',  'Break The Bank')
-}
-
-if(nuumm==44) {
-  cspd_change('u',  'u',  'Proud Of U - 1TakeJay')
-}
-if(nuumm==45) {
-  cspd_change('rocc',  'rocc.webp',  'Rockstar')
-}
-if(nuumm==46) {
-  cspd_change('223',  '223',  '233')
-}
-if(nuumm==47) {
-  cspd_change('moon',  'moon',  'Moonwalking in Calabasas Remix')
-}
-if(nuumm==48) {
-  cspd_change('t',  't',  'Diet Coke')
-}
-if(nuumm==49) {
-  cspd_change('woo',  'woo',  'Woo')
-}
-if(nuumm==50) {
-  cspd_change('jack',  'jack',  'Ms.jackson')
-}
-
-if(nuumm==51) {
-  cspd_change('cabo',  'cabo',  'Cabo')
-}
-if(nuumm==52) {
-  cspd_change('laroi',  'laroi',  'WITHOUT YOU')
-}
-if(nuumm==53) {
-  cspd_change('ride',  'ride',  'Ride Wit Me')
-}
-if(nuumm==54) {
-  cspd_change('leftr',  'leftr',  'Left And Right')
-}
-if(nuumm==55) {
-  cspd_change('1st',  '1st',  '1st of Tha Month')
-}
-if(nuumm==56) {
-  cspd_change('ring',  'ring',  'Keep Their Heads Ringin')
-}
-if(nuumm==57) {
-  cspd_change('reddd',  'reddd',  'Wish (feat. Trippie Redd')
-}
-
-
-if(nuumm==58) {
-  cspd_change('pec',  'pec',  'Ynw Melly - Butter Pecan')
-}
-if(nuumm==59) {
-  cspd_change('green',  'green.jpeg',  'Green Light')
-}
-if(nuumm==60) {
-  cspd_change('iw',  'iw.jpg',  ' I Wish')
-}
-if(nuumm==61) {
-  cspd_change('jump',  'jump',  ' Jumpin Out The Face')
-}
-if(nuumm==62) {
-  cspd_change('trag',  'tag',  'TRAGIC')
-}
-if(nuumm==63) {
-  cspd_change('dll',  'dll',  'Dilemma')
-}
-if(nuumm==64) {
-  cspd_change('ther',  'ther',  'The Race')
-}
-if(nuumm==65) {
-  cspd_change('2055',  '2055',  '2055')
-}
-if(nuumm==66) {
-  cspd_change('hab',  'hab',  'Bad Habit')
-}
-if(nuumm==67) {
-  cspd_change('ei',  'ei',  'Armani White - Billie Eilish')
-}
-if(nuumm==68) {
-  cspd_change('Foe%20Tha%20Love%20of%20$',  '$',  'Foe Tha Love of $'')
-}
-
-
-//var n = Math.floor(Math.random() * songs.length);
-//console.log(songs[n])
-//var song = songs[n]
-//cspd_change(song);
-//cspd_change(songs[n]);
-
-
-}
-
-
-
-/*
-   _____  ____  _   _  _____              _____ _    _ _    _ ______ ______ _      ______ 
-  / ____|/ __ \| \ | |/ ____|            / ____| |  | | |  | |  ____|  ____| |    |  ____|
- | (___ | |  | |  \| | |  __            | (___ | |__| | |  | | |__  | |__  | |    | |__   
-  \___ \| |  | | . ` | | |_ |            \___ \|  __  | |  | |  __| |  __| | |    |  __|  
-  ____) | |__| | |\  | |__| |            ____) | |  | | |__| | |    | |    | |____| |____ 
- |_____/ \____/|_| \_|\_____|           |_____/|_|  |_|\____/|_|    |_|    |______|______|
-                                                                                          
-                                                                                          
-  */                                                                              
-                                                                                
-
-
-
-
-
-//--------------------------------------------------------------------------------
+//-------------------------------------
 
 
 
@@ -1334,22 +1012,7 @@ function audio_vol_fun(event) {
 
 //Change The Info
 
-// chrome media
 
-
-var intervali = 400;
-			var timeri = window.setInterval(function(){
-
-
-
-        if(audio_id.paused) {
-          document.getElementById("cs_audio_play").style.display = "inline-block";
-    document.getElementById("cs_audio_pause").style.display = "none";
-        } else {
-          document.getElementById("cs_audio_pause").style.display = "inline-block";
-    document.getElementById("cs_audio_play").style.display = "none";
-        }
-		}, intervali);
 
 function cspd_change_img(img)
 {
@@ -1359,21 +1022,32 @@ function cspd_change_img(img)
 
 function cspd_change(music, imggg, name){
   audio_id.pause();
-         console.log(music);
+         
   audio_id.load();
   document.getElementById('song_name').innerHTML = name;
       console.log('loaded & cached ' + music);
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     
-   
+    var intervaal = 400;
+			var timeer = window.setInterval(function(){
+        if (audio_id.readyState == 4) {
+       
+    
+         window.clearInterval(timeer);
+         console.log('Loaded Song | cleared interval')
+         } else {
+       
+         }		
+		}, intervaal);
   } else {
   if (audio_id.paused) {
     var interval = 400;
 			var timer = window.setInterval(function(){
         if (audio_id.readyState == 4) {
-     
+       
+    
          audio_id.play();
-     
+   
          window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
          } else {
@@ -1407,76 +1081,30 @@ function cspd_change(music, imggg, name){
   setTimeout(() => {
     if (imggg.includes(".")) {
     cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '?raw=true'
-    covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '?raw=true';
   }
   else
   {
   cov.onerror = () => {
     cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true'
-    covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true';
     console.log('jpeg has been found');
-
   }
   cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true'
- 
-  covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true';
   console.log('png has been found');
 
   }
   }, 200);
 
- console.log(cov.src);
+ 
+
 
   setTimeout(() => {
     cov.style.opacity = 1;
-    
   }, 1500);
   
-var covver;
-setTimeout(() => {
- 
-  if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: name,
-      artist: '',
-      album: '',
-      artwork: [
-        { src: covver,   sizes: '96x96',   type: 'image/png' },
-        { src: covver, sizes: '128x128', type: 'image/png' },
-        { src: covver, sizes: '192x192', type: 'image/png' },
-        { src: covver, sizes: '256x256', type: 'image/png' },
-        { src: covver, sizes: '384x384', type: 'image/png' },
-        { src: covver, sizes: '512x512', type: 'image/png' },
-      ]
-    });
-  }
-}, 1000);
 
 
 
-const video = document.getElementById('audio_id');
-
-const actionHandlers = [
-  ['play',          () => { /* ... */ }],
-  ['pause',         () => { /* ... */ }],
   
-  ['nexttrack',     () => { /* ... */ }],
-
-];
-
-for (const [action, handler] of actionHandlers) {
-  try {
-    navigator.mediaSession.setActionHandler(action, handler);
-  } catch (error) {
-    console.log(`The media session action "${action}" is not supported yet.`);
-  }
-}
-  
-navigator.mediaSession.setActionHandler('nexttrack', () => {
-  shuffle();
-});
-
-/* Utils */
 
   //videocontainer.setAttribute('poster', newposter); //Changes video poster image
 
@@ -1521,11 +1149,12 @@ navigator.mediaSession.setActionHandler('nexttrack', () => {
  
                       });
                   }
-                
+
 }
 
-
+//----------------------------------------------------------
 </script>
+
 
 <!-------------------------------->
 
@@ -1653,13 +1282,13 @@ navigator.mediaSession.setActionHandler('nexttrack', () => {
 
                 <li><a onclick="cspd_change('reddd',  'reddd',  'Wish (feat. Trippie Redd)')">  Wish (feat. Trippie Redd) </a> 
 
-                  <li><a onclick="cspd_change('pec',  'pec',  'Ynw Melly - Butter Pecan')">  Ynw Melly - Butter Pecan  </a> 
+                  <li><a onclick="cspd_change('pec',  'pec',  'Ynw Melly - Butter Pecan ')">  Ynw Melly - Butter Pecan  </a> 
 
-                    <li><a onclick="cspd_change('green',  'green',  'Green Light')">  Green Light  </a> 
+                    <li><a onclick="cspd_change('green',  'green',  'Green Light ')">  Green Light  </a> 
 
-                      <li><a onclick="cspd_change('iw',  'iw.jpg',  ' I Wish')">  Ynw Melly - Butter Pecan  </a> 
+                      <li><a onclick="cspd_change('iw',  'iw.jpg',  ' I Wish ')">  Ynw Melly - Butter Pecan  </a> 
 
-                        <li><a onclick="cspd_change('jump',  'jump',  ' Jumpin Out The Face')"> Jumpin Out The Face  </a> 
+                        <li><a onclick="cspd_change('jump',  'jump',  ' Jumpin Out The Face ')"> Jumpin Out The Face  </a> 
 
                           <li><a onclick="cspd_change('trag',  'tag',  'TRAGIC')"> TRAGIC  </a> 
 
@@ -1670,10 +1299,6 @@ navigator.mediaSession.setActionHandler('nexttrack', () => {
                                 <li><a onclick="cspd_change('2055',  '2055',  '2055')"> 2055 </a> 
 
                                   <li><a onclick="cspd_change('hab',  'hab',  'Bad Habit')"> Bad Habit </a> 
-
-                                    <li><a onclick="cspd_change('ei',  'ei',  'Armani White - Billie Eilish')"> Armani White - Billie Eilish </a>
-
-                                      <li><a onclick="cspd_change('Foe%20Tha%20Love%20of%20$',  '$',  'Foe Tha Love of $')"> Foe Tha Love of $ </a>
 
     </ul>
 
@@ -1708,10 +1333,10 @@ navigator.mediaSession.setActionHandler('nexttrack', () => {
     <!--<h3 class="v" id="ver"></h3>-->
   
     <h4>Change Log:</h4>
-    <h4 > 2.0.8 </h4>
+    <h4 > 2.0.7 </h4>
     <h4 > Songs Added </h4>
-    <h4 > Shuffle Added </h4>
-    <h4 > Chrome Media Player Support Added </h4>
+    <h4 > Loop Button Added </h4>
+
   
 	<script src="app.js" defer></script>
   <script>
@@ -1725,7 +1350,7 @@ fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt
  //-----------------------------------------------------------------------------------------
     var parser, xmlDoc;
 var textt = 
-"<title>(2.0.8)</title>";
+"<title>(2.0.7)</title>";
 
 parser = new DOMParser(); //covert version into text
 xmlDoc = parser.parseFromString(textt,"text/xml");
@@ -1753,22 +1378,21 @@ var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
       var ser = '(2.0.3)';
       
       if (ft == verr) {
-        //document.getElementById('ver').textContent =
-       //  'Up-To-Date ' + ft;
+        document.getElementById('ver').textContent =
+         'Up-To-Date ' + ft;
       } else {
-        //document.getElementById('ver').textContent =
+        document.getElementById('ver').textContent =
      
-        // 'Outdated! ' + ft;
-        // console.log(text);
-       //  console.log('Oudated Version ' + ft)
+         'Outdated! ' + ft;
+         console.log(text);
+         console.log('Oudated Version ' + ft)
           notice();
 
       }
      
     });
-    
+
   });
-  
 
   function notice() {
     setTimeout(function () {
