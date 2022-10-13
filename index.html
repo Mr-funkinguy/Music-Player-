@@ -583,7 +583,7 @@ body {
 
 
 <audio id="cs_audio" controls>
-  <source src="assets/" type="audio/mpeg">
+  <source src="" type="audio/mpeg">
 </audio>
 
 <!----------Ui-------->
@@ -1170,6 +1170,54 @@ if(nuumm==68) {
 
 //--------------------------------------------------------------------------------
 
+const video = document.getElementById('audio_id');
+
+const actionHandlers = [
+  ['play',          () => { /* ... */ }],
+  ['pause',         () => { /* ... */ }],
+  
+  ['nexttrack',     () => { /* ... */ }],
+
+];
+
+for (const [action, handler] of actionHandlers) {
+  try {
+    navigator.mediaSession.setActionHandler(action, handler);
+  } catch (error) {
+    console.log(`The media session action "${action}" is not supported yet.`);
+  }
+}
+
+
+  
+navigator.mediaSession.setActionHandler('nexttrack', () => {
+  shuffle();
+});
+
+
+navigator.mediaSession.setActionHandler('play', async () => {
+  // Resume playback
+  document.getElementById("cs_audio_pause").style.display = "inline-block";
+    document.getElementById("cs_audio_play").style.display = "none";
+  audio_id.play();
+});
+
+navigator.mediaSession.setActionHandler('pause', () => {
+  // Pause active playback
+  document.getElementById("cs_audio_play").style.display = "inline-block";
+    document.getElementById("cs_audio_pause").style.display = "none";
+  audio_id.pause();
+});
+
+audio_id.addEventListener('play', () => {
+  navigator.mediaSession.playbackState = 'playing';
+});
+
+audio_id.addEventListener('pause', () => {
+
+  navigator.mediaSession.playbackState = 'paused';
+});
+
 
 
     document.onkeydown = function(event) {
@@ -1199,6 +1247,7 @@ if(nuumm==68) {
 
 //----------------------------------------------------------
 
+//------------------------------------------------------------
                if (audio_id.volume == 0) {
                 document.getElementById("cs_audio_sound").style.color = "#ff8935";
                } else {
@@ -1379,7 +1428,29 @@ function cspd_change(music, imggg, name){
   }
 }
 
- 
+const video = document.querySelector('video');
+
+navigator.mediaSession.setActionHandler('play', async () => {
+  // Resume playback
+  document.getElementById("cs_audio_pause").style.display = "inline-block";
+    document.getElementById("cs_audio_play").style.display = "none";
+  audio_id.play();
+});
+
+navigator.mediaSession.setActionHandler('pause', () => {
+  // Pause active playback
+  document.getElementById("cs_audio_play").style.display = "inline-block";
+    document.getElementById("cs_audio_pause").style.display = "none";
+  audio_id.pause();
+});
+
+audio_id.addEventListener('play', () => {
+  navigator.mediaSession.playbackState = 'playing';
+});
+
+audio_id.addEventListener('pause', () => {
+  navigator.mediaSession.playbackState = 'paused';
+});
 
   if (music.includes(".mp3")) {
     audio_id.setAttribute('src', 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true');
@@ -1448,27 +1519,6 @@ setTimeout(() => {
 
 
 
-const video = document.getElementById('audio_id');
-
-const actionHandlers = [
-  ['play',          () => { /* ... */ }],
-  ['pause',         () => { /* ... */ }],
-  
-  ['nexttrack',     () => { /* ... */ }],
-
-];
-
-for (const [action, handler] of actionHandlers) {
-  try {
-    navigator.mediaSession.setActionHandler(action, handler);
-  } catch (error) {
-    console.log(`The media session action "${action}" is not supported yet.`);
-  }
-}
-  
-navigator.mediaSession.setActionHandler('nexttrack', () => {
-  shuffle();
-});
 
 /* Utils */
 
