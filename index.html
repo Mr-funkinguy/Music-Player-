@@ -17,7 +17,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
-  
+  <script async src="https://cse.google.com/cse.js?cx=978c9172bae974bd2">
+  </script>
 </head>
 
 <style>
@@ -1421,11 +1422,12 @@ audio_id.addEventListener('pause', () => {
                 
               break;
 
-           case 32:
+           /*case 32:
                 //alert('Down key pressed');
                 event.preventDefault();
                 playPause();
               break;
+              */
         }
     };
 
@@ -1731,8 +1733,10 @@ setTimeout(() => {
     <img class="img" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/guest.png?raw=true"  width="50"height="50">
     
     <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
-    
+
+ 
     <ul id="myMenu">
+      
 	  <li><a href="radio.html">Radio</a></li>
     
       <li><a class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</a></li>
@@ -1866,7 +1870,7 @@ setTimeout(() => {
 
                             <li><a onclick="cspd_change('dll',  'dll',  'Dilemma')"> Dilemma </a> 
 
-                              <li><a onclick="cspd_change('ther',  'ther',  'The Race')"> The Race </a> 
+                              <li><a onclick="cspd_change('ther',  'ther',  'The Race')"> The Race </a></li> 
 
                                 <li><a onclick="cspd_change('2055',  '2055',  '2055')"> 2055 </a> 
 
