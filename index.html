@@ -23,6 +23,28 @@
 
 <style>
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #232323;
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(66, 66, 66); 
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #878787; 
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -970,7 +992,7 @@ function looppp() {
 
 function shuffle() {
 function getRandomInt() {
-  return Math.floor(Math.random() *124);
+  return Math.floor(Math.random() *133);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1368,6 +1390,52 @@ if(nuumm==88) {
               if(nuumm==124) {
                 cspd_change('dua2',  'place',  'Dynamic Duo 2')
               }
+              if(nuumm==125) {
+                cspd_change('cadt',  'cadt',  'Metro Boomin - Space Cadet')
+                   
+              }
+              if(nuumm==126) {
+                cspd_change('sturdyy',  'sturdyy',  'STURDY IN JERSEY')
+
+         
+             }
+              if(nuumm==127) {
+                
+                cspd_change('Heyy',  'heyyy',  'Heyy')
+                                    
+              }
+              if(nuumm==128) {
+                
+                cspd_change('hookk',  'hookk.jpeg',  'no hook')
+                                    
+              }
+              if(nuumm==129) {
+                cspd_change('dvrk',  'dvrk',  'POSTED IN THE DVRK')
+                                    
+              }
+              if(nuumm==130) {
+        
+                cspd_change('wrapp',  'wrapp',  'wrap music')
+
+              }
+              if(nuumm==131) {
+
+                cspd_change('conf',  'conf',  'COLOSSAL CONFLICT')
+                                    
+              }
+              if(nuumm==132) {
+                 
+                cspd_change('mepo',  'bad-bunny',  'Tití Me Preguntó')
+                                   
+              }
+              if(nuumm==132) {
+                 
+                cspd_change('20400',  '20400',  '2040')
+                                               
+               }
+
+                               
+                             
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -2052,6 +2120,26 @@ setTimeout(() => {
                                                                             
                                         <li><a onclick="cspd_change('dua2',  'place',  'Dynamic Duo 2')">Dynamic Duo 2</a></li>
                                       
+
+
+                                        <li><a onclick="cspd_change('cadt',  'cadt',  'Metro Boomin - Space Cadet')">Metro Boomin - Space Cadet</a></li>
+                                      
+                                        <li><a onclick="cspd_change('sturdyy',  'sturdyy',  'STURDY IN JERSEY')">STURDY IN JERSEY</a></li>
+                                      
+                                        <li><a onclick="cspd_change('Heyy',  'heyyy',  'Heyy')">Heyy</a></li>
+                                      
+                                        <li><a onclick="cspd_change('hookk',  'hookk.jpeg',  'no hook')">no hook</a></li>
+                                      
+                                        <li><a onclick="cspd_change('dvrk',  'dvrk',  'POSTED IN THE DVRK')">POSTED IN THE DVRK</a></li>
+                                      
+                                        <li><a onclick="cspd_change('wrapp',  'wrapp',  'wrap music')">wrap music</a></li>
+ 
+                                        <li><a onclick="cspd_change('conf',  'conf',  'COLOSSAL CONFLICT')">COLOSSAL CONFLICT</a></li>
+                                      
+                                        <li><a onclick="cspd_change('mepo',  'bad-bunny',  'Tití Me Preguntó')">Tití Me Preguntó</a></li>
+                                      
+                                        <li><a onclick="cspd_change('20400',  '20400',  '2040')">2040</a></li>
+                                      
     </ul>
 
     <h2 id="mobbb" style="display: none; z-index: -10; -webkit-touch-callout: none;
@@ -2691,15 +2779,7 @@ setTimeout(function() {
     navigator.serviceWorker.register('service-worker.js');
   }
   
-  document.getElementById("mySearch").keyup(function(event) {
-    let textinput = document.getElementById("mySearch").value;
-    document.getElementById("mySearch").value = textinput;
-    let keycode = event.keyCode || event.which;
-    if (keycode == 32) {
-      event.stopPropagation();
-    }
-});			     
-
+ 
 
  </script>
 						     
