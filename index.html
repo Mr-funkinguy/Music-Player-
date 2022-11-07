@@ -1555,7 +1555,7 @@ const video = document.getElementById('audio_id');
 const actionHandlers = [
   ['play',          () => { /* ... */ }],
   ['pause',         () => { /* ... */ }],
-  
+  ['previoustrack',     () => { /* ... */ }],
   ['nexttrack',     () => { /* ... */ }],
 
 ];
@@ -1568,7 +1568,9 @@ for (const [action, handler] of actionHandlers) {
   }
 }
 
-
+navigator.mediaSession.setActionHandler('previoustrack', () => {
+  audio_id.currentTime = 0;
+});
   
 navigator.mediaSession.setActionHandler('nexttrack', () => {
   shuffle();
