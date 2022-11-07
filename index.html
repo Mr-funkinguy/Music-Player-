@@ -669,7 +669,7 @@ body {
     
   
   <div>
-    <img class="al" id="albumcover" style=" transition: 0.2s linear; border-radius: 10px; height: 75px; width: 75px; position: relative; left: -5px; float: left;" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/place.png?raw=true"  width="250" height="250">
+    <img class="al" id="albumcover" alt="Img Err" style=" transition: 0.2s linear; border-radius: 10px; height: 75px; width: 75px; position: relative; left: -5px; float: left;" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/place.png?raw=true"  width="250" height="250">
   </div>
   <!---------------Ui With Functions-------------------->
 
@@ -719,6 +719,10 @@ body {
       
     </span>
 
+    <span id="prev" style="margin-top: -42px; transform: scale(0.95); margin-left: -135px; position: absolute;" >
+      <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_last">skip_previous</i>
+    </span>
+
     <span id="shuffle" style="margin-top: -42px; transform: scale(0.9); margin-left: -30px; position: absolute;" >
       <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shu">shuffle</i>
       <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shuff">shuffle_on</i>
@@ -727,7 +731,6 @@ body {
 
   <span id="next" style="margin-top: -42px; transform: scale(0.9); margin-left: 0px; position: absolute;" >
     <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
-  
   
 </span>
      </div>
@@ -899,6 +902,20 @@ function playPause() {
         }
 } 
 
+
+let arr = [
+ 
+ ];
+
+let arrr = [
+ 
+ ];
+let arrrr = [
+ 
+ ];
+let coolm = 0;
+
+
 //------------------------Loop And Play Functions----------------------------------
 var loop = null;
 var shufflee = null;
@@ -938,6 +955,7 @@ document.getElementById("cs_on_loop").addEventListener("click", function(){
 });
 
 
+
 document.getElementById("cs_shuff").addEventListener("click", function(){
   document.getElementById("cs_shu").style.display = "inline-block";
     document.getElementById("cs_shuff").style.display = "none";
@@ -945,6 +963,7 @@ document.getElementById("cs_shuff").addEventListener("click", function(){
     audio_id.removeEventListener('ended', shuffle);
     
 });
+
 
 
 document.getElementById("cs_shu").addEventListener("click", function(){
@@ -963,6 +982,9 @@ document.getElementById("cs_skip").addEventListener("click", function(){
 
 });
 
+document.getElementById("cs_last").addEventListener("click", function(){
+  audio_id.currentTime = 0;
+});
 
 function looppp() {
   
@@ -971,7 +993,6 @@ function looppp() {
   
 
 }
-
 
 
 /*
@@ -995,6 +1016,7 @@ function looppp() {
 
 
 function shuffle() {
+
 function getRandomInt() {
   return Math.floor(Math.random() *150);
 }
@@ -1580,11 +1602,12 @@ var hellol = document.getElementById('mySearch');
 
 
 
-
     document.onkeyup = function(event) {
 
  
   //rest of code
+
+  
 
         switch (event.keyCode) {
            case 37:
@@ -1771,14 +1794,16 @@ var intervali = 400;
 
 
 
-
 function cspd_change_img(img)
 {
   var covv = document.getElementById('albumcover'); 
   covv.src = img;
 }
 
+
+
 function cspd_change(music, imggg, name){
+
   audio_id.pause();
          console.log(music);
   audio_id.load();
@@ -1870,10 +1895,15 @@ audio_id.addEventListener('pause', () => {
     console.log('jpeg has been found');
 
   }
+
+
   cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true'
  
-  covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true';
-  console.log('png has been found');
+ covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true';
+ console.log('png has been found');
+
+  
+ 
 
   }
   }, 200);
@@ -2274,7 +2304,7 @@ setTimeout(() => {
     <!--<h3 class="v" id="ver"></h3>-->
   
     <h4>Change Log:</h4>
-    <h4 > 2.0.9 (0.1)</h4>
+    <h4 > 2.0.9 (0.2)</h4>
     <h4 > Small Update </h4>
     <h4 > All Songs Added Back (Songs Removed Due To Bug) </h4>
   
@@ -2784,7 +2814,7 @@ function toggle() {
 }
 
   function fr() {
-    window.open("https://mr-funkinguy.github.io/Music-Player-/external/forms/form.html", "_blank", "resizable=0,width=340,height=424");
+    window.open('https://forms.gle/5BEvJGGZMBj5TxJw6', '_blank').focus();
   } 
 	
 function up() {
