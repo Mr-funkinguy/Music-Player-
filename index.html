@@ -403,7 +403,7 @@ body {
 	    }
 
 	    #cs_audioplayer {
-
+        border-radius: 10px 10px 0px 0px;
 	        position: fixed;
 	        bottom: 0;
 	        left: 0;
@@ -421,6 +421,7 @@ body {
 			background-color: rgba(84, 84, 84, 0.531);
 			width: 100%;
 			height: 6px;
+     
 			position: relative;
 			cursor: pointer;
 			transition: 0.1s;
@@ -559,7 +560,7 @@ body {
 
 
 <div id="mobile" class="mob">
-  <h3 style="text-align: center; margin-top: 300px; color: white;">Please Use Landscape!</h3>
+  <h3 style="text-align: center; margin-top: 300px; color: white;">An Error Prevented The App From Loading    \\\\\\Please Use Landscape!</h3>
 </div>
 
 
@@ -1018,7 +1019,7 @@ function looppp() {
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *150);
+  return Math.floor(Math.random() *155);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1515,7 +1516,22 @@ if(nuumm==88) {
                                 cspd_change('Lucid',  'Lucid',  'Lucid Dreams');
                                   }
                                   
+                                  if(nuumm==151) {
+                                 cspd_change('REDac',  'dvrk',  'RED ACID')
+                                  }
 
+                       if(nuumm==152) {
+                        cspd_change('newark',  'newark',  'I Am Newark')
+                        }
+                        if(nuumm==153) {
+                        cspd_change('openp',  'openp',  'Open It Up')
+                        }
+                        if(nuumm==154) {
+                         cspd_change('moneyr',  'place',  'Money Rain')
+                        }
+                        if(nuumm==155) {
+                       cspd_change('ballinn',  'ballin',  'Ballin')
+                        }
 
 
 
@@ -1892,12 +1908,13 @@ audio_id.addEventListener('pause', () => {
   else
   {
   cov.onerror = () => {
-    cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true'
+ 
+      cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true'
     covver = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.jpeg?raw=true';
     console.log('jpeg has been found');
+ 
 
   }
-
 
   cov.src = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/' + imggg + '.png?raw=true'
  
@@ -2270,6 +2287,19 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('Gangstaa',  'Gangstaa',  'Gangstas Paradise')">Gangsta's Paradise</a></li>
                                      
                                         <li><a onclick="cspd_change('Lucid',  'Lucid',  'Lucid Dreams')">Lucid Dreams</a></li>
+                                     
+
+                                       
+                                        <li><a onclick="cspd_change('REDac',  'dvrk',  'RED ACID')">RED ACID</a></li>
+                          
+                                     
+                                        <li><a onclick="cspd_change('newark',  'newark',  'I Am Newark')">I Am Newark</a></li>
+
+                                        <li><a onclick="cspd_change('openp',  'openp',  'Open It Up')">Open It Up</a></li>
+                                     
+                                        <li><a onclick="cspd_change('moneyr',  'place',  'Money Rain')">Money Rain</a></li>
+                                     
+                                        <li><a onclick="cspd_change('ballinn',  'ballin',  'Ballin')">Ballin</a></li>
                                      
 
 
@@ -2896,7 +2926,7 @@ function myFunctionn() {
  
 }
 
-var delayInMilliseconds = 2500; 
+var delayInMilliseconds = 1000; 
 
 setTimeout(function() {
   var s = document.getElementById('loader').style;
