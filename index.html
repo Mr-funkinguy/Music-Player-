@@ -703,7 +703,7 @@ body {
     
      <div style="border-radius: 25px; width: 70%; top: 10px; margin-left: auto; margin-right: auto;" class="cs_audio_bar">
       
-      <span style=" position: relative;margin-top: -20px; margin-left: 5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="cs_audio_current_time">00:00</span></span>
+      <span style=" position: relative;margin-top: -20px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="cs_audio_current_time">00:00</span></span>
       
       <span id="cs_audio_duration" style=" position: relative;margin-top: -20px; margin-right: 5px;float: right;padding-left: 10px;font-size: 0.87em;">00:00</span>
          <div style="border-radius: 25px;" class="cs_audio_bar_now"></div>
@@ -1019,7 +1019,7 @@ function looppp() {
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *155);
+  return Math.floor(Math.random() *158);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1532,9 +1532,15 @@ if(nuumm==88) {
                         if(nuumm==155) {
                        cspd_change('ballinn',  'ballin',  'Ballin')
                         }
-
-
-
+                        if(nuumm==156) {
+                       cspd_change('OhYuh',  'place',  'Oh Yuh')
+                        }
+                        if(nuumm==157) {
+                       cspd_change('BATSHIT',  'BATSHIT.jpg',  'BATSHIT')
+                        }
+                        if(nuumm==158) {
+                       cspd_change('odown',  'place',  'Old Town Road')
+                        }
                                
                              
 //var n = Math.floor(Math.random() * songs.length);
@@ -2301,7 +2307,13 @@ setTimeout(() => {
                                      
                                         <li><a onclick="cspd_change('ballinn',  'ballin',  'Ballin')">Ballin</a></li>
                                      
+        
+                                        <li><a onclick="cspd_change('OhYuh',  'place',  'Oh Yuh')">Oh Yuh</a></li>
 
+                                        <li><a onclick="cspd_change('BATSHIT',  'BATSHIT.jpg',  'BATSHIT')">BATSHIT</a></li>
+
+                                        <li><a onclick="cspd_change('odown',  'place',  'Old Town Road')">Lil Nas X - Old Town Road</a></li>
+                                     
 
     </ul>
 
@@ -2339,7 +2351,7 @@ setTimeout(() => {
     <h4 > 2.0.9 (0.3)</h4>
     <h4 > Small Update </h4>
     <h4 > All Songs Added Back (Songs Removed Due To Bug) </h4>
-    <h4 > Songs Requested on november 7th 2022 will be <a style="text-decoration: none; color: #535252" href="https://drive.google.com/drive/folders/1NZuLh_-6Mgkwx1LAeILpAf9A4zNU2ml4?usp=sharing" >Here</a> </h4>
+    <h4 > If songs are not listed check here <a style="text-decoration: none; color: #535252" href="https://drive.google.com/drive/folders/1NZuLh_-6Mgkwx1LAeILpAf9A4zNU2ml4?usp=sharing" >Here</a> </h4>
   
 	<script src="app.js" defer></script>
   <script>

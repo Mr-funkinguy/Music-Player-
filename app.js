@@ -24,6 +24,7 @@ const APP = {
         window.addEventListener('appinstalled', (evt) => {
           //deprecated but still runs in Chrome-based browsers.
           //Not very useful event.
+          alert('hi')
           //Better to use the DOMContentLoaded and then look at how it was launched
         });
   
