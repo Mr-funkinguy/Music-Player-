@@ -684,8 +684,11 @@ body {
      </span>
 
      <span id="cs_audio_sound" style=" user-select: none; position: relative;right: 5px;float: right;margin-left: 15px;top: 2px;">
-      <i style="cursor: pointer; display: none;  vertical-align: middle;font-size: 20px; " class="material-icons" id="picture">picture_in_picture</i>
-         <i style="cursor: pointer;  vertical-align: middle;font-size: 20px;" class="material-icons">volume_up</i>
+
+      <i id="speed" style="cursor: pointer; color: white; vertical-align: middle; font-family: Arial, Helvetica, sans-serif;">1.5X</i>
+
+
+         <i style="cursor: pointer;  vertical-align: middle;font-size: 20px; " class="material-icons">volume_up</i>
       
          <div class="cs_volBar" type="range" min="1" max="100" value="50" style=" height: 8px; border-radius: 35px; width: 75px;background-color: rgb(94, 94, 94);display: inline-block;cursor: pointer;">
            <div class="cs_volume" style=" height: 8px; border-radius: 25px; width: 25px; background-color: rgb(255, 255, 255);position: absolute;"></div>
@@ -693,11 +696,12 @@ body {
 
      </span>
      <div>
-    
-      <span id="cs_play_pause_btn" style="align-items: center; position: relative;">
 
-        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_play">play_circle</i>
-        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 5px;" id="cs_audio_pause">pause_circle</i>
+    
+      <span id="cs_play_pause_btn" style="align-items: center; right: -18px; position: relative;">
+
+        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_play">play_circle</i>
+        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_pause">pause_circle</i>
       
     </span>
     
@@ -825,7 +829,7 @@ var audio_id = document.getElementById("cs_audio");
                   }
                   catch(err) {
                       audio_id.addEventListener('loadedmetadata', function() {
-    
+   
                            var measuredTime = new Date(null);
                            measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
                            var MHSTime = measuredTime.toISOString().substr(11, 8);
@@ -837,7 +841,7 @@ var audio_id = document.getElementById("cs_audio");
                            var minutes = (+a[0]) * 60 + (+a[1]);
                            // console.log(minutes + ":" + ((+a[2]) % 60));
                            document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
- 
+
                       });
                   }
 
@@ -976,6 +980,20 @@ sufflee = true;
 });
 
 
+document.getElementById("speed").addEventListener("click", function(){
+
+    var xm = document.getElementById('speed');
+    if (xm.style.color === 'white') {
+        xm.style.color = "#545454";
+        audio_id.playbackRate = 1.5;
+    } else {
+        xm.style.color = 'white';
+        audio_id.playbackRate = 1.0;
+    }
+
+
+
+});
 
 document.getElementById("cs_skip").addEventListener("click", function(){
 
@@ -1019,7 +1037,7 @@ function looppp() {
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *158);
+  return Math.floor(Math.random() *160);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1541,7 +1559,13 @@ if(nuumm==88) {
                         if(nuumm==158) {
                        cspd_change('odown',  'place',  'Old Town Road')
                         }
-                               
+                        if(nuumm==159) {
+                       cspd_change('lon',  'lon',  'The London')
+                        }
+                        if(nuumm==160) {       
+                                 cspd_change('savt',  'savt',  'Save Your Tears')
+                        }     
+
                              
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -1648,7 +1672,7 @@ var hellol = document.getElementById('mySearch');
                 if (audio_vol!=1) {
 
                   try {
-                      audio_id.volume = audio_vol + 0.02;
+                      audio_id.volume = audio_vol + 0.05;
                   }
                   catch(err) {
                       audio_id.volume = 1;
@@ -1681,7 +1705,7 @@ var hellol = document.getElementById('mySearch');
                 // console.log(audio_vol);
                 if (audio_vol!=0) {
                   try {
-                      audio_id.volume = audio_vol - 0.02;
+                      audio_id.volume = audio_vol - 0.05;
                   }
                   catch(err) {
                       audio_id.volume = 0;
@@ -1890,6 +1914,11 @@ audio_id.addEventListener('pause', () => {
     console.log('mp3 was not added');
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true';
   }
+  else if (music.includes("real")) {
+    audio_id.setAttribute('src', 'https://n36b-e2.revma.ihrhls.com/zc181?rj-ttl=5&rj-tok=AAABhHS3VCEAm0VXAI8t65iz-w');
+    console.log('url detected');
+    var scc = 'Live Music';
+  }
   else
   {
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true';
@@ -1995,7 +2024,8 @@ setTimeout(() => {
                   }
                   catch(err) {
                       audio_id.addEventListener('loadedmetadata', function() {
-    
+
+                        /*
                            var measuredTime = new Date(null);
                            measuredTime.setSeconds(audio_id.duration); // specify value of SECONDS
                            var MHSTime = measuredTime.toISOString().substr(11, 8);
@@ -2008,7 +2038,10 @@ setTimeout(() => {
                            // console.log(minutes + ":" + ((+a[2]) % 60));
                            document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
  
+                           */
+                        audio_id.play();
                       });
+                      
                   }
                 
 }
@@ -2023,16 +2056,30 @@ setTimeout(() => {
     
     <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
 
- 
+ <style>
+  hr.rounded {
+  border-top: 2px solid rgb(136, 136, 136);
+  border-radius: 5px;
+}
+ </style>
+
     <ul id="myMenu">
       
-	  <li><a href="radio.html">Radio</a></li>
-    
+
       <li><a class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</a></li>
-      
-  
+
       <li><a class="tablinks" onclick="openCity(event, 'cat')"> Albums </a></li>
-      
+     
+      <hr class="rounded">
+
+
+      <li><a href="">Radio</a></li>
+    
+      <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3</a></li>
+       
+      <hr class="rounded">
+
+
       <li><a class="tablinks" onclick="cspd_change('hanji.mp3',  'cheng',  'Ching Cheng Hanji')">Ching Cheng Hanji</a></li>
       
 	<li><a class="tablinks" onclick="cspd_change('mao zedong propaganda music Red Sun in the Sky.mp3',  'red.png',  'Red Sun In Sky')">Red Sun In Sky</a></li>
@@ -2313,8 +2360,13 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('BATSHIT',  'BATSHIT.jpg',  'BATSHIT')">BATSHIT</a></li>
 
                                         <li><a onclick="cspd_change('odown',  'place',  'Old Town Road')">Lil Nas X - Old Town Road</a></li>
+
+                                        <li><a onclick="cspd_change('lon',  'lon',  'The London')">The London</a></li>
+                                     
+                                        <li><a onclick="cspd_change('savt',  'savt',  'Save Your Tears')">Save Your Tears</a></li>
                                      
 
+                                 
     </ul>
 
     <h2 id="mobbb" style="display: none; z-index: -10; -webkit-touch-callout: none;
@@ -2345,12 +2397,12 @@ setTimeout(() => {
 <button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
 
-    <!--<h3 class="v" id="ver"></h3>-->
+    <!--<h3 class="v" id="ver"></h3>
   
     <h4>Change Log:</h4>
     <h4 > 2.0.9 (0.3)</h4>
     <h4 > Small Update </h4>
-    <h4 > All Songs Added Back (Songs Removed Due To Bug) </h4>
+    <h4 > All Songs Added Back (Songs Removed Due To Bug) </h4-->
     <h4 > If songs are not listed check here <a style="text-decoration: none; color: #535252" href="https://drive.google.com/drive/folders/1NZuLh_-6Mgkwx1LAeILpAf9A4zNU2ml4?usp=sharing" >Here</a> </h4>
   
 	<script src="app.js" defer></script>
