@@ -1038,7 +1038,7 @@ function looppp() {
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *160);
+  return Math.floor(Math.random() *167);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1566,8 +1566,29 @@ if(nuumm==88) {
                         if(nuumm==160) {       
                                  cspd_change('savt',  'savt',  'Save Your Tears')
                         }     
+                        if(nuumm==161) {  
+                        cspd_change('23pl',  'place',  '23')
+                        }
+                        if(nuumm==162) {  
+                                     cspd_change('lonj',  'place',  'Fresh Outta London')
+                        }
+                        if(nuumm==163) {  
+                                     cspd_change('bibm',  'place',  'Back In Blood')
+                        }
+                        if(nuumm==164) {  
+                                     cspd_change('hellnah',  'place',  'hell nah')
+                        }
+                        if(nuumm==165) {  
+                                     cspd_change('nunfree',  'place',  'Nun Free')
+                        }
+                        if(nuumm==166) {  
+                                    cspd_change('vmtvs',  'place',  'make my oppas run')
+                        }
+                        if(nuumm==167) {  
+                                  cspd_change('03flow',  'place',  '03 Flow')
+                        }
+                        
 
-                             
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -1921,6 +1942,11 @@ audio_id.addEventListener('pause', () => {
     console.log('url detected');
     var scc = 'Live Music';
   }
+  else if (music.includes("kiss")) {
+    audio_id.setAttribute('src', 'https://n1eb-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhHlRhvwAX2E5dwXyQEnvIQ');
+    console.log('url detected');
+    var scc = 'Live Music';
+  }
   else
   {
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '.mp3?raw=true';
@@ -2075,10 +2101,13 @@ setTimeout(() => {
       <hr class="rounded">
 
 
-      <li><a href="">Radio</a></li>
+      <li><a >Radio</a></li>
     
-      <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3</a></li>
+      <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3 | Hip-Hop</a></li>
        
+      <li><a onclick="cspd_change('kiss',  'kiss',  'Kiss Fm')">102.7 kiss Fm | Pop</a></li>
+       
+
       <hr class="rounded">
 
 
@@ -2368,7 +2397,21 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('savt',  'savt',  'Save Your Tears')">Save Your Tears</a></li>
                                      
 
-                                 
+                                        <li><a onclick="cspd_change('23pl',  'place',  '23')">Jake Paul - 23</a></li>
+                                     
+                                        <li><a onclick="cspd_change('lonj',  'place',  'Fresh Outta London')">Jake Paul - Fresh Outta London</a></li>
+                                     
+                                        <li><a onclick="cspd_change('bibm',  'place',  'Back In Blood')">Pooh Shiesty - Back In Blood</a></li>
+                                     
+                                        <li><a onclick="cspd_change('hellnah',  'place',  'hell nah')">hell nah</a></li>
+                                     
+                                        <li><a onclick="cspd_change('nunfree',  'place',  'Nun Free')">Lungskull - Nun Free</a></li>
+                                     
+                                        <li><a onclick="cspd_change('vmtvs',  'place',  'make my oppas run')">make my oppas run</a></li>
+                                     
+                                        <li><a onclick="cspd_change('03flow',  'place',  '03 Flow')">03 Flow</a></li>
+                                     
+
     </ul>
 
     <h2 id="mobbb" style="display: none; z-index: -10; -webkit-touch-callout: none;
