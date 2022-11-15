@@ -840,6 +840,8 @@ var audio_id = document.getElementById("cs_audio");
                            // Hours are worth 60 minutes.
                            var minutes = (+a[0]) * 60 + (+a[1]);
                            // console.log(minutes + ":" + ((+a[2]) % 60));
+                       
+                          
                            document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
 
                       });
@@ -1877,7 +1879,8 @@ function cspd_change(music, imggg, name){
 
   audio_id.pause();
          console.log(music);
-  audio_id.load();
+  //audio_id.load();
+  
   document.getElementById('song_name').innerHTML = name;
       console.log('loaded & cached ' + music);
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
@@ -1941,10 +1944,15 @@ audio_id.addEventListener('pause', () => {
     audio_id.setAttribute('src', 'https://n36b-e2.revma.ihrhls.com/zc181?rj-ttl=5&rj-tok=AAABhHS3VCEAm0VXAI8t65iz-w');
     console.log('url detected');
     var scc = 'Live Music';
+   
+    document.getElementById("cs_audio_duration").innerHTML = 'Live';
+
   }
   else if (music.includes("kiss")) {
     audio_id.setAttribute('src', 'https://n1eb-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhHlRhvwAX2E5dwXyQEnvIQ');
     console.log('url detected');
+    document.getElementById("cs_audio_duration").innerHTML = 'Live';
+
     var scc = 'Live Music';
   }
   else
@@ -2067,7 +2075,9 @@ setTimeout(() => {
                            document.getElementById("cs_audio_duration").innerHTML = minutes+":"+((+a[2]) % 60);
  
                            */
-                        audio_id.play();
+     
+                           audio_id.play();
+                           
                       });
                       
                   }
@@ -2103,9 +2113,9 @@ setTimeout(() => {
 
       <li><a >Radio</a></li>
     
-      <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3 | Hip-Hop</a></li>
+      <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3 | Hip-Hop, Pop</a></li>
        
-      <li><a onclick="cspd_change('kiss',  'kiss',  'Kiss Fm')">102.7 kiss Fm | Pop</a></li>
+      <li><a onclick="cspd_change('kiss',  'kiss',  'Kiss Fm')">102.7 kiss Fm | Top 40</a></li>
        
 
       <hr class="rounded">
@@ -2412,6 +2422,14 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('03flow',  'place',  '03 Flow')">03 Flow</a></li>
                                      
 
+                                        <li><a onclick="cspd_change('dop2',  'place',  'DOAK PT2')">DOAK PT2</a></li>
+                                     
+                                        <li><a onclick="cspd_change('mannowm',  'nowmann',  'Man Now')">Man Now</a></li>
+                                     
+                                        <li><a onclick="cspd_change('modd',  'dowm',  'Mood')">Mood</a></li>
+                                     
+                                        <li><a onclick="cspd_change('emlo',  'place',  'Kurxxed Emeraldz')">Kurxxed Emeraldz</a></li>
+                                     
     </ul>
 
     <h2 id="mobbb" style="display: none; z-index: -10; -webkit-touch-callout: none;
