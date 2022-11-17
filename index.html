@@ -101,7 +101,7 @@ body {
   font-size: 18px;
   padding: 11px;
   border-radius: 55px;
-  border: 1px solid rgb(54, 54, 54);
+  border: 1px solid rgb(0, 0, 0);
 }
 #mySearchh {
   width: 100%;
@@ -114,6 +114,7 @@ body {
 
 /* Style the navigation menu inside the left column */
 #myMenu {
+
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -126,6 +127,7 @@ body {
 }
 
 #myMenu li a {
+  
   padding: 12px;
   padding: 12px ;
   transition: .5s ease;
@@ -734,7 +736,7 @@ body {
     
   </span>
 
-  <span id="next" style="margin-top: -42px; transform: scale(0.9); margin-left: 0px; position: absolute;" >
+  <span id="next" style="margin-top: -42px; transform: scale(0.9); margin-left: 0px;  position: absolute;" >
     <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
   
 </span>
@@ -1040,7 +1042,7 @@ function looppp() {
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *175);
+  return Math.floor(Math.random() *177);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1614,6 +1616,12 @@ if(nuumm==88) {
                         if(nuumm==175) {
                                    cspd_change('Kaneki',  'place',  'Kaneki')
                         }
+                        if(nuumm==176) {
+                    cspd_change('ohio',  'place',  'Swag Like Ohio')                            
+                        }
+                        if(nuumm==177) {
+cspd_change('cyhar',  'place',  'Cyan Hardcore')
+                        }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -1971,6 +1979,14 @@ audio_id.addEventListener('pause', () => {
     document.getElementById("cs_audio_duration").innerHTML = 'Live';
 
   }
+  else if (music.includes("1023")) {
+    audio_id.setAttribute('src', 'https://n29b-e2.revma.ihrhls.com/zc6761?rj-ttl=5&rj-tok=AAABhIRBU7QAdOX0N1NtnWDCDw');
+    console.log('url detected');
+    var scc = 'Live Music';
+   
+    document.getElementById("cs_audio_duration").innerHTML = 'Live';
+
+  }
   else if (music.includes("kiss")) {
     audio_id.setAttribute('src', 'https://n1eb-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhHlRhvwAX2E5dwXyQEnvIQ');
     console.log('url detected');
@@ -2139,6 +2155,8 @@ setTimeout(() => {
       <li><a onclick="cspd_change('real',  '923',  'Real 92.3')">Real 92.3 | Hip-Hop, Pop</a></li>
        
       <li><a onclick="cspd_change('kiss',  'kiss',  'Kiss Fm')">102.7 kiss Fm | Top 40</a></li>
+       
+      <li><a onclick="cspd_change('1023',  '102.3.jpeg',  '102.3 The Beat')">102.3 The Beat  | Hip-Hop, R&B</a></li>
        
 
       <hr class="rounded">
@@ -2461,6 +2479,10 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('silly4',  'place',  'PERXGOTMESILLY2')">PERXGOTMESILLY2</a></li>
                                      
                                         <li><a onclick="cspd_change('Kaneki',  'place',  'Kaneki')">Kaneki</a></li>
+                                     
+                                        <li><a onclick="cspd_change('ohio',  'place',  'Swag Like Ohio')">Swag Like Ohio</a></li>                                  
+
+                                        <li><a onclick="cspd_change('cyhar',  'place',  'Cyan Hardcore')">Cyan Hardcore</a></li>
                                      
     </ul>
 
@@ -2906,6 +2928,7 @@ var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 
 
 <ul id="myMenuu">
+ 
   <h4 style="text-align: center;" >2pac - All Eyez on Me</h4>
   <input type="text" id="mySearchh" onkeyup="myFunctionn()" placeholder="Search.." title="Type in a category">
     
