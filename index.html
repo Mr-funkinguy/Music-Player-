@@ -1037,12 +1037,12 @@ function looppp() {
 
 
 */
-
+var songsnum = 187;
 
 function shuffle() {
 
 function getRandomInt() {
-  return Math.floor(Math.random() *182);
+  return Math.floor(Math.random() * songsnum);
 }
 var nuumm = getRandomInt();
 console.log(nuumm);
@@ -1638,7 +1638,21 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                         if(nuumm==182) {
                 cspd_change('Emeraldz',  'place',  'Blexxed Emeraldz freestyle')
                         }
-
+                        if(nuumm==183) {
+                     cspd_change('valentino',  'valentino',  'Valentino')
+                        }      
+                        if(nuumm==184) {
+                                  cspd_change('6799',  '679',  '679')
+                        }
+                        if(nuumm==185) {
+                                  cspd_change('Callaita',  'bad-bunny',  'Callaita')
+                        }
+                        if(nuumm==186) {
+                                    cspd_change('hubba',  'spmm',  'Hubba Hubba')
+                        }
+                        if(nuumm==187) {
+                                    cspd_change('Work-Out',  'workout',  'Work Out')
+                        }
 
 
 //var n = Math.floor(Math.random() * songs.length);
@@ -2516,7 +2530,20 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('Emeraldz',  'place',  'Blexxed Emeraldz freestyle')">Blexxed Emeraldz freestyle</a></li>
                                      
 
+
+
+                                        <li><a onclick="cspd_change('valentino',  'valentino',  'Valentino')">24KGoldn - Valentino</a></li>
+                                     
+                                        <li><a onclick="cspd_change('6799',  '679',  '679')">679</a></li>
+                                     
+                                        <li><a onclick="cspd_change('Callaita',  'bad-bunny',  'Callaita')">Callaita</a></li>
+                                     
+                                        <li><a onclick="cspd_change('hubba',  'spmm',  'Hubba Hubba')">Hubba Hubba</a></li>
+  
+                                        <li><a onclick="cspd_change('Work-Out',  'workout',  'Work Out')">Work Out</a></li>
+                                     
     </ul>
+
 
 
     <h2 id="mobbb" style="display: none; z-index: -10; -webkit-touch-callout: none;
@@ -2543,6 +2570,7 @@ setTimeout(() => {
 
 <div id="Home" class="tabcontent">
   <h2 id="demo" class="msg"></h2>
+  <h3 id="songnumm" style="font-family: Arial, Helvetica, sans-serif;" >There Are Currently --- Songs Availble</h3>
   <button onclick="fr()" class="button button1">Request A Song</button>
 <button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
@@ -2558,7 +2586,7 @@ setTimeout(() => {
 	<script src="app.js" defer></script>
   <script>
     
-	
+    document.getElementById('songnumm').innerHTML = "There Are Currently " + songsnum + " Songs Availble";
     var storedText;
 
 fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt')
