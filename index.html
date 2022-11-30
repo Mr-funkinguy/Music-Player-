@@ -641,8 +641,8 @@ body {
       
       
       <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -25px; position: absolute;" >
-        <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
-        <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
+        <i class="material-icons loop" style="display: none; z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
+        <i class="material-icons loop" style="display: none; z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
       
     </span>
      </div>
@@ -832,8 +832,8 @@ document.getElementById("cs_loop").addEventListener("click", function(){
 
 });
 
-document.getElementById("cs_loop").style.display = "inline-block";
-document.getElementById("cs_on_loop").style.display = "none";
+//document.getElementById("cs_loop").style.display = "inline-block";
+//document.getElementById("cs_on_loop").style.display = "none";
 
 document.getElementById("cs_on_loop").addEventListener("click", function(){
   document.getElementById("cs_loop").style.display = "inline-block";
@@ -1328,14 +1328,16 @@ function cspd_change(music, imggg, name){
   <h2 id="demo" class="msg"></h2>
   <button onclick="fr()" class="button button1">Request A Song</button>
 <button onclick="us()" class="button button1">Change Username</button>
+<button onclick="up()" class="button button1">How To Update Your App</button>
 	<button id="p" class="button button1">Install App!</button>
 
     <!--<h3 class="v" id="ver"></h3>-->
   
     <h4>Change Log:</h4>
-    <h4 > 2.0.7 </h4>
-    <h4 > Songs Added </h4>
-    <h4 > Loop Button Added </h4>
+    <h4 > 2.0.6 (Major) </h4>
+    <h4 > New Ui </h4>
+    <h4 > Optimization </h4>
+     <h4 > New Songs </h4>
 
   
 	<script src="app.js" defer></script>
@@ -1350,7 +1352,7 @@ fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt
  //-----------------------------------------------------------------------------------------
     var parser, xmlDoc;
 var textt = 
-"<title>(2.0.7)</title>";
+"<title>(2.0.6)</title>";
 
 parser = new DOMParser(); //covert version into text
 xmlDoc = parser.parseFromString(textt,"text/xml");
@@ -1375,7 +1377,7 @@ xmlDoc = parser.parseFromString(ver,"text/xml");
 var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 //---------------------------------------------------------------------
 
-      var ser = '(2.0.3)';
+      var ser = '(2.0.6)';
       
       if (ft == verr) {
         document.getElementById('ver').textContent =
