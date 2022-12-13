@@ -665,6 +665,28 @@ body {
 </audio>
 
 
+<style>
+  .loaderrr {
+  width: 20px;
+  height: 20px;
+  right: -80px;
+  top: -20px;
+  opacity: 0;
+  transition: 0.5s;
+position: relative;
+  border-radius: 50%;
+  border: 3px solid rgb(255,255,255,.2);
+  border-top-color: transparent;
+  animation: rot1 1.2s linear infinite;
+}
+ 
+@keyframes rot1 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
 <!----------Ui-------->
 <div style="text-align: center;">
  
@@ -716,9 +738,9 @@ body {
          <div style="border-radius: 25px;" class="cs_audio_bar_loaded"></div>
      </div>
 
-     <div >
+     <div>
       <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
-      
+   
       
       <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -105px; position: absolute;" >
         <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
@@ -741,16 +763,16 @@ body {
   
 </span>
      </div>
-     
+     <div style=""  id="loadingm" class="loaderrr"></div>
      </div>
-     
+  
 
 </div>
 </div>
 <!------------------player elements------------------->
 
 <script>
-
+var loadinggg = document.getElementById('loadingm');
 //dev'
 
 
@@ -2026,7 +2048,7 @@ function cspd_change_img(img)
 
 
 function cspd_change(music, imggg, name){
-
+loadinggg.style.opacity = 1;
   audio_id.pause();
          console.log(music);
   //audio_id.load();
@@ -2034,14 +2056,14 @@ function cspd_change(music, imggg, name){
   document.getElementById('song_name').innerHTML = name;
       console.log('loaded & cached ' + music);
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    
+    loadinggg.style.opacity = 0;
    
   } else {
   if (audio_id.paused) {
     var interval = 400;
 			var timer = window.setInterval(function(){
         if (audio_id.readyState == 4) {
-     
+          loadinggg.style.opacity = 0;
          audio_id.play();
      
          window.clearInterval(timer);
