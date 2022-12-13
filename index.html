@@ -2061,10 +2061,21 @@ loadinggg.style.opacity = 1;
   } else {
   if (audio_id.paused) {
     var interval = 400;
+
 			var timer = window.setInterval(function(){
+        if(audio_id.paused) {
+           audio_id.play();
+          } else {
+            loadinggg.style.opacity = 0;
+            window.clearInterval(timer);
+         console.log('Loaded Song | cleared interval')
+          }
         if (audio_id.readyState == 4) {
           loadinggg.style.opacity = 0;
-         audio_id.play();
+        
+        
+           audio_id.play();
+       
      
          window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
