@@ -1059,7 +1059,7 @@ function looppp() {
 
 
 */
-var songsnum = 215;
+var songsnum = 216;
 
 function shuffle() {
 
@@ -1762,6 +1762,10 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==215) {
                     cspd_change('Put-It-On-Me',  'place',  'Put It On Me')
                       }
+                      if(nuumm==216) {
+                     cspd_change('Foreverr',  'place',  'Forever')
+                      }
+
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -2045,6 +2049,7 @@ function cspd_change_img(img)
   covv.src = img;
 }
 
+var timesong = 0;
 
 
 function cspd_change(music, imggg, name){
@@ -2073,7 +2078,9 @@ loadinggg.style.opacity = 1;
         if (audio_id.readyState == 4) {
           loadinggg.style.opacity = 0;
         
-        
+          timesong = timesong + audio_id.duration;
+
+document.getElementById('songtime').innerHTML = "Total time played: " + timesong + ""
            audio_id.play();
        
      
@@ -2220,7 +2227,6 @@ setTimeout(() => {
 
 
 
-
 /* Utils */
 
   //videocontainer.setAttribute('poster', newposter); //Changes video poster image
@@ -2246,7 +2252,8 @@ setTimeout(() => {
              var minutes = (+a[0]) * 60 + (+a[1]);
              // console.log(minutes + ":" + ((+a[2]) % 60));
              document.getElementById("cs_audio_duration").innerHTML =  minutes+":"+((+a[2]) % 60);
-
+                
+            
 
                   }
                   catch(err) {
@@ -2273,6 +2280,7 @@ setTimeout(() => {
                       
                   }
                 
+
 }
 
 
@@ -2722,6 +2730,8 @@ setTimeout(() => {
 
                                         <li><a onclick="cspd_change('Put-It-On-Me',  'place',  'Put It On Me')">Put It On Me</a></li>
 
+                                        <li><a onclick="cspd_change('Foreverr',  'place',  'Forever')">Lil Baby - Forever feat. Lil Wayne</a></li>
+
 
     </ul>
 
@@ -2752,6 +2762,7 @@ setTimeout(() => {
 <div id="Home" class="tabcontent">
   <h2 id="demo" class="msg"></h2>
   <h3 id="songnumm" style="font-family: Arial, Helvetica, sans-serif;" >There Are Currently --- Songs Availble</h3>
+  <h3 id="songtime" style="font-family: Arial, Helvetica, sans-serif;" >Total time played: 0</h3>
   <button onclick="fr()" class="button button1">Request A Song</button>
 <button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
