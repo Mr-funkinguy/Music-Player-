@@ -1059,7 +1059,7 @@ function looppp() {
 
 
 */
-var songsnum = 216;
+var songsnum = 219;
 
 function shuffle() {
 
@@ -1765,7 +1765,15 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==216) {
                      cspd_change('Foreverr',  'place',  'Forever')
                       }
-
+                      if(nuumm==217) {
+                  cspd_change('Cooped-Up',  'place',  'Cooped Up')
+                      }
+                      if(nuumm==218) {
+                  cspd_change('N95',  'place',  'N95')
+                      }
+                      if(nuumm==219) {
+                      cspd_change('One-Right-Now',  'cooped',  'One Right Now')
+                      }
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -2080,7 +2088,7 @@ loadinggg.style.opacity = 1;
         
           timesong = timesong + audio_id.duration;
 
-document.getElementById('songtime').innerHTML = "Total time played: " + timesong + ""
+document.getElementById('songtime').innerHTML = "Total time played: " + timesong + "";
            audio_id.play();
        
      
@@ -2131,7 +2139,7 @@ audio_id.addEventListener('pause', () => {
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true';
   }
   else if (music.includes("real")) {
-    audio_id.setAttribute('src', 'https://n0ca-e2.revma.ihrhls.com/zc181?rj-ttl=5&rj-tok=AAABhMILvjcATBhUDbADO21Log');
+    audio_id.setAttribute('src', 'https://n08b-e2.revma.ihrhls.com/zc181?rj-=&rj-ttl=5&rj-');
     console.log('url detected');
     var scc = 'Live Music';
    
@@ -2139,7 +2147,7 @@ audio_id.addEventListener('pause', () => {
 
   }
   else if (music.includes("1023")) {
-    audio_id.setAttribute('src', 'https://n30a-e2.revma.ihrhls.com/zc6761?rj-ttl=5&rj-tok=AAABhMIOH_AA9ogIYRJJMijIqw');
+    audio_id.setAttribute('src', 'https://n01b-e2.revma.ihrhls.com/zc6761?rj-ttl=5&rj-tok=AAABhRjrKekAxUbNrSJS2ZU7Ww');
     console.log('url detected');
     var scc = 'Live Music';
    
@@ -2147,7 +2155,7 @@ audio_id.addEventListener('pause', () => {
 
   }
   else if (music.includes("kiss")) {
-    audio_id.setAttribute('src', 'https://n2fa-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhMINNlEA_DvJO3hzCg-VqA');
+    audio_id.setAttribute('src', 'https://n42b-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhRjqYWIADvFXQisuqJ4_7g');
     console.log('url detected');
     document.getElementById("cs_audio_duration").innerHTML = 'Live';
 
@@ -2732,6 +2740,13 @@ setTimeout(() => {
 
                                         <li><a onclick="cspd_change('Foreverr',  'place',  'Forever')">Lil Baby - Forever feat. Lil Wayne</a></li>
 
+                                        <li><a onclick="cspd_change('Cooped-Up',  'cooped',  'Cooped Up')">Cooped Up</a></li>
+
+                                        <li><a onclick="cspd_change('N95',  'place',  'N95')">N95</a></li>
+
+                                        <li><a onclick="cspd_change('One-Right-Now',  'cooped',  'One Right Now')">One Right Now</a></li>
+
+
 
     </ul>
 
@@ -2766,7 +2781,7 @@ setTimeout(() => {
   <button onclick="fr()" class="button button1">Request A Song</button>
 <button onclick="us()" class="button button1">Change Username</button>
 	<button id="p" class="button button1">Install App!</button>
-
+  
     <!--<h3 class="v" id="ver"></h3>
   
     <h4>Change Log:</h4>
@@ -2777,6 +2792,7 @@ setTimeout(() => {
   
 	<script src="app.js" defer></script>
   <script>
+
     
     document.getElementById('songnumm').innerHTML = "There Are Currently " + songsnum + " Songs Availble";
     var storedText;
@@ -3342,6 +3358,45 @@ function myFunction() {
   }
  
 }
+
+function hhhello() {
+      document.cookie = "username=John Doe";
+   
+  
+      function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+  let user = getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+    user = prompt("Please enter your name:", "");
+    if (user != "" && user != null) {
+      setCookie("username", user, 365);
+    }
+  }
+
+
+    }
 
 function myFunctionn() {
   var input, filter, ul, li, a, i;
