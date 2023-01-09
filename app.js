@@ -29,8 +29,10 @@ const APP = {
         });
   
         //listen for `beforeinstallprompt` event
+       
         window.addEventListener('beforeinstallprompt', (ev) => {
           // Prevent the mini-infobar from appearing on mobile
+          
           ev.preventDefault();
           // Stash the event so it can be triggered later.
           APP.deferredInstall = ev;
@@ -44,6 +46,14 @@ const APP = {
       }
     },
     startChromeInstall() {
+      window.addEventListener("beforeinstallprompt", event => {
+        event.preventDefault();
+        const prompt = event.prompt();
+        prompt.then(() => {
+          console.log("PWA installed");
+          alert('This App Is Installed Already').
+        });
+      });
       if (APP.deferredInstall) {
         console.log(APP.deferredInstall);
         APP.deferredInstall.prompt();
