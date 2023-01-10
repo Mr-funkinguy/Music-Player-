@@ -51,7 +51,7 @@ const APP = {
         const prompt = event.prompt();
         prompt.then(() => {
           console.log("PWA installed");
-          alert('This App Is Installed Already')
+    
         });
       });
       if (APP.deferredInstall) {

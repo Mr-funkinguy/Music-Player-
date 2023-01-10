@@ -633,9 +633,8 @@ body {
     <script>
 
 function setCookie(cname,cvalue) {
-      const d = new Date();
-     
-      document.cookie = cname + "=" + cvalue + ";" + "path=/";
+  var d = 3650;
+      document.cookie = cname + "=" + cvalue + ";" + d + "path=/";
     }
     
     function getCookie(cname) {
@@ -1139,7 +1138,7 @@ function looppp() {
 
 
 */
-var songsnum = 223;
+var songsnum = 224;
 
 function shuffle() {
 
@@ -1865,6 +1864,9 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       } 
                       if(nuumm==223) {
                       cspd_change('RealSlim',  'place',  'The Real Slim Shady')
+                      }
+                      if(nuumm==224) {
+                     cspd_change('birdd',  'place',  'The Biggest Bird')
                       }
 
 //var n = Math.floor(Math.random() * songs.length);
@@ -2860,6 +2862,10 @@ setTimeout(() => {
 
                                         <li><a onclick="cspd_change('RealSlim',  'place',  'The Real Slim Shady')">The Real Slim Shady</a></li>
 
+                                        <li><a onclick="cspd_change('birdd',  'place',  'The Biggest Bird')">The Biggest bird</a></li>
+
+
+
     </ul>
 
 
@@ -3478,9 +3484,9 @@ user-select: none; opacity: 0; ">
 closePopup();
 
 function setCookie(cname,cvalue) {
-      const d = new Date();
-     
-      document.cookie = cname + "=" + cvalue + ";" + "path=/";
+
+      var d = 3650;
+      document.cookie = cname + "=" + cvalue + ";" + d + "path=/";
     }
     
     function getCookie(cname) {
@@ -3719,6 +3725,22 @@ function myFunctionn() {
 var delayInMilliseconds = 1000; 
 
 window.addEventListener("load", () => {
+
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: 'No Song',
+      artist: 'Unknown',
+      album: 'The Unknown Album',
+      artwork: [
+        { src: '',   sizes: '96x96',   type: 'image/png' },
+        { src: '', sizes: '128x128', type: 'image/png' },
+        { src: '', sizes: '192x192', type: 'image/png' },
+        { src: '', sizes: '256x256', type: 'image/png' },
+        { src: '', sizes: '384x384', type: 'image/png' },
+        { src: '', sizes: '512x512', type: 'image/png' },
+      ]
+    });
+  }
  if(color) {
 checkthecolor();
  }
