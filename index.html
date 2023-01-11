@@ -633,8 +633,11 @@ body {
     <script>
 
 function setCookie(cname,cvalue) {
-  var d = 3650;
-      document.cookie = cname + "=" + cvalue + ";" + d + "path=/";
+  var dd = 3650;
+  const d = new Date();
+  d.setTime(d.getTime() + (dd*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
     }
     
     function getCookie(cname) {
@@ -1138,7 +1141,7 @@ function looppp() {
 
 
 */
-var songsnum = 224;
+var songsnum = 226;
 
 function shuffle() {
 
@@ -1867,6 +1870,12 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       }
                       if(nuumm==224) {
                      cspd_change('birdd',  'place',  'The Biggest Bird')
+                      }
+                      if(nuumm==225) {
+                     cspd_change('She-Knows',  'place',  'She Knows')
+                      }
+                      if(nuumm==226) {
+                     cspd_change('Stick',  'place',  'Stick')
                       }
 
 //var n = Math.floor(Math.random() * songs.length);
@@ -2865,6 +2874,10 @@ setTimeout(() => {
                                         <li><a onclick="cspd_change('birdd',  'place',  'The Biggest Bird')">The Biggest bird</a></li>
 
 
+                                        <li><a onclick="cspd_change('She-Knows',  'place',  'She Knows')">She Knows</a></li>
+
+                                        <li><a onclick="cspd_change('Stick',  'place',  'Stick')">Stick</a></li>
+
 
     </ul>
 
@@ -3485,8 +3498,11 @@ closePopup();
 
 function setCookie(cname,cvalue) {
 
-      var d = 3650;
-      document.cookie = cname + "=" + cvalue + ";" + d + "path=/";
+      var dd = 3650;
+      const d = new Date();
+  d.setTime(d.getTime() + (dd*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
     }
     
     function getCookie(cname) {
