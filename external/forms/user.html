@@ -141,9 +141,11 @@ body {
 
   <script>
     function setCookie(cname,cvalue) {
+  var dd = 3650;
       const d = new Date();
-     
-      document.cookie = cname + "=" + cvalue + ";" + "path=/";
+  d.setTime(d.getTime() + (dd*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
     }
     
     function getCookie(cname) {
