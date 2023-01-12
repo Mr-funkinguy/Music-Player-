@@ -1963,7 +1963,15 @@ var hellol = document.getElementById('mySearch');
 
     document.onkeyup = function(event) {
 
- 
+   if( e.keyCode == 71 ) {
+      let person = prompt("Please enter img", "");
+	     let personn = prompt("Please enter song", "");
+	     let personnn = prompt("Please enter txt", "");
+	   
+	   if (person != null) {
+  cspd_change(person, personn, personnn)
+  }
+   }
   //rest of code
 
 console.log('volume js check');
