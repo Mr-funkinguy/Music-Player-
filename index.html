@@ -1141,15 +1141,23 @@ function looppp() {
 
 
 */
-var songsnum = 226;
+var songsnum = 234;
 
-function shuffle() {
+function shuffle(num) {
 
-function getRandomInt() {
+  
+
+function getRandomInt(num) {
+  if(num) {
+    nuumm=num
+    return nuumm;
+  } else {
   return Math.floor(Math.random() * songsnum);
+  }
 }
-var nuumm = getRandomInt();
+var nuumm = getRandomInt(num);
 console.log(nuumm);
+console.log(num)
 
 if(nuumm==0) {
   cspd_change('hanji.mp3',  'cheng',  'Ching Cheng Hanji')
@@ -1877,6 +1885,30 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==226) {
                      cspd_change('Stick',  'place',  'Stick')
                       }
+                      if(nuumm==227) {
+                     cspd_change('Super-Gremlin',  'place',  'Super Gremlin')
+                      }
+                      if(nuumm==228) {
+                     cspd_change('Youu',  'place',  'You')
+                      }
+                      if(nuumm==229) {
+                     cspd_change('Sky-Walker',  'place',  'Sky Walker')
+                      }
+                      if(nuumm==230) {
+                     cspd_change('LACANCIÓN',  'place',  'LA CANCIÓN')
+                      }
+                      if(nuumm==231) {
+                     cspd_change('BadandBoujee',  'place',  'Bad and Boujee')
+                      }
+                      if(nuumm==232) {
+                     cspd_change('Again',  'place',  'Again')
+                      }
+                      if(nuumm==233) {
+                     cspd_change('GoCrazy',  'place',  'Go Crazy')
+                      }
+                      if(nuumm==234) {
+                     cspd_change('Chosen',  'place',  'Chosen')
+                      }
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -2160,7 +2192,23 @@ var intervali = 400;
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
 
-
+function update_media(covver, name) {
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: name,
+      artist: '',
+      album: '',
+      artwork: [
+        { src: covver,   sizes: '96x96',   type: 'image/png' },
+        { src: covver, sizes: '128x128', type: 'image/png' },
+        { src: covver, sizes: '192x192', type: 'image/png' },
+        { src: covver, sizes: '256x256', type: 'image/png' },
+        { src: covver, sizes: '384x384', type: 'image/png' },
+        { src: covver, sizes: '512x512', type: 'image/png' },
+      ]
+    });
+  }
+}
 
 function cspd_change_img(img)
 {
@@ -2169,7 +2217,7 @@ function cspd_change_img(img)
 }
 
 var timesong = 0;
-
+var covver;
 
 function cspd_change(music, imggg, name){
 loadinggg.style.opacity = 1;
@@ -2201,7 +2249,7 @@ loadinggg.style.opacity = 1;
 
 document.getElementById('songtime').innerHTML = "Total time played: " + timesong + "";
            audio_id.play();
-       
+          update_media(covver, name);
      
          window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
@@ -2327,25 +2375,8 @@ audio_id.addEventListener('pause', () => {
     
   }, 1500);
   
-var covver;
-setTimeout(() => {
- 
-  if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: name,
-      artist: '',
-      album: '',
-      artwork: [
-        { src: covver,   sizes: '96x96',   type: 'image/png' },
-        { src: covver, sizes: '128x128', type: 'image/png' },
-        { src: covver, sizes: '192x192', type: 'image/png' },
-        { src: covver, sizes: '256x256', type: 'image/png' },
-        { src: covver, sizes: '384x384', type: 'image/png' },
-        { src: covver, sizes: '512x512', type: 'image/png' },
-      ]
-    });
-  }
-}, 1000);
+
+
 
 
 
@@ -2887,6 +2918,21 @@ setTimeout(() => {
 
                                         <li><a onclick="cspd_change('Stick',  'place',  'Stick')">Stick</a></li>
 
+                                        <li><a onclick="shuffle(227)">Super Gremlin</a></li>
+                                       
+                                        <li><a onclick="shuffle(228)">You</a></li>
+
+                                        <li><a onclick="shuffle(229)">Sky Walker</a></li>
+
+                                        <li><a onclick="shuffle(230)">LA CANCIÓN</a></li>
+
+                                        <li><a onclick="shuffle(231)">Bad and Boujee</a></li>
+
+                                        <li><a onclick="shuffle(232)">Again</a></li>
+
+                                        <li><a onclick="shuffle(233)">Go Crazy</a></li>
+
+                                        <li><a onclick="shuffle(234)">Chosen</a></li>
 
     </ul>
 
