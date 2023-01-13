@@ -1996,9 +1996,9 @@ var hellol = document.getElementById('mySearch');
     document.onkeyup = function(event) {
 
    if( e.keyCode == 71 ) {
-      let person = prompt("Please enter img", "");
-	     let personn = prompt("Please enter song", "");
-	     let personnn = prompt("Please enter txt", "");
+      let person = prompt("Please enter img", "h");
+	     let personn = prompt("Please enter song", "g");
+	     let personnn = prompt("Please enter txt", "h");
 	   
 	   if (person != null) {
   cspd_change(personn, person, personnn)
@@ -2009,6 +2009,17 @@ var hellol = document.getElementById('mySearch');
 console.log('volume js check');
 
         switch (event.keyCode) {
+			
+		case 71:
+			 let person = prompt("Please enter img", "h");
+	    		 let personn = prompt("Please enter song", "g");
+	    		 let personnn = prompt("Please enter txt", "h");
+
+			 if (person != null) {
+			  cspd_change(personn, person, personnn)
+			  }
+			break;
+			
            case 37:
                 event.preventDefault();
                 // alert('Left key pressed');
