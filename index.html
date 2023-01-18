@@ -1141,7 +1141,7 @@ function looppp() {
 
 
 */
-var songsnum = 234;
+var songsnum = 235;
 
 function shuffle(num) {
 
@@ -1909,6 +1909,9 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==234) {
                      cspd_change('Chosen',  'place',  'Chosen')
                       }
+                      if(nuumm==235) {
+                     cspd_change('Rags2',  'place',  'Rags 2 Riches')
+                      }
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -1995,7 +1998,7 @@ var hellol = document.getElementById('mySearch');
 
     document.onkeyup = function(event) {
 
-   if( e.keyCode == 71 ) {
+   if( e.keyCode == 222 ) {
       let person = prompt("Please enter img", "h");
 	     let personn = prompt("Please enter song", "g");
 	     let personnn = prompt("Please enter txt", "h");
@@ -2010,7 +2013,7 @@ console.log('volume js check');
 
         switch (event.keyCode) {
 			
-		case 71:
+		case 222:
 			 let person = prompt("Please enter img", "h");
 	    		 let personn = prompt("Please enter song", "g");
 	    		 let personnn = prompt("Please enter txt", "h");
@@ -2944,6 +2947,10 @@ audio_id.addEventListener('pause', () => {
                                         <li><a onclick="shuffle(233)">Go Crazy</a></li>
 
                                         <li><a onclick="shuffle(234)">Chosen</a></li>
+
+
+                                        <li><a onclick="shuffle(235)">Rags 2 Riches</a></li>
+
 
     </ul>
 
