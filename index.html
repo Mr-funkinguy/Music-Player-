@@ -2206,7 +2206,7 @@ var intervali = 400;
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
 
-function update_media(covver, name) {
+function update_media(cover, name) {
 
 }
 
@@ -2343,9 +2343,8 @@ document.getElementById('songtime').innerHTML = "Total time played: " + timesong
  
 
   }
-  }, 200);
-	
-if ("mediaSession" in navigator) {
+	  
+	if ("mediaSession" in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: name,
       artist: '',
@@ -2360,6 +2359,26 @@ if ("mediaSession" in navigator) {
       ]
     });
   }
+else {
+	 navigator.mediaSession.metadata = new MediaMetadata({
+      title: name,
+      artist: '',
+      album: '',
+      artwork: [
+        { src: covver,   sizes: '96x96',   type: 'image/png' },
+        { src: covver, sizes: '128x128', type: 'image/png' },
+        { src: covver, sizes: '192x192', type: 'image/png' },
+        { src: covver, sizes: '256x256', type: 'image/png' },
+        { src: covver, sizes: '384x384', type: 'image/png' },
+        { src: covver, sizes: '512x512', type: 'image/png' },
+      ]
+    });
+}
+
+  
+	  
+  }, 200);
+	
 
  console.log(cov.src);
 
@@ -2368,8 +2387,6 @@ if ("mediaSession" in navigator) {
     
   }, 1500);
   
-
-
 
 
 
