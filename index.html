@@ -2207,21 +2207,7 @@ var intervali = 400;
 //-------------------------------------------------------------------------------
 
 function update_media(covver, name) {
-  if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: name,
-      artist: '',
-      album: '',
-      artwork: [
-        { src: covver,   sizes: '96x96',   type: 'image/png' },
-        { src: covver, sizes: '128x128', type: 'image/png' },
-        { src: covver, sizes: '192x192', type: 'image/png' },
-        { src: covver, sizes: '256x256', type: 'image/png' },
-        { src: covver, sizes: '384x384', type: 'image/png' },
-        { src: covver, sizes: '512x512', type: 'image/png' },
-      ]
-    });
-  }
+
 }
 
 function cspd_change_img(img)
@@ -2263,7 +2249,21 @@ loadinggg.style.opacity = 1;
 
 document.getElementById('songtime').innerHTML = "Total time played: " + timesong + "";
            audio_id.play();
-          update_media(covver, name);
+if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: name,
+      artist: '',
+      album: '',
+      artwork: [
+        { src: covver,   sizes: '96x96',   type: 'image/png' },
+        { src: covver, sizes: '128x128', type: 'image/png' },
+        { src: covver, sizes: '192x192', type: 'image/png' },
+        { src: covver, sizes: '256x256', type: 'image/png' },
+        { src: covver, sizes: '384x384', type: 'image/png' },
+        { src: covver, sizes: '512x512', type: 'image/png' },
+      ]
+    });
+  }
      
          window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
