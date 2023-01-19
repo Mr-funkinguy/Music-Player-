@@ -1983,14 +1983,7 @@ navigator.mediaSession.setActionHandler('pause', () => {
   audio_id.pause();
 });
 
-audio_id.addEventListener('play', () => {
-  navigator.mediaSession.playbackState = 'playing';
-});
 
-audio_id.addEventListener('pause', () => {
-
-  navigator.mediaSession.playbackState = 'paused';
-});
 
 var hellol = document.getElementById('mySearch');
 
@@ -2202,7 +2195,30 @@ var intervali = 400;
 
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
+const video = document.querySelector('video');
 
+navigator.mediaSession.setActionHandler('play', async () => {
+  // Resume playback
+  document.getElementById("cs_audio_pause").style.display = "inline-block";
+    document.getElementById("cs_audio_play").style.display = "none";
+  audio_id.play();
+  audioElement.play();
+});
+
+navigator.mediaSession.setActionHandler('pause', () => {
+  // Pause active playback
+  document.getElementById("cs_audio_play").style.display = "inline-block";
+    document.getElementById("cs_audio_pause").style.display = "none";
+  audio_id.pause();
+});
+
+audio_id.addEventListener('play', () => {
+  navigator.mediaSession.playbackState = 'playing';
+});
+
+audio_id.addEventListener('pause', () => {
+  navigator.mediaSession.playbackState = 'paused';
+});
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
 
@@ -2267,30 +2283,7 @@ document.getElementById('songtime').innerHTML = "Total time played: " + timesong
 
 
 
-const video = document.querySelector('video');
 
-navigator.mediaSession.setActionHandler('play', async () => {
-  // Resume playback
-  document.getElementById("cs_audio_pause").style.display = "inline-block";
-    document.getElementById("cs_audio_play").style.display = "none";
-  audio_id.play();
-  audioElement.play();
-});
-
-navigator.mediaSession.setActionHandler('pause', () => {
-  // Pause active playback
-  document.getElementById("cs_audio_play").style.display = "inline-block";
-    document.getElementById("cs_audio_pause").style.display = "none";
-  audio_id.pause();
-});
-
-audio_id.addEventListener('play', () => {
-  navigator.mediaSession.playbackState = 'playing';
-});
-
-audio_id.addEventListener('pause', () => {
-  navigator.mediaSession.playbackState = 'paused';
-});
 
   if (music.includes(".mp3")) {
     audio_id.setAttribute('src', 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true');
