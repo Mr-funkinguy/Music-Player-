@@ -1141,7 +1141,7 @@ function looppp() {
 
 
 */
-var songsnum = 235;
+var songsnum = 238;
 
 function shuffle(num) {
 
@@ -1912,6 +1912,15 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==235) {
                      cspd_change('Rags2',  'place',  'Rags 2 Riches')
                       }
+                      if(nuumm==236) {
+                     cspd_change('Bikini-Bottom',  'place',  'Bikini Bottom')
+                      }
+                      if(nuumm==237) {
+                     cspd_change('ChaChaSlide',  'place',  'Cha Cha Slide')
+                      }
+                      if(nuumm==238) {
+                     cspd_change('2FarGone',  'place',  '2 Far Gone')
+                      }
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -2238,16 +2247,14 @@ loadinggg.style.opacity = 1;
         if(audio_id.paused) {
            audio_id.play();
           } else {
-            loadinggg.style.opacity = 0;
+          
             window.clearInterval(timer);
          console.log('Loaded Song | cleared interval')
           }
         if (audio_id.readyState == 4) {
           loadinggg.style.opacity = 0;
-        
-          timesong = timesong + audio_id.duration;
-
-document.getElementById('songtime').innerHTML = "Total time played: " + timesong + "";
+   
+     
            audio_id.play();
 
      
@@ -2343,8 +2350,9 @@ document.getElementById('songtime').innerHTML = "Total time played: " + timesong
  
 
   }
-	  
-	if ("mediaSession" in navigator) {
+
+cov.onload = function() {
+  if ("mediaSession" in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: name,
       artist: '',
@@ -2374,6 +2382,10 @@ else {
       ]
     });
 }
+cov.style.opacity = 1;
+    
+};
+	  
 
   
 	  
@@ -2382,10 +2394,6 @@ else {
 
  console.log(cov.src);
 
-  setTimeout(() => {
-    cov.style.opacity = 1;
-    
-  }, 1500);
   
 
 
@@ -2947,6 +2955,12 @@ else {
 
                                         <li><a onclick="shuffle(235)">Rags 2 Riches</a></li>
 
+                                        <li><a onclick="shuffle(236)">Bikini Bottom</a></li>
+
+                                        <li><a onclick="shuffle(237)">Cha Cha Slide</a></li>
+
+
+                                        <li><a onclick="shuffle(238)">2 Far Gone</a></li>
 
     </ul>
 
