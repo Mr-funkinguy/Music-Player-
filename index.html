@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>	
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1654900800235927"
      crossorigin="anonymous"></script>
@@ -14,6 +14,10 @@
 
   gtag('config', 'G-5REZTEC3DL');
 </script>
+<meta name="description" content="A Music Site">
+<meta
+  http-equiv="Content-Security-Policy"
+  content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Music Now</title>
@@ -608,7 +612,10 @@ body {
 
   
 </style>
-
+<div style="  transition: 0.6s; position: fixed; width: 100%; height: 100%;" id="chat-wrapper">
+    <h1 id="chat-close" onclick="closechat()" style="position: absolute; float: right; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">X</h1>
+    <iframe id="chat" style="border: none; height: 100%; width: 100%;" src=""></iframe>
+</div>
 
     <div id="loader" class="loader-wrapper">    
       <!-- Loading Element -->
@@ -632,14 +639,14 @@ body {
     
     <script>
 
-function setCookie(cname,cvalue) {
-  var dd = 3650;
+function setCookie(cname, cvalue) {
+  var dd = 365;
   const d = new Date();
-  d.setTime(d.getTime() + (dd*24*60*60*1000));
+  d.setTime(d.getTime() + (dd * 24 * 60 * 60 * 1000));
   let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
-    }
-    
+  document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
+}
+
     function getCookie(cname) {
       let name = cname + "=";
       let decodedCookie = decodeURIComponent(document.cookie);
@@ -772,7 +779,7 @@ position: relative;
 <!----------Ui-------->
 <div style="text-align: center;">
  
-<div id="cs_audioplayer">
+<div id="cs_audioplayer" style="transition: 0.5s;">
     
   
   <div>
@@ -804,44 +811,44 @@ position: relative;
      <div>
 
     
-      <span id="cs_play_pause_btn" style="align-items: center; right: -18px; position: relative;">
+      <span id="cs_play_pause_btn" style="transition: 0.5s; align-items: center; right: -18px; position: relative;">
 
         <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_play">play_circle</i>
         <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_pause">pause_circle</i>
       
     </span>
     
-     <div style="border-radius: 25px; width: 70%; top: 10px; margin-left: auto; margin-right: auto;" class="cs_audio_bar">
+     <div style="border-radius: 25px; width: 70%; top: 10px; margin-left: auto; margin-right: auto;" id="audio_bar_wrapper" class="cs_audio_bar">
       
       <span style=" position: relative;margin-top: -20px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="cs_audio_current_time">00:00</span></span>
       
-      <span id="cs_audio_duration" style=" position: relative;margin-top: -20px; margin-right: 5px;float: right;padding-left: 10px;font-size: 0.87em;">00:00</span>
-         <div style="border-radius: 25px;" class="cs_audio_bar_now"></div>
-         <div style="border-radius: 25px;" class="cs_audio_bar_loaded"></div>
+      <span id="cs_audio_duration" style=" position: relative;margin-top: -20px;  margin-right: 5px;float: right;padding-left: 10px;font-size: 0.87em;">00:00</span>
+         <div id="music_now" style="border-radius: 25px;" class="cs_audio_bar_now"></div>
+         <div id="cs_audiodurr" style="border-radius: 25px;" class="cs_audio_bar_loaded"></div>
      </div>
 
      <div>
       <span style="  z-index: 7; position: relative;margin-top: -40px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="song_name">No Song Selected</span></span>
    
       
-      <span id="loopp" style="margin-top: -42px; transform: scale(0.9); margin-left: -105px; position: absolute;" >
+      <span id="loopp" style="margin-top: -42px; transition: 0.5s; transform: scale(0.9); margin-left: -105px; position: absolute;" >
         <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
         <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
       
     </span>
 
-    <span id="prev" style="margin-top: -42px; transform: scale(0.95); margin-left: -135px; position: absolute;" >
+    <span id="prev" style="margin-top: -42px; transition: 0.5s; transform: scale(0.95); margin-left: -135px; position: absolute;" >
       <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_last">skip_previous</i>
     </span>
 
-    <span id="shuffle" style="margin-top: -42px; transform: scale(0.9); margin-left: -30px; position: absolute;" >
+    <span id="shuffle" style="margin-top: -42px; transition: 0.5s; transform: scale(0.9); margin-left: -30px; position: absolute;" >
       <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shu">shuffle</i>
       <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shuff">shuffle_on</i>
     
   </span>
 
-  <span id="next" style="margin-top: -42px; transform: scale(0.9); margin-left: 0px;  position: absolute;" >
-    <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
+  <span id="next" style="transition: 0.5s; margin-top: -42px; transform: scale(0.9); margin-left: 0px;  position: absolute;" >
+    <i class="material-icons loop" style=" z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
   
 </span>
      </div>
@@ -851,6 +858,162 @@ position: relative;
 
 </div>
 </div>
+<script>
+  var pageload = false;
+  const myIframe = document.getElementById('chat');
+  var close_button_chat = document.getElementById('chat-close');
+  var wrapper_chat = document.getElementById('chat-wrapper')
+  var player_music = document.getElementById('cs_audioplayer')
+  var photo_player = document.getElementById('albumcover')
+  var shuffleee = document.getElementById('shuffle')
+  var prevv = document.getElementById('prev')
+  var looppu = document.getElementById('loopp')
+  var nexttu = document.getElementById('next')
+  var play_button_p = document.getElementById('cs_play_pause_btn')
+  var audio_dur3 = document.getElementById('audio_bar_wrapper')
+  var audio_dur4 = document.getElementById('cs_audioplayer')
+  wrapper_chat.style.opacity = 0;
+  wrapper_chat.style.display = 'none'
+
+  var originalPosition = shuffleee.getBoundingClientRect();
+  var originalPosition2 = prevv.getBoundingClientRect();
+  var originalPosition3 = looppu.getBoundingClientRect();
+  var originalPosition4 = nexttu.getBoundingClientRect();
+  shuffleee.style.left = originalPosition.marginLeft + "px";
+    prevv.style.left = originalPosition2.marginLeft + "px";
+    looppu.style.left = originalPosition3.marginLeft + "px";
+    nexttu.style.left = originalPosition4.marginLeft + "px";
+
+console.log(originalPosition)
+  function fadein(id) {
+   
+  
+    document.getElementById(id).style.visibility = 'visible';
+
+    
+      document.getElementById(id).style.opacity = 1;
+
+    
+
+  }
+
+  function closechat() {
+    wrapper_chat.style.opacity = 0;
+    setTimeout(() => {
+      //myIframe.src = '';
+      pageload = true;
+      wrapper_chat.style.display = 'none';
+    }, 600);
+    setTimeout(() => {
+        player_music.style.left = '0%';
+        //player_music.style.width = "50%";
+        var width = 50;
+        var intervalp = setInterval(function() {
+          width++;
+          
+          player_music.style.width = width + "%";
+          //if (width >= 50) {
+          if (width >= 100) {
+           
+            clearInterval(intervalp);
+            //setTimeout(() => {
+            
+              player_music.style.left = '0%';
+            //}, 500);
+            
+          }
+        }, 1);
+      });
+
+    setTimeout(() => {
+          fadein('shuffle');
+          fadein('next');
+          fadein('prev')
+          fadein('loopp')
+
+    }, 650);
+    audio_dur3.style.opacity = 1;
+    
+
+
+  }
+console.log(window.innerWidth)
+  function loadChatC() {
+
+    wrapper_chat.style.display = 'block';
+    setTimeout(() => { 
+      wrapper_chat.style.opacity = 1;
+    }, 1);
+      layoutanim();
+    
+    if (pageload===false) {
+     myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
+      
+        console.log('IFrame has finished loading its content');
+        // You can perform additional actions here
+        loadchat2();
+    } 
+  }
+
+  
+
+ function layoutanim() {
+  //player_music.style.transitionTimingFunction = "linear";
+  
+        //player_music.style.transition = "0.3s";
+        player_music.style.left = '0%';
+        //player_music.style.width = "50%";
+      setTimeout(() => {    
+        var width = 100;
+        var intervalp = setInterval(function() {
+          width-= 1;
+          
+          player_music.style.width = width + "%";
+          //if (width >= 50) {
+          if (width <= 50) {
+            //player_music.style.left = '0%';
+            clearInterval(intervalp);
+           
+            
+          }
+        }, 1);
+      }, 3);
+      audio_dur3.style.opacity = 0.5;
+      
+      
+        player_music.style.left = '50%';
+    
+           
+      //--------------------------
+      
+      function fade(id) {
+        document.getElementById(id).style.opacity = 0;
+        setTimeout(() => {
+          document.getElementById(id).style.visibility = 'hidden';
+
+        }, 500);
+      }
+
+   
+       setTimeout(() => {
+          fade('shuffle');
+          fade('next');
+          fade('prev')
+          fade('loopp')
+       }, 400);
+       
+       
+       
+
+ }
+   
+  function loadchat2() {
+   
+       setTimeout(() => {
+          myIframe.src = 'https://mr-funkinguy.github.io/storage/';
+        }, 1000);
+  }
+</script>
 <!------------------player elements------------------->
 
 <script>
@@ -1141,7 +1304,7 @@ function looppp() {
 
 
 */
-var songsnum = 238;
+var songsnum = 248;
 
 function shuffle(num) {
 
@@ -1930,6 +2093,28 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==241) {
                      cspd_change('PTSD',  'place',  'PTSD')
                       }
+                      if(nuumm==242) {
+                     cspd_change('Alright',  'place',  'Alright')
+                      }
+                      if(nuumm==243) {
+                     cspd_change('Back-To-Back',  'place',  'Back To Back')
+                      }
+                      if(nuumm==244) {
+                     cspd_change('Money-Trees',  'place',  'Money Trees')
+                      }
+                      if(nuumm==245) {
+                     cspd_change('lights-on',  'place',  'lights on')
+                      }
+                      if(nuumm==246) {
+                     cspd_change('escmark',  'place',  '!')
+                      }
+                      if(nuumm==247) {
+                     cspd_change('murked',  'place',  'Murked')
+                      }
+                      if(nuumm==248) {
+                     cspd_change('Evil-Twins-pt.2',  'place',  'Evil Twins pt.2')
+                      }
+
 
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -2471,7 +2656,7 @@ cov.style.opacity = 1;
 <!-------------------------------->
 
    </div>
-    <img class="img" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/guest.png?raw=true"  width="50"height="50">
+    <img class="img" alt="url" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/guest.png?raw=true"  width="50"height="50">
     
     <input type="text" id="mySearch" onkeyup="myFunction()" style="" placeholder="Search.." title="Type in a category">
 
@@ -2493,7 +2678,9 @@ cov.style.opacity = 1;
       <li><a class="tablinks" onclick="openCity(event, 'cat')"> Albums </a></li>
 
       <li><a class="tablinks" onclick="fr()"> Request A Song </a></li>
-     
+
+      <li><a class="tablinks" onclick="loadChatC()"> Open Chat (New) </a></li>
+
       <li><a class="tablinks" id="p"> Install App </a></li>
      
       <hr class="rounded">
@@ -2978,6 +3165,20 @@ cov.style.opacity = 1;
                                         <li><a onclick="shuffle(240)">Honest</a></li>
 
                                         <li><a onclick="shuffle(241)">PTSD</a></li>
+                                       
+                                        <li><a onclick="shuffle(242)">Alright</a></li> 
+
+                                        <li><a onclick="shuffle(243)">Back To Back</a></li>
+
+                                        <li><a onclick="shuffle(244)">Money Trees</a></li>
+
+                                        <li><a onclick="shuffle(245)">Lights On</a></li>
+
+                                        <li><a onclick="shuffle(246)">!</a></li>
+
+                                        <li><a onclick="shuffle(247)">Murked</a></li>
+
+                                        <li><a onclick="shuffle(248)">Evil Twins pt.2</a></li>
 
 
     </ul>
@@ -3101,57 +3302,6 @@ cov.style.opacity = 1;
     
     document.getElementById('songnumm').innerHTML = "There Are Currently " + songsnum + " Songs Availble";
     var storedText;
-
-fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt')
-  .then(function(response) {
-    response.text().then(function(text) {
- //-----------------------------------------------------------------------------------------
-    var parser, xmlDoc;
-var textt = 
-"<title>(2.0.9)</title>";
-
-parser = new DOMParser(); //covert version into text
-xmlDoc = parser.parseFromString(textt,"text/xml");
-
-var ft = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-
-
-
-//-----------------------------------------------------------------------------------------
-
-    theUrl = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ver.txt";
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    console.log(xmlHttp.responseText);
-    console.log(xmlHttp.responseType); //get version
-
-    var ver = xmlHttp.responseText; //unused code just to keep it from loosing its crap
-    parser = new DOMParser(); //covert version into text
-xmlDoc = parser.parseFromString(ver,"text/xml");
-
-var verr = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-//---------------------------------------------------------------------
-
-      var ser = '(2.0.3)';
-      
-      if (ft == verr) {
-        //document.getElementById('ver').textContent =
-       //  'Up-To-Date ' + ft;
-      } else {
-        //document.getElementById('ver').textContent =
-     
-        // 'Outdated! ' + ft;
-        // console.log(text);
-       //  console.log('Oudated Version ' + ft)
-          notice();
-
-      }
-     
-    });
-    
-  });
-  
 
   function notice() {
     setTimeout(function () {
@@ -3597,14 +3747,6 @@ user-select: none; opacity: 0; ">
 
 closePopup();
 
-function setCookie(cname,cvalue) {
-
-      var dd = 3650;
-      const d = new Date();
-  d.setTime(d.getTime() + (dd*24*60*60*1000));
-  let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + "path=/";
-    }
     
     function getCookie(cname) {
       let name = cname + "=";
@@ -3847,11 +3989,16 @@ window.addEventListener("load", () => {
 checkthecolor();
  }
   var s = document.getElementById('loader').style;
+  s.transition = '0.5s';
 
   s.opacity = 1;
+  s.opacity = 0;
+  setTimeout(() => {
+    s.display = 'none';
+  }, 500);
+ // (function fade(){(s.opacity-=.1)<0?s.display="none":setTimeout(fade,40)})();
+  //console.log("The window has finished loading");
 
-  (function fade(){(s.opacity-=.1)<0?s.display="none":setTimeout(fade,40)})();
-  console.log("The window has finished loading");
 });
 
  
