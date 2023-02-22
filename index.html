@@ -15,9 +15,7 @@
   gtag('config', 'G-5REZTEC3DL');
 </script>
 <meta name="description" content="A Music Site">
-<meta
-  http-equiv="Content-Security-Policy"
-  content="" />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Music Now</title>
@@ -612,8 +610,29 @@ body {
 
   
 </style>
+
+
+<div id="cookieNotice" class="light display-right" style="transition: 0.5s; vertical-align: middle; text-align: center; display: none; z-index: 6; position: fixed; width: 100%; height: 100%;  background-color: #353535;">
+  <div id="closeIcon" style="display: none;">
+  </div>
+  <div class="title-wrap">
+      <h4>Cookie Consent</h4>
+  </div>
+  <div class="content-wrap">
+      <div class="msg-wrap">
+          <p>This website uses cookies or similar technologies, to provide analytics and improve your overall experience</p>
+          <div class="btn-wrap">
+              <button class="btn-primary" style="text-decoration: none; border: none; cursor: pointer; border-radius: 25px; background-color: #7e7e7e; width: 150px; height: 50px;" onclick="acceptCookieConsent();">Accept</button>
+              <br>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+
 <div style="  transition: 0.6s; position: fixed; width: 100%; height: 100%;" id="chat-wrapper">
-    <h1 id="chat-close" onclick="closechat()" style="position: absolute; float: right; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">X</h1>
+    <h1 id="chat-close" onclick="closechat()" style="color: #ffffff; position: absolute; left: 1%; float: right; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">X</h1>
     <iframe id="chat" style="border: none; height: 100%; width: 100%;" src=""></iframe>
 </div>
 
@@ -858,6 +877,40 @@ position: relative;
 
 </div>
 </div>
+
+<script>
+
+
+  function deleteCookie(cname) {
+      const d = new Date();
+      d.setTime(d.getTime() + (24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=;" + expires + ";path=/";
+  }
+  
+  
+  function acceptCookieConsent(){
+      deleteCookie('user_cookie_consent');
+      setCookie('user_cookie_consent', 1, 30);
+      document.getElementById("cookieNotice").style.opacity = 0;
+    console.log('cookie screen')
+    setTimeout(() => {
+      document.getElementById("cookieNotice").style.display = "none";
+    }, 500);
+
+  }
+  let cookie_consent = getCookie("user_cookie_consent");
+  if(cookie_consent != ""){
+    document.getElementById("cookieNotice").style.opacity = 0;
+    console.log('cookie screen')
+    setTimeout(() => {
+      document.getElementById("cookieNotice").style.display = "none";
+    }, 500);
+  }else{
+     // document.getElementById("cookieNotice").style.display = "block";
+  }
+  </script>
+
 <script>
   var pageload = false;
   const myIframe = document.getElementById('chat');
@@ -892,7 +945,7 @@ console.log(originalPosition)
 
     
       document.getElementById(id).style.opacity = 1;
-
+      
     
 
   }
@@ -902,6 +955,7 @@ console.log(originalPosition)
     setTimeout(() => {
       //myIframe.src = '';
       pageload = true;
+      blob_vis('hide');
       wrapper_chat.style.display = 'none';
     }, 600);
     setTimeout(() => {
@@ -939,7 +993,8 @@ console.log(originalPosition)
   }
 console.log(window.innerWidth)
   function loadChatC() {
-
+    openCity(event, 'Home')
+    blob_vis('hide');
     wrapper_chat.style.display = 'block';
     setTimeout(() => { 
       wrapper_chat.style.opacity = 1;
@@ -947,10 +1002,7 @@ console.log(window.innerWidth)
       layoutanim();
     
     if (pageload===false) {
-     myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
-      
-        console.log('IFrame has finished loading its content');
-        // You can perform additional actions here
+      myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
         loadchat2();
     } 
   }
@@ -1304,7 +1356,7 @@ function looppp() {
 
 
 */
-var songsnum = 248;
+var songsnum = 252;
 
 function shuffle(num) {
 
@@ -2114,6 +2166,19 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==248) {
                      cspd_change('Evil-Twins-pt.2',  'place',  'Evil Twins pt.2')
                       }
+                      if(nuumm==249) {
+                     cspd_change('goosebumps',  'goosebumps.jpeg',  'Goosebumps')
+                      }
+                      if(nuumm==250) {
+                     cspd_change('Sk8er-Boi',  'place',  'Sk8er Boi')
+                      }
+                      if(nuumm==251) {
+                     cspd_change('FANGED-UPP-DRAIN-YA',  'place',  'FANGED UPP DRAIN YA')
+                      }
+                      if(nuumm==252) {
+                     cspd_change('too-tact',  'place',  'Too Tact')
+                      }
+
 
 
 //var n = Math.floor(Math.random() * songs.length);
@@ -2667,19 +2732,51 @@ cov.style.opacity = 1;
   border-top: 2px solid rgb(136, 136, 136);
   border-radius: 5px;
 }
+
+.blob {
+	background: rgb(49, 49, 49);
+	border-radius: 50%;
+	margin: 0px;
+  float: right;
+	height: 20px;
+	width: 20px;
+  vertical-align: middle;
+	box-shadow: 0 0 0 0 rgb(0, 0, 0);
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
  </style>
 
     <ul id="myMenu">
       
 
       <li><a class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</a></li>
+
 	     <li><a class="tablinks" href="https://google.com">Exit</a></li>
 
       <li><a class="tablinks" onclick="openCity(event, 'cat')"> Albums </a></li>
 
       <li><a class="tablinks" onclick="fr()"> Request A Song </a></li>
 
-      <li><a class="tablinks" onclick="loadChatC()"> Open Chat (New) </a></li>
+      <li><a class="tablinks" onclick="loadChatC()"><div id="blob-new" class="blob"></div> Open Chat (New) </a></li>
 
       <li><a class="tablinks" id="p"> Install App </a></li>
      
@@ -3180,6 +3277,13 @@ cov.style.opacity = 1;
 
                                         <li><a onclick="shuffle(248)">Evil Twins pt.2</a></li>
 
+                                        <li><a onclick="shuffle(249)">Goosebumps</a></li>
+
+                                        <li><a onclick="shuffle(250)">Sk8er Boi</a></li>
+
+                                        <li><a onclick="shuffle(251)">FANGED UPP DRAIN YA</a></li>
+
+                                        <li><a onclick="shuffle(252)">Too Tact</a></li>
 
     </ul>
 
@@ -3202,6 +3306,17 @@ cov.style.opacity = 1;
     <br></br>
     <br></br>
   </div>
+
+<script>
+  function blob_vis(vis) {
+    if(vis==='hide') {
+      document.getElementById('blob-new').style.visibility = 'hidden';
+    }
+    else if(vis==='show') {
+      document.getElementById('blob-new').style.visibility = 'visible';
+    }
+  }
+</script>
 
   <div id="popup">
     <div class="popup-content">
