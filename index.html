@@ -521,12 +521,8 @@ body {
 
   .square {
 
-    position: absolute;
-  height: 50px;
-  width:  max-content;
-  background-color: #232323;
-  top: -20px;
- 
+  
+  
   border-radius: 10px 10px;
   
 }
@@ -793,6 +789,50 @@ position: relative;
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 750px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.9;
+      }
+}
+@media screen and (max-width: 700px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.8;
+      }
+}
+@media screen and (max-width: 650px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.7;
+      }
+}
+@media screen and (max-width: 600px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.6;
+      }
+      
+}
+@media screen and (max-width: 550px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.5;
+      }
+}
+@media screen and (max-width: 500px) {
+      body {
+        width: auto;
+        height: auto;
+        zoom: 0.4;
+      }
+}
 </style>
 
 <!----------Ui-------->
@@ -805,14 +845,13 @@ position: relative;
     <img class="al" id="albumcover" alt="Img Err" style=" transition: 0.2s linear; border-radius: 10px; height: 75px; width: 75px; position: relative; left: -5px; float: left;" src="https://github.com/Mr-funkinguy/Music-Player-/blob/main/albums/place.png?raw=true"  width="250" height="250">
   </div>
   <!---------------Ui With Functions-------------------->
-
   <span hidden id="cs_play_pause_btn" style="position: relative;">
          <i class="far fa-play-circle" id="y"></i>
          <i class="far fa-pause-circle" id="e"></i>
-         <div class="square">
+        
           <span style="margin-left: auto; margin-right: auto;  font-size: 0.87em;"><span  id="song_namee">Hello</span></span>
       
-        </div>
+        
      </span>
 
      <span id="cs_audio_sound" style=" user-select: none; position: relative;right: 5px;float: right;margin-left: 15px;top: 2px;">
@@ -1022,7 +1061,7 @@ console.log(window.innerWidth)
           
           player_music.style.width = width + "%";
           //if (width >= 50) {
-          if (width <= 50) {
+          if (width <= 70) {
             //player_music.style.left = '0%';
             clearInterval(intervalp);
            
@@ -1033,7 +1072,7 @@ console.log(window.innerWidth)
       audio_dur3.style.opacity = 0.5;
       
       
-        player_music.style.left = '50%';
+        player_music.style.left = '30%';
     
            
       //--------------------------
@@ -1356,7 +1395,7 @@ function looppp() {
 
 
 */
-var songsnum = 252;
+var songsnum = 258;
 
 function shuffle(num) {
 
@@ -2179,8 +2218,24 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                      cspd_change('too-tact',  'place',  'Too Tact')
                       }
 
-
-
+                      if(nuumm==253) {
+                     cspd_change('trashey-song',  'place',  'First Class')
+                      }
+                      if(nuumm==254) {
+                     cspd_change('You-Can-Do-It',  'you-can-do-it',  'You Can Do It')
+                      }
+                      if(nuumm==255) {
+                     cspd_change('mylife',  'place',  'm y . l i f e')
+                      }
+                      if(nuumm==256) {
+                     cspd_change('WHATS-POPPIN',  'place',  'WHATS POPPIN')
+                      }
+                      if(nuumm==257) {
+                     cspd_change('oops!',  'place',  'oops!')
+                      }
+                      if(nuumm==258) {
+                     cspd_change('It-Was-A-Good-Day',  'it-was-a-good-day',  'It Was A Good Day')
+                      }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -2494,6 +2549,7 @@ loadinggg.style.opacity = 1;
   //audio_id.load();
   
   document.getElementById('song_name').innerHTML = name;
+ 
       console.log('loaded & cached ' + music);
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     loadinggg.style.opacity = 0;
@@ -2609,10 +2665,13 @@ loadinggg.style.opacity = 1;
  
 
   }
-
+  const artist = audio_id.artist || audio_id.getAttribute('artist');
+    console.log(artist);
 cov.onload = function() {
+
   if ("mediaSession" in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
+     
       title: name,
       artist: '',
       album: '',
@@ -2735,6 +2794,7 @@ cov.style.opacity = 1;
 
 .blob {
 	background: rgb(49, 49, 49);
+ 
 	border-radius: 50%;
 	margin: 0px;
   float: right;
@@ -2744,6 +2804,20 @@ cov.style.opacity = 1;
 	box-shadow: 0 0 0 0 rgb(0, 0, 0);
 	transform: scale(1);
 	animation: pulse 2s infinite;
+}
+
+.blob_warn {
+	background: rgb(255, 153, 0);
+  
+	border-radius: 50%;
+	margin: 0px;
+  float: right;
+	height: 20px;
+	width: 20px;
+  vertical-align: middle;
+	box-shadow: 0 0 0 0 rgb(0, 0, 0);
+	transform: scale(1);
+	animation: pulse2 2s infinite;
 }
 
 @keyframes pulse {
@@ -2762,7 +2836,22 @@ cov.style.opacity = 1;
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 	}
 }
+@keyframes pulse2 {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 217, 0, 0.7);
+	}
 
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 213, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 187, 0, 0);
+	}
+}
  </style>
 
     <ul id="myMenu">
@@ -2776,7 +2865,7 @@ cov.style.opacity = 1;
 
       <li><a class="tablinks" onclick="fr()"> Request A Song </a></li>
 
-      <li><a class="tablinks" onclick="loadChatC()"><div id="blob-new" class="blob"></div> Open Chat (New) </a></li>
+      <li><a class="tablinks" onclick="loadChatC()"><div id="blob-new" class="blob_warn"></div> Open Chat (New) </a></li>
 
       <li><a class="tablinks" id="p"> Install App </a></li>
      
@@ -3284,6 +3373,22 @@ cov.style.opacity = 1;
                                         <li><a onclick="shuffle(251)">FANGED UPP DRAIN YA</a></li>
 
                                         <li><a onclick="shuffle(252)">Too Tact</a></li>
+
+                                        <li><a onclick="shuffle(253)">First Class</a></li>
+
+                                        <li><a onclick="shuffle(254)">You Can Do It</a></li>
+
+                                        <li><a onclick="shuffle(255)">m y . l i f e</a></li>
+                                        
+                                        <li><a onclick="shuffle(256)">WHATS POPPIN</a></li>
+
+                                        <li><a onclick="shuffle(257)">oops!</a></li>
+
+                                        <li><a onclick="shuffle(258)">It Was A Good Day</a></li>
+
+
+
+
 
     </ul>
 
