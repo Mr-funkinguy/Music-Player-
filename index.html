@@ -1038,12 +1038,33 @@ console.log(window.innerWidth)
     setTimeout(() => { 
       wrapper_chat.style.opacity = 1;
     }, 1);
+
       layoutanim();
-    
-    if (pageload===false) {
-      myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
+      
+    if (/CrOS/i.test(navigator.userAgent)) {
+      
+      setTimeout(() => {
+
+            if (pageload===false) {
+              if (confirm('Error Lock.js failed to load | Ignore?')) {
+            // Save it!
+              alert('It Seems That This Page Failed To Load Lock.js | Use At Your Own Risk As Restrictions Have Not Loaded')
+                myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
+                loadchat2();
+              } else {
+            // Do nothing!
+            
+              }
+            } 
+        
+        }, 1000);
+    } else {
+      if (pageload===false) {
+        myIframe.src = 'https://mr-funkinguy.github.io/storage/Loading.html';
         loadchat2();
-    } 
+      }
+      
+    }
   }
 
   
@@ -1409,7 +1430,7 @@ function getRandomInt(num) {
   return Math.floor(Math.random() * songsnum);
   }
 }
-var nuumm = getRandomInt(num);
+var nuumm = getRandomInt();
 console.log(nuumm);
 console.log(num)
 
@@ -2832,6 +2853,20 @@ cov.style.opacity = 1;
 	animation: pulse2 2s infinite;
 }
 
+.blob_down {
+	background: rgb(255, 0, 0);
+  
+	border-radius: 50%;
+	margin: 0px;
+  float: right;
+	height: 20px;
+	width: 20px;
+  vertical-align: middle;
+	box-shadow: 0 0 0 0 rgb(0, 0, 0);
+	transform: scale(1);
+	animation: pulse3 2s infinite;
+}
+
 @keyframes pulse {
 	0% {
 		transform: scale(0.95);
@@ -2864,6 +2899,22 @@ cov.style.opacity = 1;
 		box-shadow: 0 0 0 0 rgba(255, 187, 0, 0);
 	}
 }
+@keyframes pulse3 {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+	}
+}
  </style>
 
     <ul id="myMenu">
@@ -2877,7 +2928,7 @@ cov.style.opacity = 1;
 
       <li><a class="tablinks" onclick="fr()"> Request A Song </a></li>
 
-      <li><a class="tablinks" onclick="loadChatC()"><div id="blob-new" class="blob"></div> Open Chat (New) </a></li>
+      <li><a class="tablinks" onclick="loadChatC()"><div id="blob-new" class="blob_down"></div> Open Chat (New) </a></li>
 
       <li><a class="tablinks" id="p"> Install App </a></li>
      
