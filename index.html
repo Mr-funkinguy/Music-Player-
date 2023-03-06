@@ -1343,13 +1343,16 @@ document.getElementById("cs_on_loop").addEventListener("click", function(){
     
 });
 
+const shufflem = () => {
+  shuffle();
+};
 
 
 document.getElementById("cs_shuff").addEventListener("click", function(){
   document.getElementById("cs_shu").style.display = "inline-block";
     document.getElementById("cs_shuff").style.display = "none";
     shufflee = false;
-    audio_id.removeEventListener('ended', shuffle);
+    audio_id.removeEventListener('ended', shufflem);
     
 });
 
@@ -1358,7 +1361,7 @@ document.getElementById("cs_shuff").addEventListener("click", function(){
 document.getElementById("cs_shu").addEventListener("click", function(){
   document.getElementById("cs_shuff").style.display = "inline-block";
   document.getElementById("cs_shu").style.display = "none";
-  audio_id.addEventListener('ended', shuffle);
+  audio_id.addEventListener('ended', shufflem);
 
 sufflee = true;
 });
@@ -1419,18 +1422,17 @@ function looppp() {
 var songsnum = 262;
 
 function shuffle(num) {
-
-  
-
-function getRandomInt(num) {
   if(num) {
-    nuumm=num
-    return nuumm;
-  } else {
-  return Math.floor(Math.random() * songsnum);
+    var nuumm = num;
   }
+  else 
+  {
+    var nuumm = Math.floor(Math.random() * songsnum);;
+  }
+function getRandomInt(numm) {
+
 }
-var nuumm = getRandomInt();
+
 console.log(nuumm);
 console.log(num)
 
@@ -2268,6 +2270,12 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       }
                       if(nuumm==262) {
                      cspd_change('KNIGHT-CRAWLER',  'place',  'KNIGHT CRAWLER')
+                      }
+                      if(nuumm==263) {
+                     cspd_change('Legends',  'place',  'Legends')
+                      }
+                      if(nuumm==264) {
+                     cspd_change('Smooth-Criminal',  'place',  'Smooth Criminal')
                       }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
@@ -3457,6 +3465,11 @@ cov.style.opacity = 1;
 
                                         <li><a onclick="shuffle(262)">KNIGHT CRAWLER</a></li>
 
+                                        <li><a onclick="shuffle(263)">Legends</a></li>
+
+                                        <li><a onclick="shuffle(264)">Smooth Criminal</a></li>
+
+
 
 
 
@@ -3567,10 +3580,52 @@ cov.style.opacity = 1;
         'GRAD' 0,
         'opsz' 48
       }
+      
       </style>
+
+     
+
     <span class="material-icons gear" onclick="openPopup()" style="position: fixed; cursor: pointer; color: #353535; right: -0px;">
       settings
       </span>
+      <div>
+          <span class="material-icons" onclick="alert('This Shows All The Errors Logged To The Console')" style=" cursor: pointer; position: fixed; color: #353535; right: 55px; ">
+            error
+            </span>
+            <span id="error-count" style=" position: fixed; font-family: Arial, Helvetica, sans-serif; color: #353535; top: 2px; font-size: larger; right: 40px; ">
+              0
+              </span>
+      </div>
+
+      <script>
+        var loggederrors = 0;
+
+        function addAndUpdate() {
+          loggederrors++
+
+          document.getElementById('error-count').innerHTML = loggederrors;
+        }
+        const myFunctionh = () => {
+            // Code that may throw an error
+            undefinedFunction();
+            loggederrors--
+          };
+                // Define the action to perform on error
+        function handleErrors (message, source, lineno, colno, error)  {
+          loggederrors++
+          
+          document.getElementById('error-count').innerHTML = loggederrors;
+        };
+
+        // Set the global error handler
+          window.onerror = handleErrors();
+
+        
+
+          // Call the function and handle any errors
+          
+
+      </script>
 
 <div id="Home" class="tabcontent">
   <h2 id="demo" class="msg"></h2>
