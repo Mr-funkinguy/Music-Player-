@@ -902,16 +902,20 @@ position: relative;
 
      <span id="cs_audio_sound" class="AudioSoundPart" style="">
 
+     
       <i id="speed" style="cursor: pointer; color: white; vertical-align: middle; font-family: Arial, Helvetica, sans-serif;">1.5X</i>
 
 
          <i style="cursor: pointer; transition: 0.5s;  vertical-align: middle;font-size: 20px; " class="material-icons">volume_up</i>
+         <i id="BigScreenButton" onclick="openLarge()" style=" cursor: pointer; transition: 0.5s; background-color: #6b6b6b; border-radius: 15px; vertical-align: middle;font-size: 20px; position: absolute; right: 0; top: 30px;" class="material-icons">expand_less</i>
+   
       
          <div class="cs_volBar" type="range" min="1" max="100" value="50" style="transition: 0.5s; height: 8px; border-radius: 35px; width: 75px;background-color: rgb(94, 94, 94);display: inline-block;cursor: pointer;">
            <div class="cs_volume" style=" height: 8px; border-radius: 25px; width: 25px; background-color: rgb(255, 255, 255);position: absolute;"></div>
          </div>
 
      </span>
+     
      <div id="AudioBarW">
 
     
@@ -1324,7 +1328,10 @@ var audio_id = document.getElementById("cs_audio");
 
 
 //----------------------------------------------------------
-    
+var fileNameLyrics = ""
+var lyrics_display = document.getElementById("captionsForSong");
+       
+var CCOn = false;
 audio_id.ontimeupdate = function() {
 	    var audio_currentTime = audio_id.currentTime;
       
@@ -1349,36 +1356,42 @@ audio_id.ontimeupdate = function() {
          
         var audio = document.getElementById("audio_id");
         var lyrics_display = document.getElementById("captionsForSong");
-        var fileNameLyrics = ""
-        var lrc_url = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ballin.lrc";
+       
+        var lrc_url = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/Lyrics/" + fileNameLyrics + ".lrc";
 
 
         var currentTime = audio_id.currentTime;
 
         function displayLyrics(lyrics) {
-   
+          if(lyrics_display.innerHTML==="Lyrics Not Avalible For This Song.") {
+            lyrics_display.innerHTML = ""
+          } else if(CCOn===true) {
             lyrics_display.innerHTML = lyrics;
-      
+          }
         
           
         }
-        
+      
         function getLyrics() {
+          //console.log('check1')
             fetch(lrc_url)
-                .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                 lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
+                }
+                return response.text();
+                })
                 .then(data => {
                     var lrc_text = data;
                     var lyrics = parseLrc(lrc_text, currentTime);
-                    if(lyrics === "") {
-                      lyrics_display.innerHTML = "Lyrics Not Avalible For This Song.";
-                    } else {
+                  
                     displayLyrics(lyrics);
-                    }
-                    console.log(lyrics)
+                    
+                   // console.log(lrc_url)
                 })
                 .catch(error => console.error(error));
         }
-        
+      
         function parseLrc(lrc_text, currentTime) {
             var lines = lrc_text.split('\n');
             var result = '';
@@ -2445,6 +2458,12 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==268) {
                      cspd_change('over the Rainbow',  'place',  'Somewhere over the Rainbow')
                       }
+                      if(nuumm==269) {
+                     cspd_change('Middle-Child',  'place',  'Middle Child')
+                      }
+                      if(nuumm==270) {
+                     cspd_change('Is-Ya-Ready',  'place',  'Is Ya Ready')
+                      }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -2763,6 +2782,10 @@ loadinggg.style.opacity = 1;
   audio_id.pause();
          console.log(music);
   //audio_id.load();
+  var lyrics_display4 = document.getElementById("captionsForSong");
+
+lyrics_display4.innerHTML = ""
+ fileNameLyrics = music
   
   document.getElementById('song_name').innerHTML = name;
  
@@ -3123,7 +3146,7 @@ cov.style.opacity = 1;
 
       <li><a class="tablinks" onclick="openCity(event, 'cat')"> Albums </a></li>
 
-      <li><a class="tablinks" onclick="openLarge()"> Request A Song </a></li>
+      <li><a class="tablinks" onclick="fr()"> Request A Song </a></li>
 
       <li><a class="tablinks" href="https://forms.gle/hSvLKdMa1hiZanff6"> Website Feature Request </a></li>
 
@@ -3670,6 +3693,9 @@ cov.style.opacity = 1;
 
                                         <li><a onclick="shuffle(268)">Somewhere over the Rainbow</a></li>
 
+                                        <li><a onclick="shuffle(269)">Middle Child</a></li>
+
+                                        <li><a onclick="shuffle(270)">Is Ya Ready</a></li>
 
     </ul>
 
@@ -3837,7 +3863,9 @@ cov.style.opacity = 1;
         close
        
       </span>
+    
   </div>
+  <i id="CCbutton" onclick="onOffCC()" style="background-color: #232323; border-radius: 10px; cursor: pointer; transition: 0.5s; color: white; vertical-align: middle; right: 5%; position: absolute; font-size: 30px;  " class="material-icons">closed_caption</i>
 
   <Div style="top: 15%; position: relative;" id="songInfoPanel">
     <h3 style=" z-index: 7;  position: absolute; top: 45px;  color: white;   font-size: medium;  left: 520px;" id="captionsForSong"></h3>
@@ -3847,10 +3875,43 @@ cov.style.opacity = 1;
 
 <script>
 
+
+
+var Fullcover = document.getElementById("albumcover");
+var AudioElement00 = document.getElementById('cs_audio');
 var screenlarge =  document.getElementById('bigscreend');
+var shinkTEst2 = false
+var lyrics_display3 = document.getElementById("captionsForSong");
+       
+var BigScreenButtonITEM = document.getElementById('BigScreenButton')
+var CCITEM = document.getElementById('CCbutton')
+
+function onOffCC() {
+  if(CCOn===false) {
+    CCOn = true
+    CCITEM.style.color = "Grey"
+  } else if (CCOn === true) {
+    CCOn = false
+    
+    CCITEM.style.color = "white"
+    lyrics_display3.innerHTML = ""
+  }
+}
+
+function shrink1() {
+  if(shinkTEst2===false) {
+    Fullcover.style.transform = "scale(1)"
+  } else if (shinkTEst2===true) {
+    Fullcover.style.transform = "scale(0.9)"
+  }
+}
+
+function resetSize1() {
+  Fullcover.style.transform = "scale(1)"
+}
 
 function closeLarge() {
-
+BigScreenButtonITEM.style.display = "block"
   var ui = document.getElementById('UI')
 var songPlayer = document.getElementById("cs_audioplayer");
 
@@ -3858,7 +3919,7 @@ var songPlayer = document.getElementById("cs_audioplayer");
 songPlayer.appendChild(ui);
 
 //set up audio bar
-
+CCITEM.visibility = "hidden"
 BigOrSmall = false
 
 //Options Variables
@@ -3900,7 +3961,9 @@ LoopPartITEM.classList.remove("ContainerForLoop2");
     playButtonITEM.classList.add("PlayButtonWrapper");
     playButtonITEM.classList.remove("PlayButtonWrapperBig");
 
+    shinkTEst2 = false
 
+      Fullcover.style.transform = "scale(1)"
 //screen
 var screenbig = document.getElementById("bigscreend");
 var songPlayerName = document.getElementById("SongNameDivPlayer");
@@ -3913,7 +3976,7 @@ setTimeout(() => {
 
 }, 500);
 //items
-var Fullcover = document.getElementById("albumcover");
+
 var SongNameBig = document.getElementById("song_name");
 
 //Cover Image
@@ -3942,13 +4005,13 @@ songPlayerName.appendChild(SongNameBig);
    //screen and pannels
    var screenbig = document.getElementById("bigscreend");
    var songPanel = document.getElementById("songInfoPanel");
-
+    CCITEM.style.visibility = "visable"
    screenbig.classList.add("visible");
      
    //set up audio bar
 
    BigOrSmall = true
-
+    BigScreenButtonITEM.style.display = "none"
     //Options Variables
     var ui = document.getElementById('UI')
     var audioBarITEM = document.getElementById('audio_bar_wrapper')
@@ -4002,20 +4065,18 @@ songPlayerName.appendChild(SongNameBig);
     Fullcover.classList.remove('al');
     Fullcover.classList.add('SetAlbumCoverforbig');
 
-    var AudioElement00 = document.getElementById('cs_audio');
+  
     
     //pause/play
-      AudioElement00.addEventListener("pause", function() {
-        Fullcover.style.transform = "scale(0.8)"
-      });
-      AudioElement00.addEventListener("play", function() {
-        Fullcover.style.transform = "scale(1)"
-      });
+   
+      AudioElement00.addEventListener("pause", shrink1);
+      AudioElement00.addEventListener("play", resetSize1);
+ 
 
       //Song Name
       SongNameBig.classList.remove('SongName');
       SongNameBig.classList.add('BigSongName');
-
+      shinkTEst2 = true
       //Add Child Mian Items
     songPanel.appendChild(Fullcover);
     songPanel.appendChild(SongNameBig);
