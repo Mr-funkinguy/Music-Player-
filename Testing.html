@@ -430,9 +430,13 @@ body {
 
 		.cs_audio_bar {
 			background-color: rgba(84, 84, 84, 0.531);
-			width: 100%;
+		
 			height: 6px;
-     
+      border-radius: 25px;
+       width: 70%; 
+       top: 10px;
+        margin-left: auto;
+         margin-right: auto;
 			position: relative;
 			cursor: pointer;
 			transition: 0.1s;
@@ -841,6 +845,39 @@ position: relative;
         zoom: 0.4;
       }
 }
+
+.PlayAndPauseButton {
+  z-index: 5 !important;
+  margin-left: auto !important;
+   margin-right: auto !important; 
+   user-select: none !important;
+    font-size:35px !important;
+     top: 3px !important;
+}
+.PlayButtonWrapper {
+  transition: 0.5s; 
+  align-items: center; 
+  right: -18px; 
+  position: relative;
+}
+
+.cs_audioDUR {
+  position: relative;
+  margin-top: -20px; 
+   margin-right: 5px;
+   float: right;
+   padding-left: 10px;
+   font-size: 0.87em;
+}
+
+.AudioSoundPart {
+  user-select: none; 
+  position: relative;
+  right: 5px;
+  float: right;
+  margin-left: 15px;
+  top: 2px;
+}
 </style>
 
 <!----------Ui-------->
@@ -854,16 +891,16 @@ position: relative;
   </div>
   <!---------------Ui With Functions-------------------->
   <div id="UI">
-  <span hidden id="cs_play_pause_btn" style="position: relative;">
+  <span hidden id="cs_play_pause_btn2" style="position: relative;">
          <i class="far fa-play-circle" id="y"></i>
          <i class="far fa-pause-circle" id="e"></i>
         
-          <span style="margin-left: auto; margin-right: auto;  font-size: 0.87em;"><span  id="song_namee">Hello</span></span>
+          <span style="margin-left: auto; margin-right: auto;  font-size: 0.87em;"><span  id="song_namee">Unused Item</span></span>
       
         
      </span>
 
-     <span id="cs_audio_sound" style=" user-select: none; position: relative;right: 5px;float: right;margin-left: 15px;top: 2px;">
+     <span id="cs_audio_sound" class="AudioSoundPart" style="">
 
       <i id="speed" style="cursor: pointer; color: white; vertical-align: middle; font-family: Arial, Helvetica, sans-serif;">1.5X</i>
 
@@ -875,21 +912,21 @@ position: relative;
          </div>
 
      </span>
-     <div>
+     <div id="AudioBarW">
 
     
-      <span id="cs_play_pause_btn" style="transition: 0.5s; align-items: center; right: -18px; position: relative;">
+      <span id="cs_play_pause_btn" class="PlayButtonWrapper" style="">
 
-        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_play">play_circle</i>
-        <i class="material-icons" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: 3px;" id="cs_audio_pause">pause_circle</i>
+        <i class="material-icons PlayAndPauseButton" style="" id="cs_audio_play">play_circle</i>
+        <i class="material-icons PlayAndPauseButton" style="" id="cs_audio_pause">pause_circle</i>
       
     </span>
     
-     <div style="border-radius: 25px; width: 70%; top: 10px; margin-left: auto; margin-right: auto;" id="audio_bar_wrapper" class="cs_audio_bar">
+     <div style="" id="audio_bar_wrapper" class="cs_audio_bar">
       
       <span style=" position: relative;margin-top: -20px; margin-left: -5px;float: left;padding-left: 10px;font-size: 0.87em;"><span id="cs_audio_current_time">00:00</span></span>
       
-      <span id="cs_audio_duration" style=" position: relative;margin-top: -20px;  margin-right: 5px;float: right;padding-left: 10px;font-size: 0.87em;">00:00</span>
+      <span id="cs_audio_duration" class="cs_audioDUR" style="">00:00</span>
          <div id="music_now" style="border-radius: 25px;" class="cs_audio_bar_now"></div>
          <div id="cs_audiodurr" style="border-radius: 25px;" class="cs_audio_bar_loaded"></div>
      </div>
@@ -904,27 +941,65 @@ position: relative;
           padding-left: 10px;
           font-size: 0.87em;
         }
+        .loop {
+          z-index: 6;
+           margin-left: auto;
+            margin-right: auto; 
+            user-select: none; 
+            font-size:35px;
+             top: -20px;
+        }
+        .ContainerForLoop {
+          margin-top: -42px; 
+          transition: 0.5s; 
+          transform: scale(0.9); 
+          margin-left: -105px; 
+          position: absolute;
+        }
+        .shuffleContainer {
+          margin-top: -42px; 
+          transition: 0.5s; 
+          transform: scale(0.9);
+           margin-left: -30px;
+            position: absolute;
+        }
+        .nextButton {
+          transition: 0.5s; 
+          margin-top: -42px;
+           transform: scale(0.9);
+            margin-left: 0px; 
+            cursor: pointer;
+             position: absolute;
+        }
+        .prevButton {
+          margin-top: -42px; 
+          transition: 0.5s; 
+          transform: scale(0.95); 
+          margin-left: -135px; 
+          position: absolute;
+        }
+        
       </style>
       <span class="SongName" style=""><span id="song_name">No Song Selected</span></span>
    
       
-      <span id="loopp" style="margin-top: -42px; transition: 0.5s; transform: scale(0.9); margin-left: -105px; position: absolute;" >
-        <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_loop">repeat</i>
-        <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_on_loop">repeat_on</i>
+      <span id="loopp" class="ContainerForLoop" style="" >
+        <i class="material-icons loop" style="" id="cs_loop">repeat</i>
+        <i class="material-icons loop" style="" id="cs_on_loop">repeat_on</i>
       
     </span>
 
-    <span id="prev" style="margin-top: -42px; transition: 0.5s; transform: scale(0.95); margin-left: -135px; position: absolute;" >
+    <span id="prev" class="prevButton" style="" >
       <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_last">skip_previous</i>
     </span>
 
-    <span id="shuffle" style="margin-top: -42px; transition: 0.5s; transform: scale(0.9); margin-left: -30px; position: absolute;" >
+    <span id="shuffle" class="shuffleContainer" style="" >
       <i class="material-icons loop" style="z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shu">shuffle</i>
       <i class="material-icons loop" style="z-index: 5; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_shuff">shuffle_on</i>
     
   </span>
 
-  <span id="next" style="transition: 0.5s; margin-top: -42px; transform: scale(0.9); margin-left: 0px;  position: absolute;" >
+  <span id="next" class="nextButton" style="" >
     <i class="material-icons loop" style=" z-index: 6; margin-left: auto; margin-right: auto; user-select: none; font-size:35px; top: -20px;" id="cs_skip">skip_next</i>
   
 </span>
@@ -1275,6 +1350,8 @@ audio_id.ontimeupdate = function() {
         var audio = document.getElementById("audio_id");
         var lyrics_display = document.getElementById("captionsForSong");
         var lrc_url = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/ballin.lrc";
+
+
         var currentTime = audio_id.currentTime;
 
         function displayLyrics(lyrics) {
@@ -1291,7 +1368,12 @@ audio_id.ontimeupdate = function() {
                 .then(data => {
                     var lrc_text = data;
                     var lyrics = parseLrc(lrc_text, currentTime);
+                    if(lyrics === "") {
+                      lyrics_display.innerHTML = "Lyrics Not Avalible For This Song.";
+                    } else {
                     displayLyrics(lyrics);
+                    }
+                    console.log(lyrics)
                 })
                 .catch(error => console.error(error));
         }
@@ -2572,15 +2654,22 @@ audio_id.addEventListener('progress', function()
 
 
 
-
+var BigOrSmall = false
 //----------------------------------------------------------
 // Change current play on click 
 document.getElementsByClassName("cs_audio_bar")[0].addEventListener("click", vCurrentBarFun);
 function vCurrentBarFun(event) {
+  if(BigOrSmall === false) {
   vCurrentBarWidth = event.clientX - document.getElementsByClassName("cs_audio_bar")[0].offsetLeft;
+  } else if (BigOrSmall === true) {
+    vCurrentBarWidth = event.clientX - document.getElementsByClassName("cs_audio_bar2")[0].offsetLeft;
+  }
   document.getElementsByClassName("cs_audio_bar_now")[0].style.width = vCurrentBarWidth+"px";
+  if(BigOrSmall === false) {
   audio_id.currentTime = (((vCurrentBarWidth / document.getElementsByClassName("cs_audio_bar")[0].offsetWidth)*100)/100) * audio_id.duration;
-
+  } else if (BigOrSmall === true) {
+    audio_id.currentTime = (((vCurrentBarWidth / document.getElementsByClassName("cs_audio_bar2")[0].offsetWidth)*100)/100) * audio_id.duration;
+  }
 }
 
 
@@ -3637,9 +3726,9 @@ cov.style.opacity = 1;
    border-radius: 10px;
     height: 200px;
      width: 200px; 
-     position: relative; 
-     left: 5%; 
-     top: 15%;
+     position: absolute; 
+     left: 300px; 
+     top: 20px;
 
     }
 
@@ -3649,10 +3738,94 @@ cov.style.opacity = 1;
     top: 25px;
     color: white; 
     font-size: larger;
-    left: 260px;
+    left: 515px;
   
   }
 
+  .PlayAndPauseButtonBig {
+  z-index: 5 !important;
+  margin-left: auto !important;
+   margin-right: auto !important; 
+   user-select: none !important;
+    font-size:35px !important;
+     top: 10px !important;
+}
+
+.PlayButtonWrapperBig {
+  transition: 0.5s; 
+  color: white;
+  right: 49.5%; 
+  transform: scale(1.5);
+  top: 75%;
+  position: absolute;
+}
+
+
+.cs_audio_bar2 {
+			background-color: rgba(16, 16, 16, 0.531);
+		
+			height: 6px;
+      border-radius: 25px;
+       width: 70%; 
+       top: 85%;
+        left: 15%;
+        color: white;
+			position: absolute;
+			cursor: pointer;
+			transition: 0.1s;
+		}
+
+    .AudioSoundPart2 {
+      user-select: none; 
+      position: absolute;
+      right: 7%;
+      
+      color: white;
+      top: 75%;
+    }
+
+    .loop2 {
+          z-index: 6;
+          position: absolute;
+            user-select: none; 
+            font-size:35px;
+            left: 0;
+             top: 0;
+        }
+
+        .ContainerForLoop2 {
+          top: 76%; 
+          transition: 0.5s; 
+          transform: scale(1.2); 
+          left: 42%; 
+          color: white;
+          position: absolute;
+        }
+        .shuffleContainer2 {
+          top: 76%; 
+          color: white;
+          transition: 0.5s; 
+          transform: scale(1.2);
+           right: 42%;
+            position: absolute;
+        }
+        .nextButton2 {
+          transition: 0.5s; 
+          color: white;
+          top: 76%;
+           transform: scale(1.2);
+            left: 59%; 
+             position: absolute;
+        }
+
+        .prevButton2 {
+          top: 76%; 
+          transition: 0.5s; 
+          transform: scale(1.2); 
+          color: white;
+          left: 38%; 
+          position: absolute;
+        }
 </style>
 
 
@@ -3666,7 +3839,7 @@ cov.style.opacity = 1;
   </div>
 
   <Div style="top: 15%; position: relative;" id="songInfoPanel">
-    <h3 style=" z-index: 7;  position: absolute; top: 45px;  color: white;   font-size: medium;  left: 260px;" id="captionsForSong">If You See This Then Captions Have not loaded.</h3>
+    <h3 style=" z-index: 7;  position: absolute; top: 45px;  color: white;   font-size: medium;  left: 520px;" id="captionsForSong"></h3>
 
   </Div>
 </div>
@@ -3680,11 +3853,58 @@ function closeLarge() {
   var ui = document.getElementById('UI')
 var songPlayer = document.getElementById("cs_audioplayer");
 
+//add UI back to player
 songPlayer.appendChild(ui);
+
+//set up audio bar
+
+BigOrSmall = false
+
+//Options Variables
+
+var audioBarITEM = document.getElementById('audio_bar_wrapper')
+var VolumePartITEM = document.getElementById('cs_audio_sound')
+var playButtonITEM = document.getElementById('cs_play_pause_btn')
+var LoopPartITEM = document.getElementById('loopp')
+var ShufflePartITEM = document.getElementById('shuffle')
+var NextPartITEM = document.getElementById('next')
+var PrevPartITEM = document.getElementById('prev')
+
+//option class edit
+PrevPartITEM.classList.add("prevButton");
+PrevPartITEM.classList.remove("prevButton2");
+
+
+NextPartITEM.classList.add("nextButton");
+NextPartITEM.classList.remove("nextButton2");
+
+
+ShufflePartITEM.classList.add("shuffleContainer");
+ShufflePartITEM.classList.remove("shuffleContainer2");
+
+
+LoopPartITEM.classList.add("ContainerForLoop");
+LoopPartITEM.classList.remove("ContainerForLoop2");
+
+  //audio part class edit
+
+  VolumePartITEM.classList.add("AudioSoundPart");
+    VolumePartITEM.classList.remove("AudioSoundPart2");
+
+    // audio duration class edit
+    audioBarITEM.classList.add("cs_audio_bar");
+    audioBarITEM.classList.remove("cs_audio_bar2");
+
+    //play button class edit
+    playButtonITEM.classList.add("PlayButtonWrapper");
+    playButtonITEM.classList.remove("PlayButtonWrapperBig");
+
+
 //screen
 var screenbig = document.getElementById("bigscreend");
 var songPlayerName = document.getElementById("SongNameDivPlayer");
 
+//close animation
 screenbig.classList.remove("visible");
 screenbig.classList.add("disabled");
 setTimeout(() => {
@@ -3718,22 +3938,61 @@ songPlayerName.appendChild(SongNameBig);
 
   function openLarge() {
 
-   //screen
+   //screen and pannels
    var screenbig = document.getElementById("bigscreend");
    var songPanel = document.getElementById("songInfoPanel");
 
    screenbig.classList.add("visible");
      
+   //set up audio bar
 
-//Options Variables
+   BigOrSmall = true
 
-var ui = document.getElementById('UI')
+    //Options Variables
+    var ui = document.getElementById('UI')
+    var audioBarITEM = document.getElementById('audio_bar_wrapper')
+    var VolumePartITEM = document.getElementById('cs_audio_sound')
+    var playButtonITEM = document.getElementById('cs_play_pause_btn')
+    var LoopPartITEM = document.getElementById('loopp')
+    var ShufflePartITEM = document.getElementById('shuffle')
+    var NextPartITEM = document.getElementById('next')
+    var PrevPartITEM = document.getElementById('prev')
+
+    //add the UI
+    screenbig.appendChild(ui);
+
+    //option class edit
+    PrevPartITEM.classList.remove("prevButton");
+    PrevPartITEM.classList.add("prevButton2");
 
 
-  screenbig.appendChild(ui);
+    NextPartITEM.classList.remove("nextButton");
+    NextPartITEM.classList.add("nextButton2");
 
+
+    ShufflePartITEM.classList.remove("shuffleContainer");
+    ShufflePartITEM.classList.add("shuffleContainer2");
+
+
+    LoopPartITEM.classList.remove("ContainerForLoop");
+    LoopPartITEM.classList.add("ContainerForLoop2");
+
+    //make sure its visable
     screenbig.classList.add("visible");
      
+    //audio part class edit
+
+    VolumePartITEM.classList.remove("AudioSoundPart");
+    VolumePartITEM.classList.add("AudioSoundPart2");
+
+    // audio duration class edit
+    audioBarITEM.classList.remove("cs_audio_bar");
+    audioBarITEM.classList.add("cs_audio_bar2");
+
+    //play button class edit
+    playButtonITEM.classList.remove("PlayButtonWrapper");
+    playButtonITEM.classList.add("PlayButtonWrapperBig");
+
     //items
     var Fullcover = document.getElementById("albumcover");
     var SongNameBig = document.getElementById("song_name");
