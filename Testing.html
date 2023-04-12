@@ -1330,8 +1330,11 @@ var audio_id = document.getElementById("cs_audio");
 //----------------------------------------------------------
 var fileNameLyrics = ""
 var lyrics_display = document.getElementById("captionsForSong");
-       
+var loadCompleteLyrics = false       
 var CCOn = false;
+var A00Lyrics;
+var lyricsLoaded = false;
+
 audio_id.ontimeupdate = function() {
 	    var audio_currentTime = audio_id.currentTime;
       
@@ -1356,7 +1359,7 @@ audio_id.ontimeupdate = function() {
          
         var audio = document.getElementById("audio_id");
         var lyrics_display = document.getElementById("captionsForSong");
-       
+       var DataLyrics;
         var lrc_url = "https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/Lyrics/" + fileNameLyrics + ".lrc";
 
 
@@ -1372,25 +1375,57 @@ audio_id.ontimeupdate = function() {
           
         }
       
-        function getLyrics() {
+        /*function getLyrics() {
           //console.log('check1')
+          
+         
             fetch(lrc_url)
-            .then(response => {
+              .then(response => {
                 if (!response.ok) {
-                 lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
+                  //lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
                 }
                 return response.text();
-                })
-                .then(data => {
-                    var lrc_text = data;
-                    var lyrics = parseLrc(lrc_text, currentTime);
-                  
-                    displayLyrics(lyrics);
-                    
-                   // console.log(lrc_url)
-                })
-                .catch(error => console.error(error));
+              })
+              .then(text => {
+                data = text;
+                var lrc_text = data;
+                var lyrics = parseLrc(lrc_text, currentTime);
+                displayLyrics(lyrics);
+                loadCompleteLyrics = true;
+              })
+              .catch(error => console.error(error));
+    
+      }*/
+
+      function getLyrics() {
+        //console.log(lyricsLoaded)
+        if (lyricsLoaded===false) {
+         // console.log('DEBUG')
+          fetch(lrc_url)
+            .then(response => {
+              if (!response.ok) {
+                //lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
+              }
+              return response.text();
+            })
+            .then(text => {
+              data = text;
+              var lrc_text = data;
+              var lyrics = parseLrc(lrc_text, currentTime);
+              displayLyrics(lyrics);
+              lyricsLoaded = true;
+              A00Lyrics = text
+            })
+            .catch(error => console.error(error));
+            
+          
+        } else {
+          var lrc_text = A00Lyrics;
+          var lyrics = parseLrc(lrc_text, currentTime);
+          displayLyrics(lyrics);
         }
+      }
+
       
         function parseLrc(lrc_text, currentTime) {
             var lines = lrc_text.split('\n');
@@ -2782,6 +2817,7 @@ loadinggg.style.opacity = 1;
   audio_id.pause();
          console.log(music);
   //audio_id.load();
+  lyricsLoaded = false
   var lyrics_display4 = document.getElementById("captionsForSong");
 
 lyrics_display4.innerHTML = ""

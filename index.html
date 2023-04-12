@@ -1330,8 +1330,12 @@ var audio_id = document.getElementById("cs_audio");
 //----------------------------------------------------------
 var fileNameLyrics = ""
 var lyrics_display = document.getElementById("captionsForSong");
-       
+var loadCompleteLyrics = false       
 var CCOn = false;
+var A00Lyrics;
+var lyricsLoaded = false;
+
+
 audio_id.ontimeupdate = function() {
 	    var audio_currentTime = audio_id.currentTime;
       
@@ -1373,24 +1377,33 @@ audio_id.ontimeupdate = function() {
         }
       
         function getLyrics() {
-          //console.log('check1')
-            fetch(lrc_url)
+        //console.log(lyricsLoaded)
+        if (lyricsLoaded===false) {
+         // console.log('DEBUG')
+          fetch(lrc_url)
             .then(response => {
-                if (!response.ok) {
-                 lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
-                }
-                return response.text();
-                })
-                .then(data => {
-                    var lrc_text = data;
-                    var lyrics = parseLrc(lrc_text, currentTime);
-                  
-                    displayLyrics(lyrics);
-                    
-                   // console.log(lrc_url)
-                })
-                .catch(error => console.error(error));
+              if (!response.ok) {
+                //lyrics_display.innerHTML = "Lyrics Not Avalible For This Song."
+              }
+              return response.text();
+            })
+            .then(text => {
+              data = text;
+              var lrc_text = data;
+              var lyrics = parseLrc(lrc_text, currentTime);
+              displayLyrics(lyrics);
+              lyricsLoaded = true;
+              A00Lyrics = text
+            })
+            .catch(error => console.error(error));
+            
+          
+        } else {
+          var lrc_text = A00Lyrics;
+          var lyrics = parseLrc(lrc_text, currentTime);
+          displayLyrics(lyrics);
         }
+      }
       
         function parseLrc(lrc_text, currentTime) {
             var lines = lrc_text.split('\n');
@@ -1588,7 +1601,7 @@ function looppp() {
 
 
 */
-var songsnum = 267;
+var songsnum = 273;
 
 function shuffle(num) {
   if(num) {
@@ -2464,6 +2477,15 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==270) {
                      cspd_change('Is-Ya-Ready',  'place',  'Is Ya Ready')
                       }
+                      if(nuumm==271) {
+                     cspd_change('Baguettes-in-the-Face',  'ballin',  'Baguettes in the Face')
+                      }
+                      if(nuumm==272) {
+                     cspd_change('High-Fashion',  'box.jpeg',  'High Fashion')
+                      }
+                      if(nuumm==273) {
+                     cspd_change('Rich-Flex',  'place',  'Rich Flex')
+                      }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -2783,7 +2805,7 @@ loadinggg.style.opacity = 1;
          console.log(music);
   //audio_id.load();
   var lyrics_display4 = document.getElementById("captionsForSong");
-
+  lyricsLoaded = false
 lyrics_display4.innerHTML = ""
  fileNameLyrics = music
   
@@ -3697,6 +3719,12 @@ cov.style.opacity = 1;
 
                                         <li><a onclick="shuffle(270)">Is Ya Ready</a></li>
 
+                                        <li><a onclick="shuffle(271)">Baguettes in the Face</a></li>
+
+                                        <li><a onclick="shuffle(272)">High Fashion</a></li>
+
+                                        <li><a onclick="shuffle(273)">Rich Flex</a></li>
+
     </ul>
 
 
@@ -3857,8 +3885,8 @@ cov.style.opacity = 1;
 
 
 <div id="bigscreend" style=" width: 100%; height: 100%; z-index: 1; background-color: #535252;  position: fixed;">
-  <div id="CloseButtonBig" style="cursor: pointer; border-radius: 0px 0px 15px 15px; top: 0; transform: translate(-50%, -0%); position: relative; left: 50%; width: 100px; height: 30px; background-color: #232323;">
-    <span class="material-icons" onclick="closeLarge()" style="transform: translate(-50%, -0%); color: white; position: relative; left: 50%;">
+  <div id="CloseButtonBig"onclick="closeLarge()"  style="cursor: pointer; border-radius: 0px 0px 15px 15px; top: 0; transform: translate(-50%, -0%); position: relative; left: 50%; width: 100px; height: 30px; background-color: #232323;">
+    <span class="material-icons"  style="transform: translate(-50%, -0%); color: white; position: relative; left: 50%;">
     
         close
        
