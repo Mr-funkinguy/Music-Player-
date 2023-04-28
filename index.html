@@ -701,7 +701,7 @@ body {
   
 </style>
 
-<div id="AlertCard!" style="display: none; z-index: 900; background-color: #232323a8; width: 100%; height: 100%; position: fixed;">
+<div id="AlertCard!" style=" z-index: 900; background-color: #232323a8; width: 100%; height: 100%; position: fixed;">
 <div class="card">
   <div class="header">
     <span class="icon">
@@ -713,20 +713,20 @@ body {
   </div>
 
   <p class="message">
-    The Site Could Not Load A Script!
+      A One Time offer is avalible where you can get a website made for you!
    
   </p>
   <p class="message">
-    Check The Site Status For Fixes (If Available) Or Go To the Lastest Stable Version
+    Do you want to check it out before it goes away?
   </p>
  
   <div class="actions">
-    <a class="read" href="https://mr-funkinguy.github.io/Music-Player-/status.html">
-      Check Site Status
+    <a class="read" href="https://forms.gle/wT2R5C9xU1eF6MXTA">
+      Check It Out
     </a>
 
-    <a class="mark-as-read" href="https://mr-funkinguy.github.io/Music-Player-/VersionBack.html?Version=V6.0.9Stable&&LoadAPI=False&&IsLatest=False&&ReturnToLatest=False">
-      Go To The Lastest Stable Version
+    <a class="mark-as-read" onclick="document.getElementById('AlertCard!').style.display = 'none'">
+      No
     </a>
   </div>
 </div>
@@ -734,16 +734,9 @@ body {
 
 <script>
 const startDate = new Date("2023-04-21T09:30:00");
-const endDate = new Date("2023-04-21T11:00:00");
+const endDate = new Date("2023-04-21T10:00:00");
 const currentDate = new Date();
 
-if (currentDate >= startDate && currentDate <= endDate) {
-  document.getElementById('AlertCard!').style.display = 'block'
-} else {
-  document.getElementById('AlertCard!').style.display = 'none'
-}
-
-</script>
 
 <div id="cookieNotice" class="light display-right" style="transition: 0.5s; vertical-align: middle; text-align: center; display: none; z-index: 6; position: fixed; width: 100%; height: 100%;  background-color: #353535;">
   <div id="closeIcon" style="display: none;">
