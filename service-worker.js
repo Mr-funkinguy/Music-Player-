@@ -7,8 +7,9 @@ workbox.routing.registerRoute(
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-      fetch(event.request).catch(function() {
-        return caches.match('./offline.html');
+      fetch(event.request).catch(function(error) {
+        console.error('Fetch error:', error);
+        return caches.match('/offline.html');
       })
     );
   });
