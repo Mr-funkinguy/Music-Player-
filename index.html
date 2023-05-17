@@ -2601,6 +2601,9 @@ cspd_change('cyhar',  'place',  'Cyan Hardcore')
                       if(nuumm==274) {
                      cspd_change('FavoriteSong',  'place',  'Favorite Song')
                       }
+                      if(nuumm==275) {
+                     cspd_change('Erika',  'place',  'Erika')
+                      }
 //var n = Math.floor(Math.random() * songs.length);
 //console.log(songs[n])
 //var song = songs[n]
@@ -2973,7 +2976,7 @@ lyrics_display4.innerHTML = ""
     var scc = 'https://github.com/Mr-funkinguy/Music-Player-/blob/main/Songs/' + music + '?raw=true';
   }
   else if (music.includes("real")) {
-    audio_id.setAttribute('src', 'https://n08b-e2.revma.ihrhls.com/zc181?rj-=&rj-ttl=5&rj-');
+    audio_id.setAttribute('src', 'https://n3ab-e2.revma.ihrhls.com/zc181?rj-ttl=5&rj-tok=AAABiCfd6x4AHQN0U5HbJw-n1g');
     console.log('url detected');
     var scc = 'Live Music';
    
@@ -2989,7 +2992,7 @@ lyrics_display4.innerHTML = ""
 
   }
   else if (music.includes("kiss")) {
-    audio_id.setAttribute('src', 'https://n42b-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABhRjqYWIADvFXQisuqJ4_7g');
+    audio_id.setAttribute('src', 'https://n3fb-e2.revma.ihrhls.com/zc185?rj-ttl=5&rj-tok=AAABiCfn9a0AcHIArocgaeNZSg');
     console.log('url detected');
     document.getElementById("cs_audio_duration").innerHTML = 'Live';
 
@@ -3302,7 +3305,7 @@ cov.style.opacity = 1;
        
       <li><a onclick="cspd_change('kiss',  'kiss',  'Kiss Fm')">102.7 kiss Fm | Top 40</a></li>
        
-      <li><a onclick="cspd_change('1023',  '102.3.jpeg',  '102.3 The Beat')">102.3 The Beat  | Hip-Hop, R&B</a></li>
+      <!--li><a onclick="cspd_change('1023',  '102.3.jpeg',  '102.3 The Beat')">102.3 The Beat  | Hip-Hop, R&B</a></li-->
        
 
       <hr class="rounded">
@@ -3842,6 +3845,7 @@ cov.style.opacity = 1;
 
                                         <li><a onclick="shuffle(274)">Favorite Song</a></li>
 
+                                        <li><a onclick="shuffle(275)">Erika</a></li>
     </ul>
 
 
